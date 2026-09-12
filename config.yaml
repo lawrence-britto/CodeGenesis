@@ -1,0 +1,29 @@
+llm:
+  provider: ollama
+  base_url: http://127.0.0.1:11434
+  model: qwen2.5-coder:7b
+  max_tokens: 512
+  temperature: 0
+  timeout_seconds: 45
+  keep_alive: 30m
+embeddings:
+  provider: sentence_transformers
+  model: BAAI/bge-m3
+vector_store:
+  provider: chroma
+  path: accelx_vectors
+  collection: acceleratex_knowledge
+rag:
+  enabled: true
+  use_embeddings: false
+  top_k: 5
+  require_approved_documents: true
+  llm_is_advisory: true
+join_validator:
+  use_llm: false
+parameters:
+  ods_date_default: "2026-08-30"
+  pse_date_default: "20260830"
+  country_codes: [AE, BD, BH, BN, CN, GH, HK, ID, IN, JE, KE, MY, NG, NP, SG, TW, UG, VN, XX, ZM]
+dataforge:
+  use_llm: false

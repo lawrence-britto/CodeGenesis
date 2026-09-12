@@ -1,0 +1,151 @@
+{
+  "module": "mapping",
+  "source": "knowledge/mapping/mapping_validation_rules.md",
+  "rule_count": 16,
+  "rules": [
+    {
+      "id": "required_workbook_structure",
+      "title": "Required workbook structure",
+      "description": "Pass when the workbook contains a sheet named Source to Target. Fail when that sheet is missing.",
+      "module": "mapping",
+      "source": "knowledge/mapping/mapping_validation_rules.md",
+      "selector": "Required workbook structure",
+      "check_type": "generic_markdown_rule"
+    },
+    {
+      "id": "required_mapping_columns",
+      "title": "Required mapping columns",
+      "description": "Pass when Map Group ID, Source Object Name, Source Object ID, Source Attribute Name, Source Attribute ID, Target Object Name, and Target Attribute Name are present. Fail when any required column is missing.",
+      "module": "mapping",
+      "source": "D:\\AccelerateX\\knowledge\\mapping\\mapping_validation_rules.md",
+      "selector": "Required mapping columns",
+      "check_type": "generic_markdown_rule"
+    },
+    {
+      "id": "non_empty_map_group",
+      "title": "Non-empty map group",
+      "description": "Pass when every mapping row has a non-empty Map Group ID. Blank values are deterministic errors because the mapping cannot be reliably grouped.",
+      "module": "mapping",
+      "source": "D:\\AccelerateX\\knowledge\\mapping\\mapping_validation_rules.md",
+      "selector": "Non-empty map group",
+      "check_type": "generic_markdown_rule"
+    },
+    {
+      "id": "non_empty_source_object",
+      "title": "Non-empty source object",
+      "description": "Pass when each mapping row identifies a source object and source object ID. Blank Source Object Name or Source Object ID values are deterministic errors because SQL generation cannot identify its input.",
+      "module": "mapping",
+      "source": "D:\\AccelerateX\\knowledge\\mapping\\mapping_validation_rules.md",
+      "selector": "Non-empty source object",
+      "check_type": "generic_markdown_rule"
+    },
+    {
+      "id": "non_empty_source_attribute",
+      "title": "Non-empty source attribute",
+      "description": "Pass when each mapping row identifies a source attribute and source attribute ID. Blank Source Attribute Name or Source Attribute ID values are deterministic errors because the source mapping cannot be identified reliably.",
+      "module": "mapping",
+      "source": "D:\\AccelerateX\\knowledge\\mapping\\mapping_validation_rules.md",
+      "selector": "Non-empty source attribute",
+      "check_type": "generic_markdown_rule"
+    },
+    {
+      "id": "non_empty_target_object",
+      "title": "Non-empty target object",
+      "description": "Pass when each mapping row identifies a target object. A blank Target Object Name is a deterministic error because the destination cannot be generated.",
+      "module": "mapping",
+      "source": "D:\\AccelerateX\\knowledge\\mapping\\mapping_validation_rules.md",
+      "selector": "Non-empty target object",
+      "check_type": "generic_markdown_rule"
+    },
+    {
+      "id": "non_empty_target_attribute",
+      "title": "Non-empty target attribute",
+      "description": "Pass when each mapping row identifies a target attribute. A blank Target Attribute Name is a deterministic error because the destination column cannot be generated.",
+      "module": "mapping",
+      "source": "D:\\AccelerateX\\knowledge\\mapping\\mapping_validation_rules.md",
+      "selector": "Non-empty target attribute",
+      "check_type": "generic_markdown_rule"
+    },
+    {
+      "id": "consistent_target_per_group",
+      "title": "Consistent target per group",
+      "description": "Pass when all rows in a map group point to one target table. More than one target table is a warning requiring analyst review.",
+      "module": "mapping",
+      "source": "D:\\AccelerateX\\knowledge\\mapping\\mapping_validation_rules.md",
+      "selector": "Consistent target per group",
+      "check_type": "generic_markdown_rule"
+    },
+    {
+      "id": "duplicate_source_mapping",
+      "title": "Duplicate source mapping",
+      "description": "Pass when a source object and source attribute occur once per map group. Duplicate source attributes are warnings because they may produce repeated expressions.",
+      "module": "mapping",
+      "source": "D:\\AccelerateX\\knowledge\\mapping\\mapping_validation_rules.md",
+      "selector": "Duplicate source mapping",
+      "check_type": "duplicate_source_mapping"
+    },
+    {
+      "id": "duplicate_target_mapping",
+      "title": "Duplicate target mapping",
+      "description": "Pass when a target object and target attribute occur once per map group. Duplicate target attributes are warnings because they may overwrite one another.",
+      "module": "mapping",
+      "source": "D:\\AccelerateX\\knowledge\\mapping\\mapping_validation_rules.md",
+      "selector": "Duplicate target mapping",
+      "check_type": "duplicate_target_mapping"
+    },
+    {
+      "id": "trimmed_identifiers",
+      "title": "Trimmed identifiers",
+      "description": "Pass when identifiers do not contain leading or trailing whitespace. Whitespace is normalized for blank checks, but the source workbook should be corrected.",
+      "module": "mapping",
+      "source": "D:\\AccelerateX\\knowledge\\mapping\\mapping_validation_rules.md",
+      "selector": "Trimmed identifiers",
+      "check_type": "generic_markdown_rule"
+    },
+    {
+      "id": "data_processing_rule_reference",
+      "title": "Data processing rule reference",
+      "description": "Pass when a Data Processing Rule value is empty or matches an approved rule reference. Unknown rule references must remain warnings or errors and must never be approved by an LLM.",
+      "module": "mapping",
+      "source": "D:\\AccelerateX\\knowledge\\mapping\\mapping_validation_rules.md",
+      "selector": "Data processing rule reference",
+      "check_type": "generic_markdown_rule"
+    },
+    {
+      "id": "active_mapping_rows",
+      "title": "Active mapping rows",
+      "description": "Pass when inactive rows are explicitly marked and do not replace an active mapping. Conflicting active and inactive versions require analyst review.",
+      "module": "mapping",
+      "source": "D:\\AccelerateX\\knowledge\\mapping\\mapping_validation_rules.md",
+      "selector": "Active mapping rows",
+      "check_type": "generic_markdown_rule"
+    },
+    {
+      "id": "map_group_cardinality",
+      "title": "Map group cardinality",
+      "description": "Pass when at least one non-empty map group exists for a non-empty workbook. A workbook with no usable map groups fails structural validation.",
+      "module": "mapping",
+      "source": "D:\\AccelerateX\\knowledge\\mapping\\mapping_validation_rules.md",
+      "selector": "Map group cardinality",
+      "check_type": "generic_markdown_rule"
+    },
+    {
+      "id": "llm_boundary",
+      "title": "LLM boundary",
+      "description": "The language model may explain deterministic findings and identify relevant approved rules. It may not change the pass or fail result, create a rule, or approve a warning.",
+      "module": "mapping",
+      "source": "D:\\AccelerateX\\knowledge\\mapping\\mapping_validation_rules.md",
+      "selector": "LLM boundary",
+      "check_type": "generic_markdown_rule"
+    },
+    {
+      "id": "duplicate_dpr_rule",
+      "title": "Duplicate DPR Rule",
+      "description": "Pass when a Rule Name in DPR sheet has no duplicates.",
+      "module": "mapping",
+      "source": "D:\\AccelerateX\\knowledge\\mapping\\mapping_validation_rules.md",
+      "selector": "Duplicate DPR Rule",
+      "check_type": "duplicate_dpr_rule"
+    }
+  ]
+}

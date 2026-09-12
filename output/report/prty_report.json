@@ -1,0 +1,2211 @@
+{
+  "summary": {
+    "overall_status": "SUCCESS",
+    "sql_generation_status": "SUCCESS",
+    "validation_status": "PASSED",
+    "mapping_status": "WARNING",
+    "source_tables": 2,
+    "target_columns": 62,
+    "generated_columns": 62,
+    "joins": 1,
+    "transformations": 0,
+    "deterministic_fixes": 3,
+    "warnings": 0,
+    "todos": 0,
+    "unresolved_issues": 0,
+    "rag_status": "COMPLETED",
+    "llm_diagnostic_status": "COMPLETED"
+  },
+  "inputs": {
+    "mapping_workbook": "sql_mapping_sheet_v3.xlsx",
+    "mapping_sheet": "Source to Target",
+    "source_sql_file": "prty.sql",
+    "mapping_rows": 62,
+    "valid_mapping_rows": 59,
+    "rejected_mapping_rows": 3,
+    "source_objects": [
+      "C_PRTY",
+      "C_PRTY_NTLTY"
+    ],
+    "target_objects": [
+      "PRTY"
+    ],
+    "processing_timestamp": "2026-09-12T15:53:32.584964+00:00",
+    "configuration_profile": "default"
+  },
+  "mapping_analysis": [
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "PRTY_SROGT_ID",
+      "target": "PRTY",
+      "target_column": "s_prty",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "PRTY_TYPE_CD",
+      "target": "PRTY",
+      "target_column": "c_prty_typ",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "PRTY_TYPE_DESC",
+      "target": "PRTY",
+      "target_column": "x_prty_typ",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "PRTY_CLAS",
+      "target": "PRTY",
+      "target_column": "c_prty_clas",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "DOM_PRTY_REF",
+      "target": "PRTY",
+      "target_column": "n_dom_cust",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "DOM_PRTY_REF_TYPE",
+      "target": "PRTY",
+      "target_column": "x_prtyref_typ",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "ENTRP_PRTY_SROGT_ID",
+      "target": "PRTY",
+      "target_column": "s_entrp_prty",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "ENTRP_PRTY_REF",
+      "target": "PRTY",
+      "target_column": "n_entrp_prty",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "ENTRP_PARNT_PRTY_SROGT_ID",
+      "target": "PRTY",
+      "target_column": "s_entrp_prnt_prty",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "ENTRP_PARNT_PRTY_HOST_NUM",
+      "target": "PRTY",
+      "target_column": "n_entrp_prnt_prty",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "STS_CD",
+      "target": "PRTY",
+      "target_column": "c_custsts",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "STS_DESC",
+      "target": "PRTY",
+      "target_column": "x_rel_sts",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "STS_EFF_DT",
+      "target": "PRTY",
+      "target_column": "d_rel_sts_updt",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "SEGMT_CD",
+      "target": "PRTY",
+      "target_column": "c_custseg",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "SEGMT_DESC",
+      "target": "PRTY",
+      "target_column": "x_custseg",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "SUB_SEGMT_CD",
+      "target": "PRTY",
+      "target_column": "C_CUSTSUBSEG",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "SUB_SEGMT_CD_DESC",
+      "target": "PRTY",
+      "target_column": "X_CUSTSUBSEG",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "DT_OF_BIRTH",
+      "target": "PRTY",
+      "target_column": "D_BIRTH",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "GNDR_CD",
+      "target": "PRTY",
+      "target_column": "C_GNDR",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "GNDR_DESC",
+      "target": "PRTY",
+      "target_column": "X_GNDR",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "PRFNL_CD",
+      "target": "PRTY",
+      "target_column": "C_PRO",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "PRFNL_DESC",
+      "target": "PRTY",
+      "target_column": "X_PRO",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "MRTL_STS_CD",
+      "target": "PRTY",
+      "target_column": "C_MARSTS",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "MRTL_STS_DESC",
+      "target": "PRTY",
+      "target_column": "X_MARSTS",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "PAYR_IND",
+      "target": "PRTY",
+      "target_column": "F_PYR",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "SCB_STAF_FL",
+      "target": "PRTY",
+      "target_column": "F_STAFF",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "EDU_LVL_CD",
+      "target": "PRTY",
+      "target_column": "C_EDULVL",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "EDU_LVL_DESC",
+      "target": "PRTY",
+      "target_column": "X_EDULVL",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "ANL_INCM_AMT",
+      "target": "PRTY",
+      "target_column": "A_ANL_INCM",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "DEPENDANT_CNT",
+      "target": "PRTY",
+      "target_column": "K_DPNDNT",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "INCORPORATION_DT",
+      "target": "PRTY",
+      "target_column": "D_BIZESTBLS",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "INCORPORATION_CTRY_CD",
+      "target": "PRTY",
+      "target_column": "C_INCORP_CTRY",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "ISIC_CD",
+      "target": "PRTY",
+      "target_column": "C_ISIC",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "ISIC_DESC",
+      "target": "PRTY",
+      "target_column": "X_ISIC",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "DMCLE_CTRY_CD",
+      "target": "PRTY",
+      "target_column": "C_DMCLE_CNTRY",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "INTRNL_CR_GRADE",
+      "target": "PRTY",
+      "target_column": "C_INTRNL_CR_GRD",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "INTRNL_CR_GRADE_DESC",
+      "target": "PRTY",
+      "target_column": "X_INTRNL_CR_GRD",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "IBNK_FAC_FL",
+      "target": "PRTY",
+      "target_column": "F_IBK",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "EMP_TP_CD",
+      "target": "PRTY",
+      "target_column": "C_EMPTYP",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "EMP_TP_DESC",
+      "target": "PRTY",
+      "target_column": "X_EMPTYP",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "GR_MTHLY_INCM_AMT",
+      "target": "PRTY",
+      "target_column": "A_GR_MTHLY_INCM",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "RES_STS_CD",
+      "target": "PRTY",
+      "target_column": "C_RES_STS",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "RES_STS_DESC",
+      "target": "PRTY",
+      "target_column": "X_RES_STS",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "RES_CTRY_CD",
+      "target": "PRTY",
+      "target_column": "C_RESICNTRY",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "ARM_CD",
+      "target": "PRTY",
+      "target_column": "C_ARM",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "",
+      "source_column": "PROCESS_ID",
+      "target": "PRTY",
+      "target_column": "PROCESS_ID",
+      "transformation": "RBC~PRTY.PROCESS_ID_01~VN",
+      "join_dependency": "No",
+      "status": "REVIEW"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "",
+      "source_column": "",
+      "target": "PRTY",
+      "target_column": "C_CNTRY",
+      "transformation": "RBC~PRTY.C_CNTRY_01~VN",
+      "join_dependency": "No",
+      "status": "REVIEW"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "",
+      "source_column": "",
+      "target": "PRTY",
+      "target_column": "NM_CNTRY",
+      "transformation": "RBC~PRTY.NM_CNTRY_01~VN",
+      "join_dependency": "No",
+      "status": "REVIEW"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "ETHC_CD",
+      "target": "PRTY",
+      "target_column": "c_ethc",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "ETHC_DESC",
+      "target": "PRTY",
+      "target_column": "x_ethc",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "SRVC_INDI_CD",
+      "target": "PRTY",
+      "target_column": "C_SRV_INDI",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY_NTLTY",
+      "source_column": "NTLTY_CTRY_CD",
+      "target": "PRTY",
+      "target_column": "C_NAT_CNTRY",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "SALT_CD",
+      "target": "PRTY",
+      "target_column": "C_SALT",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "CUST_EMP_DEPT_NM",
+      "target": "PRTY",
+      "target_column": "nm_emp_dept",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "PRTY_SEGMT_CLAS",
+      "target": "PRTY",
+      "target_column": "X_GLPRTY_TYP",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "PRTY_SEGMT_ID",
+      "target": "PRTY",
+      "target_column": "ID_GLPRTY_TYP",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "OTH_MTHLY_INCM_AMT",
+      "target": "PRTY",
+      "target_column": "A_OTH_MTHLY_INCM",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "SPO_MTHLY_INCM_AMT",
+      "target": "PRTY",
+      "target_column": "A_SPO_MTHLY_INCM",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "ANL_INCM_LAST_UPD_DT",
+      "target": "PRTY",
+      "target_column": "D_ANL_INCM_LST_UPD",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "COR_FL",
+      "target": "PRTY",
+      "target_column": "F_CORP",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "BKRPT_DT",
+      "target": "PRTY",
+      "target_column": "D_BKRPT",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "BKRPT_ID_FL",
+      "target": "PRTY",
+      "target_column": "F_BKRPT",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    }
+  ],
+  "source_object_analysis": [
+    {
+      "object": "C_PRTY",
+      "alias": "C_PRTY",
+      "required_columns": [],
+      "select": "Yes",
+      "join": "No",
+      "where": "Yes",
+      "transformation": "No",
+      "filter_conditions": "Detected in SQL",
+      "join_participation": "Base source",
+      "column_pruning": "See pruning actions"
+    },
+    {
+      "object": "C_PRTY_NTLTY",
+      "alias": "C_PRTY_NTLTY",
+      "required_columns": [],
+      "select": "Yes",
+      "join": "No",
+      "where": "Yes",
+      "transformation": "No",
+      "filter_conditions": "Detected in SQL",
+      "join_participation": "Joined",
+      "column_pruning": "See pruning actions"
+    }
+  ],
+  "generated_sql": "SELECT\n'RBC~VN~C_PRTY~PRTY~4' AS PROCESS_ID,\n'VN' AS C_CNTRY,\n'Vietnam' AS NM_CNTRY,\nPRTY.PRTY_SROGT_ID AS s_prty,\nPRTY.PRTY_TYPE_CD AS c_prty_typ,\nPRTY.PRTY_TYPE_DESC AS x_prty_typ,\nPRTY.PRTY_CLAS AS c_prty_clas,\nPRTY.DOM_PRTY_REF AS n_dom_cust,\nPRTY.DOM_PRTY_REF_TYPE AS x_prtyref_typ,\nPRTY.ENTRP_PRTY_SROGT_ID AS s_entrp_prty,\nPRTY.ENTRP_PRTY_REF AS n_entrp_prty,\nPRTY.ENTRP_PARNT_PRTY_SROGT_ID AS s_entrp_prnt_prty,\nPRTY.ENTRP_PARNT_PRTY_HOST_NUM AS n_entrp_prnt_prty,\nPRTY.STS_CD AS c_custsts,\nPRTY.STS_DESC AS x_rel_sts,\nPRTY.STS_EFF_DT AS d_rel_sts_updt,\nPRTY.SEGMT_CD AS c_custseg,\nPRTY.SEGMT_DESC AS x_custseg,\nPRTY.SUB_SEGMT_CD AS C_CUSTSUBSEG,\nPRTY.SUB_SEGMT_CD_DESC AS X_CUSTSUBSEG,\nPRTY.DT_OF_BIRTH AS D_BIRTH,\nPRTY.GNDR_CD AS C_GNDR,\nPRTY.GNDR_DESC AS X_GNDR,\nPRTY.PRFNL_CD AS C_PRO,\nPRTY.PRFNL_DESC AS X_PRO,\nPRTY.MRTL_STS_CD AS C_MARSTS,\nPRTY.MRTL_STS_DESC AS X_MARSTS,\nPRTY.PAYR_IND AS F_PYR,\nPRTY.SCB_STAF_FL AS F_STAFF,\nPRTY.EDU_LVL_CD AS C_EDULVL,\nPRTY.EDU_LVL_DESC AS X_EDULVL,\nPRTY.ANL_INCM_AMT AS A_ANL_INCM,\nPRTY.DEPENDANT_CNT AS K_DPNDNT,\nPRTY.INCORPORATION_DT AS D_BIZESTBLS,\nPRTY.INCORPORATION_CTRY_CD AS C_INCORP_CTRY,\nPRTY.ISIC_CD AS C_ISIC,\nPRTY.ISIC_DESC AS X_ISIC,\nPRTY.DMCLE_CTRY_CD AS C_DMCLE_CNTRY,\nPRTY.INTRNL_CR_GRADE AS C_INTRNL_CR_GRD,\nPRTY.INTRNL_CR_GRADE_DESC AS X_INTRNL_CR_GRD,\nPRTY.IBNK_FAC_FL AS F_IBK,\nPRTY.EMP_TP_CD AS C_EMPTYP,\nPRTY.EMP_TP_DESC AS X_EMPTYP,\nPRTY.GR_MTHLY_INCM_AMT AS A_GR_MTHLY_INCM,\nPRTY.RES_STS_CD AS C_RES_STS,\nPRTY.RES_STS_DESC AS X_RES_STS,\nPRTY.RES_CTRY_CD AS C_RESICNTRY,\nPRTY.ARM_CD AS C_ARM,\nPRTY.ETHC_CD AS c_ethc,\nPRTY.ETHC_DESC AS x_ethc,\nPRTY.SRVC_INDI_CD AS C_SRV_INDI,\nNTLTY.NTLTY_CTRY_CD AS C_NAT_CNTRY,\nPRTY.SALT_CD AS C_SALT,\nPRTY.CUST_EMP_DEPT_NM AS nm_emp_dept,\nPRTY.PRTY_SEGMT_CLAS AS X_GLPRTY_TYP,\nPRTY.PRTY_SEGMT_ID AS ID_GLPRTY_TYP,\nPRTY.OTH_MTHLY_INCM_AMT AS A_OTH_MTHLY_INCM,\nPRTY.SPO_MTHLY_INCM_AMT AS A_SPO_MTHLY_INCM,\nPRTY.ANL_INCM_LAST_UPD_DT AS D_ANL_INCM_LST_UPD,\nPRTY.COR_FL AS F_CORP,\nPRTY.BKRPT_DT AS D_BKRPT,\nPRTY.BKRPT_ID_FL AS F_BKRPT\nFROM (SELECT ANL_INCM_AMT, ANL_INCM_LAST_UPD_DT, ARM_CD, BKRPT_DT, BKRPT_ID_FL, COR_FL, CUST_EMP_DEPT_NM, DEPENDANT_CNT, DMCLE_CTRY_CD, DOM_PRTY_REF, DOM_PRTY_REF_TYPE, DT_OF_BIRTH, EDU_LVL_CD, EDU_LVL_DESC, EMP_TP_CD, EMP_TP_DESC, ENTRP_PARNT_PRTY_HOST_NUM, ENTRP_PARNT_PRTY_SROGT_ID, ENTRP_PRTY_REF, ENTRP_PRTY_SROGT_ID, ETHC_CD, ETHC_DESC, GNDR_CD, GNDR_DESC, GR_MTHLY_INCM_AMT, IBNK_FAC_FL, INCORPORATION_CTRY_CD, INCORPORATION_DT, INTRNL_CR_GRADE, INTRNL_CR_GRADE_DESC, ISIC_CD, ISIC_DESC, MRTL_STS_CD, MRTL_STS_DESC, OTH_MTHLY_INCM_AMT, PAYR_IND, PRFNL_CD, PRFNL_DESC, PRTY_CLAS, PRTY_SEGMT_CLAS, PRTY_SEGMT_ID, PRTY_SROGT_ID, PRTY_TYPE_CD, PRTY_TYPE_DESC, RES_CTRY_CD, RES_STS_CD, RES_STS_DESC, SALT_CD, SCB_STAF_FL, SEGMT_CD, SEGMT_DESC, SPO_MTHLY_INCM_AMT, SRVC_INDI_CD, STS_CD, STS_DESC, STS_EFF_DT, SUB_SEGMT_CD, SUB_SEGMT_CD_DESC FROM C_PRTY\n    WHERE DATA_SRC = 'EBB'\n   AND SOURCE_COUNTRY_CODE = 'VN'\n) PRTY\n\nLEFT JOIN (SELECT NTLTY_CTRY_CD, PRTY_SROGT_ID FROM C_PRTY_NTLTY\n    WHERE DATA_SRC = 'EBB'\n   AND SOURCE_COUNTRY_CODE = 'VN'\n   AND NTLTY_TYPE_CD = 'CN01'\n) NTLTY\n    ON PRTY.PRTY_SROGT_ID = NTLTY.PRTY_SROGT_ID;",
+  "sql_metadata": {
+    "sql_type": "SELECT",
+    "target_object": "PRTY",
+    "select_columns": 62,
+    "source_tables": 2,
+    "joins": 1,
+    "where_filters": 5,
+    "transformations": 0,
+    "validation": "PASSED"
+  },
+  "sql_analysis": {
+    "select_columns": 62,
+    "direct_mappings": 0,
+    "derived_columns": 0,
+    "expressions": [
+      "'RBC~VN~C_PRTY~PRTY~4' AS PROCESS_ID",
+      "'VN' AS C_CNTRY",
+      "'Vietnam' AS NM_CNTRY",
+      "PRTY.PRTY_SROGT_ID AS s_prty",
+      "PRTY.PRTY_TYPE_CD AS c_prty_typ",
+      "PRTY.PRTY_TYPE_DESC AS x_prty_typ",
+      "PRTY.PRTY_CLAS AS c_prty_clas",
+      "PRTY.DOM_PRTY_REF AS n_dom_cust",
+      "PRTY.DOM_PRTY_REF_TYPE AS x_prtyref_typ",
+      "PRTY.ENTRP_PRTY_SROGT_ID AS s_entrp_prty",
+      "PRTY.ENTRP_PRTY_REF AS n_entrp_prty",
+      "PRTY.ENTRP_PARNT_PRTY_SROGT_ID AS s_entrp_prnt_prty",
+      "PRTY.ENTRP_PARNT_PRTY_HOST_NUM AS n_entrp_prnt_prty",
+      "PRTY.STS_CD AS c_custsts",
+      "PRTY.STS_DESC AS x_rel_sts",
+      "PRTY.STS_EFF_DT AS d_rel_sts_updt",
+      "PRTY.SEGMT_CD AS c_custseg",
+      "PRTY.SEGMT_DESC AS x_custseg",
+      "PRTY.SUB_SEGMT_CD AS C_CUSTSUBSEG",
+      "PRTY.SUB_SEGMT_CD_DESC AS X_CUSTSUBSEG",
+      "PRTY.DT_OF_BIRTH AS D_BIRTH",
+      "PRTY.GNDR_CD AS C_GNDR",
+      "PRTY.GNDR_DESC AS X_GNDR",
+      "PRTY.PRFNL_CD AS C_PRO",
+      "PRTY.PRFNL_DESC AS X_PRO",
+      "PRTY.MRTL_STS_CD AS C_MARSTS",
+      "PRTY.MRTL_STS_DESC AS X_MARSTS",
+      "PRTY.PAYR_IND AS F_PYR",
+      "PRTY.SCB_STAF_FL AS F_STAFF",
+      "PRTY.EDU_LVL_CD AS C_EDULVL",
+      "PRTY.EDU_LVL_DESC AS X_EDULVL",
+      "PRTY.ANL_INCM_AMT AS A_ANL_INCM",
+      "PRTY.DEPENDANT_CNT AS K_DPNDNT",
+      "PRTY.INCORPORATION_DT AS D_BIZESTBLS",
+      "PRTY.INCORPORATION_CTRY_CD AS C_INCORP_CTRY",
+      "PRTY.ISIC_CD AS C_ISIC",
+      "PRTY.ISIC_DESC AS X_ISIC",
+      "PRTY.DMCLE_CTRY_CD AS C_DMCLE_CNTRY",
+      "PRTY.INTRNL_CR_GRADE AS C_INTRNL_CR_GRD",
+      "PRTY.INTRNL_CR_GRADE_DESC AS X_INTRNL_CR_GRD",
+      "PRTY.IBNK_FAC_FL AS F_IBK",
+      "PRTY.EMP_TP_CD AS C_EMPTYP",
+      "PRTY.EMP_TP_DESC AS X_EMPTYP",
+      "PRTY.GR_MTHLY_INCM_AMT AS A_GR_MTHLY_INCM",
+      "PRTY.RES_STS_CD AS C_RES_STS",
+      "PRTY.RES_STS_DESC AS X_RES_STS",
+      "PRTY.RES_CTRY_CD AS C_RESICNTRY",
+      "PRTY.ARM_CD AS C_ARM",
+      "PRTY.ETHC_CD AS c_ethc",
+      "PRTY.ETHC_DESC AS x_ethc",
+      "PRTY.SRVC_INDI_CD AS C_SRV_INDI",
+      "NTLTY.NTLTY_CTRY_CD AS C_NAT_CNTRY",
+      "PRTY.SALT_CD AS C_SALT",
+      "PRTY.CUST_EMP_DEPT_NM AS nm_emp_dept",
+      "PRTY.PRTY_SEGMT_CLAS AS X_GLPRTY_TYP",
+      "PRTY.PRTY_SEGMT_ID AS ID_GLPRTY_TYP",
+      "PRTY.OTH_MTHLY_INCM_AMT AS A_OTH_MTHLY_INCM",
+      "PRTY.SPO_MTHLY_INCM_AMT AS A_SPO_MTHLY_INCM",
+      "PRTY.ANL_INCM_LAST_UPD_DT AS D_ANL_INCM_LST_UPD",
+      "PRTY.COR_FL AS F_CORP",
+      "PRTY.BKRPT_DT AS D_BKRPT",
+      "PRTY.BKRPT_ID_FL AS F_BKRPT"
+    ],
+    "functions": [
+      "FROM",
+      "JOIN"
+    ],
+    "duplicate_expressions": [],
+    "duplicate_aliases": [],
+    "source_tables": 2,
+    "subqueries": 2,
+    "aliases": [
+      "C_PRTY",
+      "C_PRTY_NTLTY"
+    ],
+    "joins": [
+      {
+        "left_table": "PRTY",
+        "left_column": "PRTY_SROGT_ID",
+        "join_type": "LEFT JOIN",
+        "right_table": "NTLTY",
+        "right_column": "PRTY_SROGT_ID",
+        "condition": "PRTY.PRTY_SROGT_ID = NTLTY.PRTY_SROGT_ID",
+        "functions": [],
+        "status": "PASS"
+      }
+    ],
+    "filters": 5
+  },
+  "filters": [
+    {
+      "table": "",
+      "column": "",
+      "operator": "",
+      "value": "PRTY.PRTY_SROGT_ID = NTLTY",
+      "purpose": "SQL filter",
+      "status": "PASS"
+    }
+  ],
+  "transformations": [
+    {
+      "target_column": "PROCESS_ID",
+      "source_column": "",
+      "transformation": "DEFAULT",
+      "generated_expression": "",
+      "status": "PASS"
+    },
+    {
+      "target_column": "C_CNTRY",
+      "source_column": "",
+      "transformation": "DEFAULT",
+      "generated_expression": "",
+      "status": "PASS"
+    },
+    {
+      "target_column": "NM_CNTRY",
+      "source_column": "",
+      "transformation": "DEFAULT",
+      "generated_expression": "",
+      "status": "PASS"
+    }
+  ],
+  "deterministic_fixes": [
+    {
+      "id": 1,
+      "issue": "normalized SELECT/FROM spacing",
+      "action": "normalized SELECT/FROM spacing",
+      "location": "Generated SQL",
+      "impact": "Deterministic SQL correction",
+      "status": "FIXED",
+      "rule": "SQL syntax fixer"
+    },
+    {
+      "id": 2,
+      "issue": "standardized JOIN formatting",
+      "action": "standardized JOIN formatting",
+      "location": "Generated SQL",
+      "impact": "Deterministic SQL correction",
+      "status": "FIXED",
+      "rule": "SQL syntax fixer"
+    },
+    {
+      "id": 3,
+      "issue": "added missing statement terminator",
+      "action": "added missing statement terminator",
+      "location": "Generated SQL",
+      "impact": "Deterministic SQL correction",
+      "status": "FIXED",
+      "rule": "SQL syntax fixer"
+    }
+  ],
+  "deterministic_findings": [
+    {
+      "severity": "INFO",
+      "category": "SQL syntax",
+      "finding": "normalized SELECT/FROM spacing",
+      "evidence": "Generated SQL contained a deterministic formatting defect: normalized SELECT/FROM spacing",
+      "recommendation": "Applied normalized select/from spacing to the deterministic SQL output"
+    },
+    {
+      "severity": "INFO",
+      "category": "SQL syntax",
+      "finding": "standardized JOIN formatting",
+      "evidence": "Generated SQL contained a deterministic formatting defect: standardized JOIN formatting",
+      "recommendation": "Applied standardized join formatting to the deterministic SQL output"
+    },
+    {
+      "severity": "INFO",
+      "category": "SQL syntax",
+      "finding": "Missing statement terminator",
+      "evidence": "Original SQL did not end with a statement terminator",
+      "recommendation": "Added the statement terminator to the deterministic SQL output"
+    }
+  ],
+  "todos": [],
+  "validation": [
+    {
+      "rule": "SQL syntax structure",
+      "result": "PASSED",
+      "details": "Valid deterministic SQL structure"
+    },
+    {
+      "rule": "Unresolved TODOs",
+      "result": "PASS",
+      "details": "None"
+    }
+  ],
+  "rag_advisory": {
+    "rules": [
+      {
+        "name": "Deterministic output"
+      },
+      {
+        "name": "Missing join reference"
+      },
+      {
+        "name": "Multiple source tables"
+      },
+      {
+        "name": "Missing DPR rule"
+      },
+      {
+        "name": "Unknown DPR rule"
+      },
+      {
+        "name": "Narrative transformation note"
+      },
+      {
+        "name": "TODO review boundary"
+      },
+      {
+        "name": "Advisory boundary"
+      }
+    ]
+  },
+  "llm_diagnostic": {
+    "model": "qwen2.5-coder:7b",
+    "status": "COMPLETED",
+    "prompt_purpose": "Explain deterministic findings and recommend corrective action",
+    "issues_explained": [],
+    "explanation": "Proceed to the testing phase by generating sample synthetic data using the Test Data Forge.",
+    "recommendations": "Proceed to the testing phase by generating sample synthetic data using the Test Data Forge.",
+    "authority": "NONE"
+  },
+  "traceability": [
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "PRTY_SROGT_ID",
+      "target": "PRTY",
+      "target_column": "s_prty",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.PRTY_SROGT_ID AS s_prty",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "PRTY_TYPE_CD",
+      "target": "PRTY",
+      "target_column": "c_prty_typ",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.PRTY_TYPE_CD AS c_prty_typ",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "PRTY_TYPE_DESC",
+      "target": "PRTY",
+      "target_column": "x_prty_typ",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.PRTY_TYPE_DESC AS x_prty_typ",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "PRTY_CLAS",
+      "target": "PRTY",
+      "target_column": "c_prty_clas",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.PRTY_CLAS AS c_prty_clas",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "DOM_PRTY_REF",
+      "target": "PRTY",
+      "target_column": "n_dom_cust",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.DOM_PRTY_REF AS n_dom_cust",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "DOM_PRTY_REF_TYPE",
+      "target": "PRTY",
+      "target_column": "x_prtyref_typ",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.DOM_PRTY_REF_TYPE AS x_prtyref_typ",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "ENTRP_PRTY_SROGT_ID",
+      "target": "PRTY",
+      "target_column": "s_entrp_prty",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.ENTRP_PRTY_SROGT_ID AS s_entrp_prty",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "ENTRP_PRTY_REF",
+      "target": "PRTY",
+      "target_column": "n_entrp_prty",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.ENTRP_PRTY_REF AS n_entrp_prty",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "ENTRP_PARNT_PRTY_SROGT_ID",
+      "target": "PRTY",
+      "target_column": "s_entrp_prnt_prty",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.ENTRP_PARNT_PRTY_SROGT_ID AS s_entrp_prnt_prty",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "ENTRP_PARNT_PRTY_HOST_NUM",
+      "target": "PRTY",
+      "target_column": "n_entrp_prnt_prty",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.ENTRP_PARNT_PRTY_HOST_NUM AS n_entrp_prnt_prty",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "STS_CD",
+      "target": "PRTY",
+      "target_column": "c_custsts",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.STS_CD AS c_custsts",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "STS_DESC",
+      "target": "PRTY",
+      "target_column": "x_rel_sts",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.STS_DESC AS x_rel_sts",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "STS_EFF_DT",
+      "target": "PRTY",
+      "target_column": "d_rel_sts_updt",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.STS_EFF_DT AS d_rel_sts_updt",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "SEGMT_CD",
+      "target": "PRTY",
+      "target_column": "c_custseg",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.SEGMT_CD AS c_custseg",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "SEGMT_DESC",
+      "target": "PRTY",
+      "target_column": "x_custseg",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.SEGMT_DESC AS x_custseg",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "SUB_SEGMT_CD",
+      "target": "PRTY",
+      "target_column": "C_CUSTSUBSEG",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.SUB_SEGMT_CD AS C_CUSTSUBSEG",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "SUB_SEGMT_CD_DESC",
+      "target": "PRTY",
+      "target_column": "X_CUSTSUBSEG",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.SUB_SEGMT_CD_DESC AS X_CUSTSUBSEG",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "DT_OF_BIRTH",
+      "target": "PRTY",
+      "target_column": "D_BIRTH",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.DT_OF_BIRTH AS D_BIRTH",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "GNDR_CD",
+      "target": "PRTY",
+      "target_column": "C_GNDR",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.GNDR_CD AS C_GNDR",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "GNDR_DESC",
+      "target": "PRTY",
+      "target_column": "X_GNDR",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.GNDR_DESC AS X_GNDR",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "PRFNL_CD",
+      "target": "PRTY",
+      "target_column": "C_PRO",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.PRFNL_CD AS C_PRO",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "PRFNL_DESC",
+      "target": "PRTY",
+      "target_column": "X_PRO",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.PRFNL_DESC AS X_PRO",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "MRTL_STS_CD",
+      "target": "PRTY",
+      "target_column": "C_MARSTS",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.MRTL_STS_CD AS C_MARSTS",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "MRTL_STS_DESC",
+      "target": "PRTY",
+      "target_column": "X_MARSTS",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.MRTL_STS_DESC AS X_MARSTS",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "PAYR_IND",
+      "target": "PRTY",
+      "target_column": "F_PYR",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.PAYR_IND AS F_PYR",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "SCB_STAF_FL",
+      "target": "PRTY",
+      "target_column": "F_STAFF",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.SCB_STAF_FL AS F_STAFF",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "EDU_LVL_CD",
+      "target": "PRTY",
+      "target_column": "C_EDULVL",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.EDU_LVL_CD AS C_EDULVL",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "EDU_LVL_DESC",
+      "target": "PRTY",
+      "target_column": "X_EDULVL",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.EDU_LVL_DESC AS X_EDULVL",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "ANL_INCM_AMT",
+      "target": "PRTY",
+      "target_column": "A_ANL_INCM",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.ANL_INCM_AMT AS A_ANL_INCM",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "DEPENDANT_CNT",
+      "target": "PRTY",
+      "target_column": "K_DPNDNT",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.DEPENDANT_CNT AS K_DPNDNT",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "INCORPORATION_DT",
+      "target": "PRTY",
+      "target_column": "D_BIZESTBLS",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.INCORPORATION_DT AS D_BIZESTBLS",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "INCORPORATION_CTRY_CD",
+      "target": "PRTY",
+      "target_column": "C_INCORP_CTRY",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.INCORPORATION_CTRY_CD AS C_INCORP_CTRY",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "ISIC_CD",
+      "target": "PRTY",
+      "target_column": "C_ISIC",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.ISIC_CD AS C_ISIC",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "ISIC_DESC",
+      "target": "PRTY",
+      "target_column": "X_ISIC",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.ISIC_DESC AS X_ISIC",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "DMCLE_CTRY_CD",
+      "target": "PRTY",
+      "target_column": "C_DMCLE_CNTRY",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.DMCLE_CTRY_CD AS C_DMCLE_CNTRY",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "INTRNL_CR_GRADE",
+      "target": "PRTY",
+      "target_column": "C_INTRNL_CR_GRD",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.INTRNL_CR_GRADE AS C_INTRNL_CR_GRD",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "INTRNL_CR_GRADE_DESC",
+      "target": "PRTY",
+      "target_column": "X_INTRNL_CR_GRD",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.INTRNL_CR_GRADE_DESC AS X_INTRNL_CR_GRD",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "IBNK_FAC_FL",
+      "target": "PRTY",
+      "target_column": "F_IBK",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.IBNK_FAC_FL AS F_IBK",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "EMP_TP_CD",
+      "target": "PRTY",
+      "target_column": "C_EMPTYP",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.EMP_TP_CD AS C_EMPTYP",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "EMP_TP_DESC",
+      "target": "PRTY",
+      "target_column": "X_EMPTYP",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.EMP_TP_DESC AS X_EMPTYP",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "GR_MTHLY_INCM_AMT",
+      "target": "PRTY",
+      "target_column": "A_GR_MTHLY_INCM",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.GR_MTHLY_INCM_AMT AS A_GR_MTHLY_INCM",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "RES_STS_CD",
+      "target": "PRTY",
+      "target_column": "C_RES_STS",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.RES_STS_CD AS C_RES_STS",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "RES_STS_DESC",
+      "target": "PRTY",
+      "target_column": "X_RES_STS",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.RES_STS_DESC AS X_RES_STS",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "RES_CTRY_CD",
+      "target": "PRTY",
+      "target_column": "C_RESICNTRY",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.RES_CTRY_CD AS C_RESICNTRY",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "ARM_CD",
+      "target": "PRTY",
+      "target_column": "C_ARM",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.ARM_CD AS C_ARM",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "",
+      "source_column": "PROCESS_ID",
+      "target": "PRTY",
+      "target_column": "PROCESS_ID",
+      "transformation": "RBC~PRTY.PROCESS_ID_01~VN",
+      "join_dependency": "No",
+      "status": "REVIEW",
+      "sql_expression": "'RBC~VN~C_PRTY~PRTY~4' AS PROCESS_ID",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "",
+      "source_column": "",
+      "target": "PRTY",
+      "target_column": "C_CNTRY",
+      "transformation": "RBC~PRTY.C_CNTRY_01~VN",
+      "join_dependency": "No",
+      "status": "REVIEW",
+      "sql_expression": "'VN' AS C_CNTRY",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "",
+      "source_column": "",
+      "target": "PRTY",
+      "target_column": "NM_CNTRY",
+      "transformation": "RBC~PRTY.NM_CNTRY_01~VN",
+      "join_dependency": "No",
+      "status": "REVIEW",
+      "sql_expression": "'Vietnam' AS NM_CNTRY",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "ETHC_CD",
+      "target": "PRTY",
+      "target_column": "c_ethc",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.ETHC_CD AS c_ethc",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "ETHC_DESC",
+      "target": "PRTY",
+      "target_column": "x_ethc",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.ETHC_DESC AS x_ethc",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "SRVC_INDI_CD",
+      "target": "PRTY",
+      "target_column": "C_SRV_INDI",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.SRVC_INDI_CD AS C_SRV_INDI",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY_NTLTY",
+      "source_column": "NTLTY_CTRY_CD",
+      "target": "PRTY",
+      "target_column": "C_NAT_CNTRY",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "NTLTY.NTLTY_CTRY_CD AS C_NAT_CNTRY",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "SALT_CD",
+      "target": "PRTY",
+      "target_column": "C_SALT",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.SALT_CD AS C_SALT",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "CUST_EMP_DEPT_NM",
+      "target": "PRTY",
+      "target_column": "nm_emp_dept",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.CUST_EMP_DEPT_NM AS nm_emp_dept",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "PRTY_SEGMT_CLAS",
+      "target": "PRTY",
+      "target_column": "X_GLPRTY_TYP",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.PRTY_SEGMT_CLAS AS X_GLPRTY_TYP",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "PRTY_SEGMT_ID",
+      "target": "PRTY",
+      "target_column": "ID_GLPRTY_TYP",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.PRTY_SEGMT_ID AS ID_GLPRTY_TYP",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "OTH_MTHLY_INCM_AMT",
+      "target": "PRTY",
+      "target_column": "A_OTH_MTHLY_INCM",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.OTH_MTHLY_INCM_AMT AS A_OTH_MTHLY_INCM",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "SPO_MTHLY_INCM_AMT",
+      "target": "PRTY",
+      "target_column": "A_SPO_MTHLY_INCM",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.SPO_MTHLY_INCM_AMT AS A_SPO_MTHLY_INCM",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "ANL_INCM_LAST_UPD_DT",
+      "target": "PRTY",
+      "target_column": "D_ANL_INCM_LST_UPD",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.ANL_INCM_LAST_UPD_DT AS D_ANL_INCM_LST_UPD",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "COR_FL",
+      "target": "PRTY",
+      "target_column": "F_CORP",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.COR_FL AS F_CORP",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "BKRPT_DT",
+      "target": "PRTY",
+      "target_column": "D_BKRPT",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.BKRPT_DT AS D_BKRPT",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "BKRPT_ID_FL",
+      "target": "PRTY",
+      "target_column": "F_BKRPT",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.BKRPT_ID_FL AS F_BKRPT",
+      "sql_location": "SELECT"
+    }
+  ],
+  "source_sql_changes": [
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "PROCESS_ID",
+      "source_sql": "'RBC~VN~C_PRTY~PRTY~4' AS PROCESS_ID",
+      "generated_sql": "'RBC~VN~C_PRTY~PRTY~4' AS PROCESS_ID",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "C_CNTRY",
+      "source_sql": "'VN' AS C_CNTRY",
+      "generated_sql": "'VN' AS C_CNTRY",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "NM_CNTRY",
+      "source_sql": "'Vietnam' AS NM_CNTRY",
+      "generated_sql": "'Vietnam' AS NM_CNTRY",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "CHANGED",
+      "area": "SELECT",
+      "identifier": "S_PRTY",
+      "source_sql": "CPI.PRTY_SROGT_ID AS s_prty",
+      "generated_sql": "PRTY.PRTY_SROGT_ID AS s_prty",
+      "details": "Generated expression differs from existing source SQL"
+    },
+    {
+      "change_type": "REMOVED",
+      "area": "SELECT",
+      "identifier": "ID_TYPE",
+      "source_sql": "CPI.PRTY_CD AS id_type",
+      "generated_sql": "",
+      "details": "Existing source expression is not present in generated SQL"
+    },
+    {
+      "change_type": "REMOVED",
+      "area": "SELECT",
+      "identifier": "N_CUST",
+      "source_sql": "UPPER(CPI.ID_REF) AS N_CUST",
+      "generated_sql": "",
+      "details": "Existing source expression is not present in generated SQL"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "C_PRTY_TYP",
+      "source_sql": "PRTY.PRTY_TYPE_CD AS c_prty_typ",
+      "generated_sql": "PRTY.PRTY_TYPE_CD AS c_prty_typ",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "X_PRTY_TYP",
+      "source_sql": "PRTY.PRTY_TYPE_DESC AS x_prty_typ",
+      "generated_sql": "PRTY.PRTY_TYPE_DESC AS x_prty_typ",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "C_PRTY_CLAS",
+      "source_sql": "PRTY.PRTY_CLAS AS c_prty_clas",
+      "generated_sql": "PRTY.PRTY_CLAS AS c_prty_clas",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "N_DOM_CUST",
+      "source_sql": "PRTY.DOM_PRTY_REF AS n_dom_cust",
+      "generated_sql": "PRTY.DOM_PRTY_REF AS n_dom_cust",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "X_PRTYREF_TYP",
+      "source_sql": "PRTY.DOM_PRTY_REF_TYPE AS x_prtyref_typ",
+      "generated_sql": "PRTY.DOM_PRTY_REF_TYPE AS x_prtyref_typ",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "S_ENTRP_PRTY",
+      "source_sql": "PRTY.ENTRP_PRTY_SROGT_ID AS s_entrp_prty",
+      "generated_sql": "PRTY.ENTRP_PRTY_SROGT_ID AS s_entrp_prty",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "N_ENTRP_PRTY",
+      "source_sql": "PRTY.ENTRP_PRTY_REF AS n_entrp_prty",
+      "generated_sql": "PRTY.ENTRP_PRTY_REF AS n_entrp_prty",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "S_ENTRP_PRNT_PRTY",
+      "source_sql": "PRTY.ENTRP_PARNT_PRTY_SROGT_ID AS s_entrp_prnt_prty",
+      "generated_sql": "PRTY.ENTRP_PARNT_PRTY_SROGT_ID AS s_entrp_prnt_prty",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "N_ENTRP_PRNT_PRTY",
+      "source_sql": "PRTY.ENTRP_PARNT_PRTY_HOST_NUM AS n_entrp_prnt_prty",
+      "generated_sql": "PRTY.ENTRP_PARNT_PRTY_HOST_NUM AS n_entrp_prnt_prty",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "C_CUSTSTS",
+      "source_sql": "PRTY.STS_CD AS c_custsts",
+      "generated_sql": "PRTY.STS_CD AS c_custsts",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "X_REL_STS",
+      "source_sql": "PRTY.STS_DESC AS x_rel_sts",
+      "generated_sql": "PRTY.STS_DESC AS x_rel_sts",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "D_REL_STS_UPDT",
+      "source_sql": "PRTY.STS_EFF_DT AS d_rel_sts_updt",
+      "generated_sql": "PRTY.STS_EFF_DT AS d_rel_sts_updt",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "C_CUSTSEG",
+      "source_sql": "PRTY.SEGMT_CD AS c_custseg",
+      "generated_sql": "PRTY.SEGMT_CD AS c_custseg",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "X_CUSTSEG",
+      "source_sql": "PRTY.SEGMT_DESC AS x_custseg",
+      "generated_sql": "PRTY.SEGMT_DESC AS x_custseg",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "C_CUSTSUBSEG",
+      "source_sql": "PRTY.SUB_SEGMT_CD AS C_CUSTSUBSEG",
+      "generated_sql": "PRTY.SUB_SEGMT_CD AS C_CUSTSUBSEG",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "X_CUSTSUBSEG",
+      "source_sql": "PRTY.SUB_SEGMT_CD_DESC AS X_CUSTSUBSEG",
+      "generated_sql": "PRTY.SUB_SEGMT_CD_DESC AS X_CUSTSUBSEG",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "D_BIRTH",
+      "source_sql": "PRTY.DT_OF_BIRTH AS D_BIRTH",
+      "generated_sql": "PRTY.DT_OF_BIRTH AS D_BIRTH",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "C_GNDR",
+      "source_sql": "PRTY.GNDR_CD AS C_GNDR",
+      "generated_sql": "PRTY.GNDR_CD AS C_GNDR",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "X_GNDR",
+      "source_sql": "PRTY.GNDR_DESC AS X_GNDR",
+      "generated_sql": "PRTY.GNDR_DESC AS X_GNDR",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "C_PRO",
+      "source_sql": "PRTY.PRFNL_CD AS C_PRO",
+      "generated_sql": "PRTY.PRFNL_CD AS C_PRO",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "X_PRO",
+      "source_sql": "PRTY.PRFNL_DESC AS X_PRO",
+      "generated_sql": "PRTY.PRFNL_DESC AS X_PRO",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "C_MARSTS",
+      "source_sql": "PRTY.MRTL_STS_CD AS C_MARSTS",
+      "generated_sql": "PRTY.MRTL_STS_CD AS C_MARSTS",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "X_MARSTS",
+      "source_sql": "PRTY.MRTL_STS_DESC AS X_MARSTS",
+      "generated_sql": "PRTY.MRTL_STS_DESC AS X_MARSTS",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "F_PYR",
+      "source_sql": "PRTY.PAYR_IND AS F_PYR",
+      "generated_sql": "PRTY.PAYR_IND AS F_PYR",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "F_STAFF",
+      "source_sql": "PRTY.SCB_STAF_FL AS F_STAFF",
+      "generated_sql": "PRTY.SCB_STAF_FL AS F_STAFF",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "C_EDULVL",
+      "source_sql": "PRTY.EDU_LVL_CD AS C_EDULVL",
+      "generated_sql": "PRTY.EDU_LVL_CD AS C_EDULVL",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "X_EDULVL",
+      "source_sql": "PRTY.EDU_LVL_DESC AS X_EDULVL",
+      "generated_sql": "PRTY.EDU_LVL_DESC AS X_EDULVL",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "A_ANL_INCM",
+      "source_sql": "PRTY.ANL_INCM_AMT AS A_ANL_INCM",
+      "generated_sql": "PRTY.ANL_INCM_AMT AS A_ANL_INCM",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "K_DPNDNT",
+      "source_sql": "PRTY.DEPENDANT_CNT AS K_DPNDNT",
+      "generated_sql": "PRTY.DEPENDANT_CNT AS K_DPNDNT",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "D_BIZESTBLS",
+      "source_sql": "PRTY.INCORPORATION_DT AS D_BIZESTBLS",
+      "generated_sql": "PRTY.INCORPORATION_DT AS D_BIZESTBLS",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "C_INCORP_CTRY",
+      "source_sql": "PRTY.INCORPORATION_CTRY_CD AS C_INCORP_CTRY",
+      "generated_sql": "PRTY.INCORPORATION_CTRY_CD AS C_INCORP_CTRY",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "C_ISIC",
+      "source_sql": "PRTY.ISIC_CD AS C_ISIC",
+      "generated_sql": "PRTY.ISIC_CD AS C_ISIC",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "X_ISIC",
+      "source_sql": "PRTY.ISIC_DESC AS X_ISIC",
+      "generated_sql": "PRTY.ISIC_DESC AS X_ISIC",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "C_DMCLE_CNTRY",
+      "source_sql": "PRTY.DMCLE_CTRY_CD AS C_DMCLE_CNTRY",
+      "generated_sql": "PRTY.DMCLE_CTRY_CD AS C_DMCLE_CNTRY",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "C_INTRNL_CR_GRD",
+      "source_sql": "PRTY.INTRNL_CR_GRADE AS C_INTRNL_CR_GRD",
+      "generated_sql": "PRTY.INTRNL_CR_GRADE AS C_INTRNL_CR_GRD",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "X_INTRNL_CR_GRD",
+      "source_sql": "PRTY.INTRNL_CR_GRADE_DESC AS X_INTRNL_CR_GRD",
+      "generated_sql": "PRTY.INTRNL_CR_GRADE_DESC AS X_INTRNL_CR_GRD",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "F_IBK",
+      "source_sql": "PRTY.IBNK_FAC_FL AS F_IBK",
+      "generated_sql": "PRTY.IBNK_FAC_FL AS F_IBK",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "C_EMPTYP",
+      "source_sql": "PRTY.EMP_TP_CD AS C_EMPTYP",
+      "generated_sql": "PRTY.EMP_TP_CD AS C_EMPTYP",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "X_EMPTYP",
+      "source_sql": "PRTY.EMP_TP_DESC AS X_EMPTYP",
+      "generated_sql": "PRTY.EMP_TP_DESC AS X_EMPTYP",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "A_GR_MTHLY_INCM",
+      "source_sql": "PRTY.GR_MTHLY_INCM_AMT AS A_GR_MTHLY_INCM",
+      "generated_sql": "PRTY.GR_MTHLY_INCM_AMT AS A_GR_MTHLY_INCM",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "C_RES_STS",
+      "source_sql": "PRTY.RES_STS_CD AS C_RES_STS",
+      "generated_sql": "PRTY.RES_STS_CD AS C_RES_STS",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "X_RES_STS",
+      "source_sql": "PRTY.RES_STS_DESC AS X_RES_STS",
+      "generated_sql": "PRTY.RES_STS_DESC AS X_RES_STS",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "C_RESICNTRY",
+      "source_sql": "PRTY.RES_CTRY_CD AS C_RESICNTRY",
+      "generated_sql": "PRTY.RES_CTRY_CD AS C_RESICNTRY",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "C_ARM",
+      "source_sql": "PRTY.ARM_CD AS C_ARM",
+      "generated_sql": "PRTY.ARM_CD AS C_ARM",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "C_ETHC",
+      "source_sql": "PRTY.ETHC_CD AS c_ethc",
+      "generated_sql": "PRTY.ETHC_CD AS c_ethc",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "X_ETHC",
+      "source_sql": "PRTY.ETHC_DESC AS x_ethc",
+      "generated_sql": "PRTY.ETHC_DESC AS x_ethc",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "C_SRV_INDI",
+      "source_sql": "PRTY.SRVC_INDI_CD AS C_SRV_INDI",
+      "generated_sql": "PRTY.SRVC_INDI_CD AS C_SRV_INDI",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "C_NAT_CNTRY",
+      "source_sql": "NTLTY.NTLTY_CTRY_CD AS C_NAT_CNTRY",
+      "generated_sql": "NTLTY.NTLTY_CTRY_CD AS C_NAT_CNTRY",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "C_SALT",
+      "source_sql": "PRTY.SALT_CD AS C_SALT",
+      "generated_sql": "PRTY.SALT_CD AS C_SALT",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "NM_EMP_DEPT",
+      "source_sql": "PRTY.CUST_EMP_DEPT_NM AS nm_emp_dept",
+      "generated_sql": "PRTY.CUST_EMP_DEPT_NM AS nm_emp_dept",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "X_GLPRTY_TYP",
+      "source_sql": "PRTY.PRTY_SEGMT_CLAS AS X_GLPRTY_TYP",
+      "generated_sql": "PRTY.PRTY_SEGMT_CLAS AS X_GLPRTY_TYP",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "ID_GLPRTY_TYP",
+      "source_sql": "PRTY.PRTY_SEGMT_ID AS ID_GLPRTY_TYP",
+      "generated_sql": "PRTY.PRTY_SEGMT_ID AS ID_GLPRTY_TYP",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "A_OTH_MTHLY_INCM",
+      "source_sql": "PRTY.OTH_MTHLY_INCM_AMT AS A_OTH_MTHLY_INCM",
+      "generated_sql": "PRTY.OTH_MTHLY_INCM_AMT AS A_OTH_MTHLY_INCM",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "A_SPO_MTHLY_INCM",
+      "source_sql": "PRTY.SPO_MTHLY_INCM_AMT AS A_SPO_MTHLY_INCM",
+      "generated_sql": "PRTY.SPO_MTHLY_INCM_AMT AS A_SPO_MTHLY_INCM",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "D_ANL_INCM_LST_UPD",
+      "source_sql": "PRTY.ANL_INCM_LAST_UPD_DT AS D_ANL_INCM_LST_UPD",
+      "generated_sql": "PRTY.ANL_INCM_LAST_UPD_DT AS D_ANL_INCM_LST_UPD",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "F_CORP",
+      "source_sql": "PRTY.COR_FL AS F_CORP",
+      "generated_sql": "PRTY.COR_FL AS F_CORP",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "D_BKRPT",
+      "source_sql": "PRTY.BKRPT_DT AS D_BKRPT",
+      "generated_sql": "PRTY.BKRPT_DT AS D_BKRPT",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "SELECT",
+      "identifier": "F_BKRPT",
+      "source_sql": "PRTY.BKRPT_ID_FL AS F_BKRPT",
+      "generated_sql": "PRTY.BKRPT_ID_FL AS F_BKRPT",
+      "details": "Existing source expression is preserved"
+    },
+    {
+      "change_type": "REMOVED",
+      "area": "JOIN",
+      "identifier": "CPI",
+      "source_sql": "LEFT JOIN (\n    SELECT PRTY_SROGT_ID, ID_REF, PRTY_CD\n    FROM C_PRTY_ID\n    WHERE DATA_SRC = 'EBB'\n   AND SOURCE_COUNTRY_CODE = 'VN'\n   AND ID_TP_CD = 'N01'\n) CPI\n    ON PRTY.PRTY_SROGT_ID = CPI.PRTY_SROGT_ID",
+      "generated_sql": "",
+      "details": "Present in existing source SQL; absent or altered in generated SQL"
+    },
+    {
+      "change_type": "UNCHANGED",
+      "area": "JOIN",
+      "identifier": "NTLTY",
+      "source_sql": "LEFT JOIN (SELECT NTLTY_CTRY_CD, PRTY_SROGT_ID FROM C_PRTY_NTLTY\n    WHERE DATA_SRC = 'EBB'\n   AND SOURCE_COUNTRY_CODE = 'VN'\n   AND NTLTY_TYPE_CD = 'CN01'\n) NTLTY\n    ON PRTY.PRTY_SROGT_ID = NTLTY.PRTY_SROGT_ID",
+      "generated_sql": "LEFT JOIN (SELECT NTLTY_CTRY_CD, PRTY_SROGT_ID FROM C_PRTY_NTLTY\n    WHERE DATA_SRC = 'EBB'\n   AND SOURCE_COUNTRY_CODE = 'VN'\n   AND NTLTY_TYPE_CD = 'CN01'\n) NTLTY\n    ON PRTY.PRTY_SROGT_ID = NTLTY.PRTY_SROGT_ID",
+      "details": "Preserved from existing source SQL"
+    }
+  ],
+  "final_status": {
+    "sql_generation": "SUCCESS",
+    "deterministic_validation": "PASSED",
+    "ba_review_required": false,
+    "reason": "No unresolved deterministic issues."
+  },
+  "prune_actions": [
+    "Action(alias='PRTY', table='C_PRTY', kind='table-projection', detail='Projected only qualified columns used by the query', columns=['ANL_INCM_AMT', 'ANL_INCM_LAST_UPD_DT', 'ARM_CD', 'BKRPT_DT', 'BKRPT_ID_FL', 'COR_FL', 'CUST_EMP_DEPT_NM', 'DEPENDANT_CNT', 'DMCLE_CTRY_CD', 'DOM_PRTY_REF', 'DOM_PRTY_REF_TYPE', 'DT_OF_BIRTH', 'EDU_LVL_CD', 'EDU_LVL_DESC', 'EMP_TP_CD', 'EMP_TP_DESC', 'ENTRP_PARNT_PRTY_HOST_NUM', 'ENTRP_PARNT_PRTY_SROGT_ID', 'ENTRP_PRTY_REF', 'ENTRP_PRTY_SROGT_ID', 'ETHC_CD', 'ETHC_DESC', 'GNDR_CD', 'GNDR_DESC', 'GR_MTHLY_INCM_AMT', 'IBNK_FAC_FL', 'INCORPORATION_CTRY_CD', 'INCORPORATION_DT', 'INTRNL_CR_GRADE', 'INTRNL_CR_GRADE_DESC', 'ISIC_CD', 'ISIC_DESC', 'MRTL_STS_CD', 'MRTL_STS_DESC', 'OTH_MTHLY_INCM_AMT', 'PAYR_IND', 'PRFNL_CD', 'PRFNL_DESC', 'PRTY_CLAS', 'PRTY_SEGMT_CLAS', 'PRTY_SEGMT_ID', 'PRTY_SROGT_ID', 'PRTY_TYPE_CD', 'PRTY_TYPE_DESC', 'RES_CTRY_CD', 'RES_STS_CD', 'RES_STS_DESC', 'SALT_CD', 'SCB_STAF_FL', 'SEGMT_CD', 'SEGMT_DESC', 'SPO_MTHLY_INCM_AMT', 'SRVC_INDI_CD', 'STS_CD', 'STS_DESC', 'STS_EFF_DT', 'SUB_SEGMT_CD', 'SUB_SEGMT_CD_DESC'], changed=True)",
+    "Action(alias='NTLTY', table='C_PRTY_NTLTY', kind='table-projection', detail='Projected only qualified columns used by the query', columns=['NTLTY_CTRY_CD', 'PRTY_SROGT_ID'], changed=True)"
+  ],
+  "errors": []
+}

@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="AccelerateX">
+  <rect width="64" height="64" rx="10" fill="#081019"/>
+  <path d="M15 16h10l7 12 7-12h10L37 32l12 16H39l-7-12-7 12H15l12-16z" fill="#58d2dc"/>
+</svg>

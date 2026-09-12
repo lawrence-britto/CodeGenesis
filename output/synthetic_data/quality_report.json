@@ -1,0 +1,13 @@
+{
+  "records_generated": 1000,
+  "source_records": 30,
+  "pk_uniqueness": 1.0,
+  "duplicate_rows": 0,
+  "duplicate_rows_checked": false,
+  "invalid_values": 0,
+  "pattern_match": 1.0,
+  "distribution_similarity": 1.0,
+  "quality_score": 1.0,
+  "status": "PASS",
+  "findings": []
+}

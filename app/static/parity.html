@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Prod Parity | AccelerateX</title>
+	<link rel="stylesheet" href="/static/css/app.css">
+	<style>
+		.parity-head { padding:34px 0 12px; }
+		.parity-head h1 { max-width:900px; font-size:2.2rem; margin:8px 0 0; }
+		.parity-head p:last-child { margin:16px 0; font-size:1rem; }
+		.parity-intake { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:22px; }
+		.parity-panel { min-height:300px; }
+		.parity-panel h2 { margin-bottom:10px; }
+		.dropzone { min-height:210px; border:1px dashed #4a8996; border-radius:8px; display:grid; place-items:center; text-align:center; padding:28px; background:rgba(6,19,29,.5); transition:.2s; cursor:pointer; }
+		.dropzone:hover, .dropzone.dragging { border-color:var(--cyan); background:rgba(88,210,220,.08); }
+		.dropzone input { position:absolute; opacity:0; width:1px; height:1px; }
+		.drop-content { display:grid; gap:12px; justify-items:center; }
+		.drop-icon { width:54px; height:54px; border:1px solid var(--cyan); border-radius:50%; display:grid; place-items:center; color:var(--cyan); font-size:1.5rem; }
+		.parity-actions { display:flex; align-items:end; gap:14px; margin-top:18px; }
+		.parity-actions label { display:grid; gap:7px; color:var(--ink); font-size:.86rem; font-weight:650; }
+		.parity-actions select { appearance:none; min-width:178px; height:44px; padding:12px 42px 12px 14px; border:1px solid #466170; border-radius:6px; background-color:#0b1823; background-image:linear-gradient(45deg,transparent 50%,var(--cyan) 50%),linear-gradient(135deg,var(--cyan) 50%,transparent 50%); background-position:calc(100% - 19px) 50%,calc(100% - 13px) 50%; background-size:6px 6px,6px 6px; background-repeat:no-repeat; color:var(--ink); font:inherit; cursor:pointer; }
+		.parity-actions select:hover,.parity-actions select:focus { border-color:var(--cyan); background-color:#102433; outline:none; box-shadow:0 0 0 3px rgba(88,210,220,.16); }
+		.parity-actions .parity-select { position:relative; display:block; min-width:178px; }
+		.parity-actions .parity-select-trigger { width:100%; display:flex; align-items:center; justify-content:space-between; text-align:left; padding:12px 14px; border:1px solid #466170; border-radius:6px; background:#0b1823; color:var(--ink); font:inherit; cursor:pointer; }
+		.parity-actions .parity-select-trigger::after { content:""; width:0; height:0; border-left:5px solid transparent; border-right:5px solid transparent; border-top:6px solid var(--cyan); }
+		.parity-actions .parity-select.open .parity-select-trigger,.parity-actions .parity-select-trigger:hover { border-color:var(--cyan); background:#102433; }
+		.parity-actions .parity-select-menu { position:absolute; z-index:10; bottom:calc(100% + 4px); left:0; right:0; display:none; overflow:hidden; border:1px solid #466170; border-radius:6px; background:#0b1823; box-shadow:0 12px 24px rgba(0,0,0,.3); }
+		.parity-actions .parity-select.open .parity-select-menu { display:block; }
+		.parity-actions .parity-select-option { display:block; width:100%; padding:10px 14px; border:0; background:transparent; color:var(--ink); font:inherit; text-align:left; cursor:pointer; }
+		.parity-actions .parity-select-option:hover,.parity-actions .parity-select-option.selected { background:rgba(88,210,220,.16); color:var(--ink); }
+		.parity-actions .parity-select-native { position:absolute; width:1px; height:1px; opacity:0; pointer-events:none; }
+		.button { border:0; border-radius:6px; background:var(--cyan); color:#07151e; padding:12px 24px; font:inherit; font-weight:750; cursor:pointer; }
+		.button:disabled { opacity:.5; cursor:wait; }
+		.diff-toolbar { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:18px 0; }
+		.diff-toolbar button,.diff-toolbar label { min-height:42px; display:inline-flex; align-items:center; border:1px solid var(--line); border-radius:5px; background:rgba(7,21,30,.72); color:var(--ink); padding:9px 12px; font:inherit; cursor:pointer; }
+		.diff-toolbar button.active { border-color:var(--cyan); background:rgba(88,210,220,.12); }
+		.diff-toolbar label { display:inline-flex; align-items:center; gap:9px; }
+		.diff-toolbar input[type=checkbox] { width:17px; height:17px; margin:0; accent-color:var(--cyan); }
+		.diff-toolbar input[type=search] { min-width:220px; border:0; background:transparent; color:var(--ink); outline:0; font:inherit; }
+		.result-actions { display:flex; justify-content:flex-end; margin-top:18px; }
+		.result-actions .button.secondary { background:transparent; border:1px solid var(--line); color:var(--ink); }
+		.result-actions .button.secondary:hover { border-color:var(--cyan); color:var(--ink); }
+		.diff-view { overflow:auto; border:1px solid var(--line); border-radius:6px; background:#07121b; }
+		.comparison-status { border-left:4px solid var(--cyan); padding:14px 16px; margin-bottom:18px; background:rgba(88,210,220,.07); }
+		.comparison-status h2 { margin:0 0 6px; font-size:1.2rem; }
+		.comparison-status p { margin:0; color:var(--muted); }
+		.comparison-status.safe { border-left-color:#7be0b5; background:rgba(123,224,181,.07); }
+		.comparison-status.review { border-left-color:var(--amber); background:rgba(243,184,103,.08); }
+		.comparison-status.high-risk,.comparison-status.blocked { border-left-color:var(--danger); background:rgba(255,139,139,.08); }
+		.diff-line { display:grid; grid-template-columns:54px 24px minmax(0,1fr); min-width:650px; font:13px/1.55 ui-monospace,SFMono-Regular,Consolas,monospace; white-space:pre; }
+		.diff-line > span { padding:2px 8px; border-bottom:1px solid rgba(123,163,183,.08); }
+		.diff-line .number { color:#6f8290; text-align:right; user-select:none; }
+		.diff-line .marker { text-align:center; font-weight:700; }
+		.diff-line.added { background:rgba(49,173,112,.16); color:#b8f2d0; }
+		.diff-line.removed { background:rgba(221,86,86,.16); color:#ffc1c1; }
+		.diff-line.context { color:#d7e0e6; }
+		.side-meta { display:grid; grid-template-columns:1fr 1fr; gap:1px; color:var(--muted); margin:0; background:var(--line); }
+		.side-meta span { padding:12px 14px; background:#07121b; text-align:left; }
+		.side-grid { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:1px; background:var(--line); align-items:stretch; }
+		.side-pane { min-width:0; background:#07121b; overflow:auto; }
+		.side-pane h4 { position:sticky; top:0; z-index:1; margin:0; padding:12px 14px; background:#102432; color:var(--ink); text-align:left; }
+		.side-row { display:grid; grid-template-columns:54px minmax(0,1fr); min-height:24px; font:13px/1.55 ui-monospace,SFMono-Regular,Consolas,monospace; white-space:pre; }
+		.side-row > span { padding:2px 8px; border-bottom:1px solid rgba(123,163,183,.08); }
+		.side-row .number { color:#6f8290; text-align:right; user-select:none; }
+		.side-row.added { background:rgba(49,173,112,.16); }
+		.side-row.removed { background:rgba(221,86,86,.16); }
+		.side-row.modified { background:rgba(243,184,103,.14); }
+		.side-row.empty { background:rgba(123,163,183,.04); }
+		@media (max-width:800px) { .side-meta,.side-grid { grid-template-columns:1fr; } .diff-toolbar input[type=search] { min-width:140px; width:100%; } }
+		@media (max-width:800px) { .parity-intake { display:block; } .parity-panel + .parity-panel { margin-top:16px; } }
+		@media (max-width:800px) { .diff-view { overflow:hidden; } .diff-line { grid-template-columns:42px 18px minmax(0,1fr); min-width:0; white-space:pre-wrap; overflow-wrap:anywhere; } .side-row { grid-template-columns:42px minmax(0,1fr); min-width:0; white-space:pre-wrap; overflow-wrap:anywhere; } .side-pane { overflow:hidden; } .parity-actions { flex-wrap:wrap; align-items:stretch; } .parity-actions label,.parity-actions .parity-select { min-width:0; flex:1 1 180px; } .parity-actions .button { flex:1 1 180px; } }
+	</style>
+</head>
+<body>
+	<main class="shell">
+		<header class="parity-head">
+			<p class="eyebrow">OPERATIONS / PROD PARITY</p>
+			<h1>The One-Stop Comparison Engine</h1>
+				<p>Compare, validate, understand, and explain code and configuration changes before release.</p>
+		</header>
+		<div class="parity-intake">
+			<section class="panel parity-panel">
+				<p class="eyebrow">01 / TESTED FILE</p>
+				<h2>Upload the change</h2>
+				<p class="muted" id="generatedStatus">No file chosen</p>
+				<label class="dropzone" id="generatedDropzone" for="generated">
+					<input id="generated" type="file" accept=".sql,.py,.sh,.yaml,.yml,.txt">
+					<span class="drop-content"><span class="drop-icon">↓</span><span id="generatedName">Drop files here or browse</span></span>
+				</label>
+			</section>
+			<section class="panel parity-panel">
+				<p class="eyebrow">02 / BASELINE FILE</p>
+				<h2>Upload the baseline</h2>
+				<p class="muted" id="prodStatus">No file chosen</p>
+				<label class="dropzone" id="prodDropzone" for="prod">
+					<input id="prod" type="file" accept=".sql,.py,.sh,.yaml,.yml,.txt">
+					<span class="drop-content"><span class="drop-icon">↓</span><span id="prodName">Drop files here or browse</span></span>
+				</label>
+			</section>
+		</div>
+		<div class="parity-actions">
+			<label>Language<span class="parity-select" id="languageSelect"><button class="parity-select-trigger" type="button" aria-expanded="false">Auto-detect</button><span class="parity-select-menu" role="listbox"><button class="parity-select-option selected" type="button" role="option" data-value="">Auto-detect</button><button class="parity-select-option" type="button" role="option" data-value="sql">SQL</button><button class="parity-select-option" type="button" role="option" data-value="python">Python</button><button class="parity-select-option" type="button" role="option" data-value="shell">Shell</button><button class="parity-select-option" type="button" role="option" data-value="yaml">YAML</button></span><select id="language" class="parity-select-native" tabindex="-1" aria-hidden="true"><option value="">Auto-detect</option><option value="sql">SQL</option><option value="python">Python</option><option value="shell">Shell</option><option value="yaml">YAML</option></select></span></label>
+			<label>Analysis<span class="parity-select" id="analysisLevelSelect"><button class="parity-select-trigger" type="button" aria-expanded="false">Standard</button><span class="parity-select-menu" role="listbox"><button class="parity-select-option" type="button" role="option" data-value="basic">Basic</button><button class="parity-select-option selected" type="button" role="option" data-value="standard">Standard</button><button class="parity-select-option" type="button" role="option" data-value="deep">Deep + advisory</button></span><select id="analysisLevel" class="parity-select-native" tabindex="-1" aria-hidden="true"><option value="basic">Basic</option><option value="standard" selected>Standard</option><option value="deep">Deep + advisory</option></select></span></label>
+			<button class="button" id="go" type="button">Compare files</button>
+		</div>
+		<section id="result" class="panel hidden" style="margin-top:18px"></section>
+	</main>
+	<script src="/static/js/common.js"></script>
+	<script src="/static/js/parity.js?v=20260912-6"></script>
+</body>
+</html>

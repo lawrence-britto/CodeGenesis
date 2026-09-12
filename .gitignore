@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+.pytest_cache/
+accelx.db
+.jwt_secret
+accelx_vectors/
+logs/
+*.pyc
+*.pyo
+*.pyd
+*.log
+*.sqlite3
+AccelerateX_V1.zip

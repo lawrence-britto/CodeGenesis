@@ -1,0 +1,530 @@
+{
+  "summary": {
+    "overall_status": "SUCCESS",
+    "sql_generation_status": "SUCCESS",
+    "validation_status": "PASSED",
+    "mapping_status": "WARNING",
+    "source_tables": 3,
+    "target_columns": 11,
+    "generated_columns": 11,
+    "joins": 2,
+    "transformations": 1,
+    "deterministic_fixes": 3,
+    "warnings": 0,
+    "todos": 0,
+    "unresolved_issues": 0,
+    "rag_status": "COMPLETED",
+    "llm_diagnostic_status": "COMPLETED"
+  },
+  "inputs": {
+    "mapping_workbook": "sql_mapping_sheet_v3.xlsx",
+    "mapping_sheet": "Source to Target",
+    "source_sql_file": "Not supplied",
+    "mapping_rows": 11,
+    "valid_mapping_rows": 10,
+    "rejected_mapping_rows": 1,
+    "source_objects": [
+      "C_PRTY",
+      "C_PRTY_ID",
+      "E_CORE_ACCT_EPRTY_ROLLUP"
+    ],
+    "target_objects": [
+      "XTND_ENTRP_PRTY"
+    ],
+    "processing_timestamp": "2026-09-12T15:52:32.894732+00:00",
+    "configuration_profile": "default"
+  },
+  "mapping_analysis": [
+    {
+      "map_group": "RBC~VN~C_PRTY~XTND_ENTRP_PRTY~1",
+      "source": "",
+      "source_column": "",
+      "target": "XTND_ENTRP_PRTY",
+      "target_column": "PROCESS_ID",
+      "transformation": "RBC~XTND_ENTRP_PRTY.PROCESS_ID_01~VN",
+      "join_dependency": "No",
+      "status": "REVIEW"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~XTND_ENTRP_PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "DATA_SRC",
+      "target": "XTND_ENTRP_PRTY",
+      "target_column": "DATA_SRC",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~XTND_ENTRP_PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "SOURCE_COUNTRY_CODE",
+      "target": "XTND_ENTRP_PRTY",
+      "target_column": "SOURCE_COUNTRY_CODE",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~XTND_ENTRP_PRTY~1",
+      "source": "C_PRTY_ID",
+      "source_column": "PRTY_SROGT_ID",
+      "target": "XTND_ENTRP_PRTY",
+      "target_column": "S_ENTRP_PRTY",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~XTND_ENTRP_PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "DOM_PRTY_REF",
+      "target": "XTND_ENTRP_PRTY",
+      "target_column": "N_ENTRP_PRTY",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~XTND_ENTRP_PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "DOM_PRTY",
+      "target": "XTND_ENTRP_PRTY",
+      "target_column": "N_CORE_PRTY",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~XTND_ENTRP_PRTY~1",
+      "source": "C_PRTY_ID",
+      "source_column": "ID_REF",
+      "target": "XTND_ENTRP_PRTY",
+      "target_column": "N_CUST",
+      "transformation": "RBC~XTND_ENTRP_PRTY.N_CUST_01~VN",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~XTND_ENTRP_PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "ACCS_SEGMT_CD",
+      "target": "XTND_ENTRP_PRTY",
+      "target_column": "ACCS_SEGMT_CD",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~XTND_ENTRP_PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "ACCS_CTRY_CD",
+      "target": "XTND_ENTRP_PRTY",
+      "target_column": "ACCS_CTRY_CD",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~XTND_ENTRP_PRTY~1",
+      "source": "E_CORE_ACCT_EPRTY_ROLLUP",
+      "source_column": "TO_BALA_LCY",
+      "target": "XTND_ENTRP_PRTY",
+      "target_column": "A_TO_LCY",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~XTND_ENTRP_PRTY~1",
+      "source": "E_CORE_ACCT_EPRTY_ROLLUP",
+      "source_column": "CASA_BALA_SCY",
+      "target": "XTND_ENTRP_PRTY",
+      "target_column": "A_CASA_SCY",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    }
+  ],
+  "source_object_analysis": [
+    {
+      "object": "C_PRTY",
+      "alias": "C_PRTY",
+      "required_columns": [],
+      "select": "Yes",
+      "join": "No",
+      "where": "Yes",
+      "transformation": "No",
+      "filter_conditions": "Detected in SQL",
+      "join_participation": "Base source",
+      "column_pruning": "See pruning actions"
+    },
+    {
+      "object": "C_PRTY_ID",
+      "alias": "C_PRTY_ID",
+      "required_columns": [],
+      "select": "Yes",
+      "join": "No",
+      "where": "Yes",
+      "transformation": "No",
+      "filter_conditions": "Detected in SQL",
+      "join_participation": "Base source",
+      "column_pruning": "See pruning actions"
+    },
+    {
+      "object": "E_CORE_ACCT_EPRTY_ROLLUP",
+      "alias": "E_CORE_ACCT_EPRTY_ROLLUP",
+      "required_columns": [],
+      "select": "Yes",
+      "join": "No",
+      "where": "Yes",
+      "transformation": "No",
+      "filter_conditions": "Detected in SQL",
+      "join_participation": "Joined",
+      "column_pruning": "See pruning actions"
+    }
+  ],
+  "generated_sql": "SELECT\n'RBC~VN~C_PRTY~XTND_ENTRP_PRTY~1' AS PROCESS_ID,\nPRTY.DATA_SRC AS DATA_SRC,\nPRTY.SOURCE_COUNTRY_CODE AS SOURCE_COUNTRY_CODE,\nCPI.PRTY_SROGT_ID AS S_ENTRP_PRTY,\nPRTY.DOM_PRTY_REF AS N_ENTRP_PRTY,\nPRTY.DOM_PRTY AS N_CORE_PRTY,\nPRTY.ACCS_SEGMT_CD AS ACCS_SEGMT_CD,\nPRTY.ACCS_CTRY_CD AS ACCS_CTRY_CD,\nEC_ACCT_EPR.TO_BALA_LCY AS A_TO_LCY,\nEC_ACCT_EPR.CASA_BALA_SCY AS A_CASA_SCY,\nUPPER(CPI.ID_REF) AS N_CUST\nFROM (SELECT ACCS_CTRY_CD, ACCS_SEGMT_CD, DATA_SRC, DOM_PRTY, DOM_PRTY_REF, PRTY_SROGT_ID, SOURCE_COUNTRY_CODE FROM C_PRTY\n    WHERE DATA_SRC = 'EBB'\n   AND SOURCE_COUNTRY_CODE = 'VN'\n) PRTY\n\nLEFT JOIN (\n    SELECT PRTY_SROGT_ID, ID_REF\n    FROM C_PRTY_ID\n    WHERE DATA_SRC = 'EBB'\n   AND SOURCE_COUNTRY_CODE = 'VN'\n   AND ID_TP_CD = 'N01'\n) CPI\n    ON PRTY.PRTY_SROGT_ID = CPI.PRTY_SROGT_ID\n\nLEFT JOIN (SELECT CASA_BALA_SCY, ENTRP_PRTY_SROGT_ID, TO_BALA_LCY FROM E_CORE_ACCT_EPRTY_ROLLUP\n    WHERE DATA_SRC = 'EBB'\n   AND SOURCE_COUNTRY_CODE = 'VN'\n) EC_ACCT_EPR\n    ON TRIM(PRTY.PRTY_SROGT_ID) = TRIM(EC_ACCT_EPR.ENTRP_PRTY_SROGT_ID);",
+  "sql_metadata": {
+    "sql_type": "SELECT",
+    "target_object": "XTND_ENTRP_PRTY",
+    "select_columns": 11,
+    "source_tables": 3,
+    "joins": 2,
+    "where_filters": 7,
+    "transformations": 1,
+    "validation": "PASSED"
+  },
+  "sql_analysis": {
+    "select_columns": 11,
+    "direct_mappings": 9,
+    "derived_columns": 2,
+    "expressions": [
+      "'RBC~VN~C_PRTY~XTND_ENTRP_PRTY~1' AS PROCESS_ID",
+      "PRTY.DATA_SRC AS DATA_SRC",
+      "PRTY.SOURCE_COUNTRY_CODE AS SOURCE_COUNTRY_CODE",
+      "CPI.PRTY_SROGT_ID AS S_ENTRP_PRTY",
+      "PRTY.DOM_PRTY_REF AS N_ENTRP_PRTY",
+      "PRTY.DOM_PRTY AS N_CORE_PRTY",
+      "PRTY.ACCS_SEGMT_CD AS ACCS_SEGMT_CD",
+      "PRTY.ACCS_CTRY_CD AS ACCS_CTRY_CD",
+      "EC_ACCT_EPR.TO_BALA_LCY AS A_TO_LCY",
+      "EC_ACCT_EPR.CASA_BALA_SCY AS A_CASA_SCY",
+      "UPPER(CPI.ID_REF) AS N_CUST"
+    ],
+    "functions": [
+      "FROM",
+      "JOIN",
+      "TRIM",
+      "UPPER"
+    ],
+    "duplicate_expressions": [],
+    "duplicate_aliases": [],
+    "source_tables": 3,
+    "subqueries": 3,
+    "aliases": [
+      "C_PRTY",
+      "C_PRTY_ID",
+      "E_CORE_ACCT_EPRTY_ROLLUP"
+    ],
+    "joins": [
+      {
+        "left_table": "PRTY",
+        "left_column": "PRTY_SROGT_ID",
+        "join_type": "LEFT JOIN",
+        "right_table": "CPI",
+        "right_column": "PRTY_SROGT_ID",
+        "condition": "PRTY.PRTY_SROGT_ID = CPI.PRTY_SROGT_ID",
+        "functions": [],
+        "status": "PASS"
+      },
+      {
+        "left_table": "",
+        "left_column": "",
+        "join_type": "LEFT JOIN",
+        "right_table": "E_CORE_ACCT_EPRTY_ROLLUP",
+        "right_column": "",
+        "condition": "TRIM(PRTY.PRTY_SROGT_ID) = TRIM(EC_ACCT_EPR.ENTRP_PRTY_SROGT_ID)",
+        "functions": [
+          "TRIM"
+        ],
+        "status": "PASS"
+      }
+    ],
+    "filters": 7
+  },
+  "filters": [
+    {
+      "table": "",
+      "column": "",
+      "operator": "",
+      "value": "PRTY.PRTY_SROGT_ID = CPI",
+      "purpose": "SQL filter",
+      "status": "PASS"
+    }
+  ],
+  "transformations": [
+    {
+      "target_column": "PROCESS_ID",
+      "source_column": "",
+      "transformation": "DEFAULT",
+      "generated_expression": "",
+      "status": "PASS"
+    },
+    {
+      "target_column": "N_CUST",
+      "source_column": "",
+      "transformation": "TRANSFORM",
+      "generated_expression": "UPPER(CPI.ID_REF) AS N_CUST",
+      "status": "PASS"
+    }
+  ],
+  "deterministic_fixes": [
+    {
+      "id": 1,
+      "issue": "normalized SELECT/FROM spacing",
+      "action": "normalized SELECT/FROM spacing",
+      "location": "Generated SQL",
+      "impact": "Deterministic SQL correction",
+      "status": "FIXED",
+      "rule": "SQL syntax fixer"
+    },
+    {
+      "id": 2,
+      "issue": "standardized JOIN formatting",
+      "action": "standardized JOIN formatting",
+      "location": "Generated SQL",
+      "impact": "Deterministic SQL correction",
+      "status": "FIXED",
+      "rule": "SQL syntax fixer"
+    },
+    {
+      "id": 3,
+      "issue": "added missing statement terminator",
+      "action": "added missing statement terminator",
+      "location": "Generated SQL",
+      "impact": "Deterministic SQL correction",
+      "status": "FIXED",
+      "rule": "SQL syntax fixer"
+    }
+  ],
+  "deterministic_findings": [
+    {
+      "severity": "INFO",
+      "category": "SQL syntax",
+      "finding": "normalized SELECT/FROM spacing",
+      "evidence": "Generated SQL contained a deterministic formatting defect: normalized SELECT/FROM spacing",
+      "recommendation": "Applied normalized select/from spacing to the deterministic SQL output"
+    },
+    {
+      "severity": "INFO",
+      "category": "SQL syntax",
+      "finding": "standardized JOIN formatting",
+      "evidence": "Generated SQL contained a deterministic formatting defect: standardized JOIN formatting",
+      "recommendation": "Applied standardized join formatting to the deterministic SQL output"
+    },
+    {
+      "severity": "INFO",
+      "category": "SQL syntax",
+      "finding": "Missing statement terminator",
+      "evidence": "Original SQL did not end with a statement terminator",
+      "recommendation": "Added the statement terminator to the deterministic SQL output"
+    }
+  ],
+  "todos": [],
+  "validation": [
+    {
+      "rule": "SQL syntax structure",
+      "result": "PASSED",
+      "details": "Valid deterministic SQL structure"
+    },
+    {
+      "rule": "Unresolved TODOs",
+      "result": "PASS",
+      "details": "None"
+    }
+  ],
+  "rag_advisory": {
+    "rules": [
+      {
+        "name": "Deterministic output"
+      },
+      {
+        "name": "Missing join reference"
+      },
+      {
+        "name": "Multiple source tables"
+      },
+      {
+        "name": "Missing DPR rule"
+      },
+      {
+        "name": "Unknown DPR rule"
+      },
+      {
+        "name": "Narrative transformation note"
+      },
+      {
+        "name": "TODO review boundary"
+      },
+      {
+        "name": "Advisory boundary"
+      }
+    ]
+  },
+  "llm_diagnostic": {
+    "model": "qwen2.5-coder:7b",
+    "status": "COMPLETED",
+    "prompt_purpose": "Explain deterministic findings and recommend corrective action",
+    "issues_explained": [],
+    "explanation": "Proceed to the testing phase by generating sample synthetic data using the Test Data Forge.",
+    "recommendations": "Proceed to the testing phase by generating sample synthetic data using the Test Data Forge.",
+    "authority": "NONE"
+  },
+  "traceability": [
+    {
+      "map_group": "RBC~VN~C_PRTY~XTND_ENTRP_PRTY~1",
+      "source": "",
+      "source_column": "",
+      "target": "XTND_ENTRP_PRTY",
+      "target_column": "PROCESS_ID",
+      "transformation": "RBC~XTND_ENTRP_PRTY.PROCESS_ID_01~VN",
+      "join_dependency": "No",
+      "status": "REVIEW",
+      "sql_expression": "'RBC~VN~C_PRTY~XTND_ENTRP_PRTY~1' AS PROCESS_ID",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~XTND_ENTRP_PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "DATA_SRC",
+      "target": "XTND_ENTRP_PRTY",
+      "target_column": "DATA_SRC",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.DATA_SRC AS DATA_SRC",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~XTND_ENTRP_PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "SOURCE_COUNTRY_CODE",
+      "target": "XTND_ENTRP_PRTY",
+      "target_column": "SOURCE_COUNTRY_CODE",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.SOURCE_COUNTRY_CODE AS SOURCE_COUNTRY_CODE",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~XTND_ENTRP_PRTY~1",
+      "source": "C_PRTY_ID",
+      "source_column": "PRTY_SROGT_ID",
+      "target": "XTND_ENTRP_PRTY",
+      "target_column": "S_ENTRP_PRTY",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "CPI.PRTY_SROGT_ID AS S_ENTRP_PRTY",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~XTND_ENTRP_PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "DOM_PRTY_REF",
+      "target": "XTND_ENTRP_PRTY",
+      "target_column": "N_ENTRP_PRTY",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.DOM_PRTY_REF AS N_ENTRP_PRTY",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~XTND_ENTRP_PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "DOM_PRTY",
+      "target": "XTND_ENTRP_PRTY",
+      "target_column": "N_CORE_PRTY",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.DOM_PRTY AS N_CORE_PRTY",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~XTND_ENTRP_PRTY~1",
+      "source": "C_PRTY_ID",
+      "source_column": "ID_REF",
+      "target": "XTND_ENTRP_PRTY",
+      "target_column": "N_CUST",
+      "transformation": "RBC~XTND_ENTRP_PRTY.N_CUST_01~VN",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "UPPER(CPI.ID_REF) AS N_CUST",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~XTND_ENTRP_PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "ACCS_SEGMT_CD",
+      "target": "XTND_ENTRP_PRTY",
+      "target_column": "ACCS_SEGMT_CD",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.ACCS_SEGMT_CD AS ACCS_SEGMT_CD",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~XTND_ENTRP_PRTY~1",
+      "source": "C_PRTY",
+      "source_column": "ACCS_CTRY_CD",
+      "target": "XTND_ENTRP_PRTY",
+      "target_column": "ACCS_CTRY_CD",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "PRTY.ACCS_CTRY_CD AS ACCS_CTRY_CD",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~XTND_ENTRP_PRTY~1",
+      "source": "E_CORE_ACCT_EPRTY_ROLLUP",
+      "source_column": "TO_BALA_LCY",
+      "target": "XTND_ENTRP_PRTY",
+      "target_column": "A_TO_LCY",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "EC_ACCT_EPR.TO_BALA_LCY AS A_TO_LCY",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_PRTY~XTND_ENTRP_PRTY~1",
+      "source": "E_CORE_ACCT_EPRTY_ROLLUP",
+      "source_column": "CASA_BALA_SCY",
+      "target": "XTND_ENTRP_PRTY",
+      "target_column": "A_CASA_SCY",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "EC_ACCT_EPR.CASA_BALA_SCY AS A_CASA_SCY",
+      "sql_location": "SELECT"
+    }
+  ],
+  "source_sql_changes": [],
+  "final_status": {
+    "sql_generation": "SUCCESS",
+    "deterministic_validation": "PASSED",
+    "ba_review_required": false,
+    "reason": "No unresolved deterministic issues."
+  },
+  "prune_actions": [
+    "Action(alias='PRTY', table='C_PRTY', kind='table-projection', detail='Projected only qualified columns used by the query', columns=['ACCS_CTRY_CD', 'ACCS_SEGMT_CD', 'DATA_SRC', 'DOM_PRTY', 'DOM_PRTY_REF', 'PRTY_SROGT_ID', 'SOURCE_COUNTRY_CODE'], changed=True)",
+    "Action(alias='EC_ACCT_EPR', table='E_CORE_ACCT_EPRTY_ROLLUP', kind='table-projection', detail='Projected only qualified columns used by the query', columns=['CASA_BALA_SCY', 'ENTRP_PRTY_SROGT_ID', 'TO_BALA_LCY'], changed=True)"
+  ],
+  "errors": []
+}

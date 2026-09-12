@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+pandas
+openpyxl
+PyYAML
+python-multipart
+numpy
+faker
+pytest
+chromadb
+sentence-transformers

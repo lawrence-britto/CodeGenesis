@@ -1,0 +1,1426 @@
+{
+  "summary": {
+    "overall_status": "SUCCESS",
+    "sql_generation_status": "SUCCESS",
+    "validation_status": "PASSED",
+    "mapping_status": "WARNING",
+    "source_tables": 7,
+    "target_columns": 41,
+    "generated_columns": 42,
+    "joins": 6,
+    "transformations": 0,
+    "deterministic_fixes": 4,
+    "warnings": 0,
+    "todos": 0,
+    "unresolved_issues": 0,
+    "rag_status": "COMPLETED",
+    "llm_diagnostic_status": "COMPLETED"
+  },
+  "inputs": {
+    "mapping_workbook": "sql_mapping_sheet_v3.xlsx",
+    "mapping_sheet": "Source to Target",
+    "source_sql_file": "Not supplied",
+    "mapping_rows": 42,
+    "valid_mapping_rows": 40,
+    "rejected_mapping_rows": 2,
+    "source_objects": [
+      "C_ACCT_BAL_MTRC",
+      "C_PROD",
+      "C_PRTY_ACCT_RLTD",
+      "C_PRTY_ID",
+      "E_ACCT_BASE",
+      "c_acct",
+      "c_prty"
+    ],
+    "target_objects": [
+      "CASA_ACCT"
+    ],
+    "processing_timestamp": "2026-09-12T16:35:28.480081+00:00",
+    "configuration_profile": "default"
+  },
+  "mapping_analysis": [
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "ACCT_SROGT_ID",
+      "target": "CASA_ACCT",
+      "target_column": "s_acct",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "DOM_ACCT_REF",
+      "target": "CASA_ACCT",
+      "target_column": "n_acct",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "DOM_MAST_REF",
+      "target": "CASA_ACCT",
+      "target_column": "n_mast",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "PRTY_SROGT_ID",
+      "target": "CASA_ACCT",
+      "target_column": "s_prty",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "DOM_PRTY_REF",
+      "target": "CASA_ACCT",
+      "target_column": "n_dom_cust",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_PRTY_ID",
+      "source_column": "ID_REF",
+      "target": "CASA_ACCT",
+      "target_column": "n_cust",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_PRTY_ACCT_RLTD",
+      "source_column": "PRIM_PRTY_IND",
+      "target": "CASA_ACCT",
+      "target_column": "f_prim_prty",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_PRTY",
+      "source_column": "ENTRP_PRTY_SROGT_ID",
+      "target": "CASA_ACCT",
+      "target_column": "s_entrp_prty",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_PRTY",
+      "source_column": "ENTRP_PRTY_REF",
+      "target": "CASA_ACCT",
+      "target_column": "n_entrp_prty",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_PRTY",
+      "source_column": "ENTRP_PARNT_PRIM_PRTY_IND",
+      "target": "CASA_ACCT",
+      "target_column": "s_entrp_pent_prty",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_PRTY",
+      "source_column": "ENTRP_PARNT_PRTY_HOST_NUM",
+      "target": "CASA_ACCT",
+      "target_column": "n_entrp_pmnt_prty",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "PROD_SROGT_ID",
+      "target": "CASA_ACCT",
+      "target_column": "s_prd",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "DOM_PROD_CD",
+      "target": "CASA_ACCT",
+      "target_column": "c_dom_prd",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_PROD",
+      "source_column": "DOM_PROD_DESC",
+      "target": "CASA_ACCT",
+      "target_column": "x_prd",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "ACCT_TP_CD",
+      "target": "CASA_ACCT",
+      "target_column": "c_dmcle_brnch",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_PROD",
+      "source_column": "PROD_CAT_DESC",
+      "target": "CASA_ACCT",
+      "target_column": "x_prdcat",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "ACCT_BRNCH_SROGT_ID",
+      "target": "CASA_ACCT",
+      "target_column": "s_brnch",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "ACCT_BRNCH_CD",
+      "target": "CASA_ACCT",
+      "target_column": "c_dmcle_brnch",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "ACCT_STS_TP_CD",
+      "target": "CASA_ACCT",
+      "target_column": "c_acctsts",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "ACCT_STS_TP_DESC",
+      "target": "CASA_ACCT",
+      "target_column": "x_acctsts",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "ACCT_CURY_CD",
+      "target": "CASA_ACCT",
+      "target_column": "c_acctccy",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT_BAL_MTRC",
+      "source_column": "OS_BAL_AMT",
+      "target": "CASA_ACCT",
+      "target_column": "a_curbal_acctccy",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "E_ACCT_BASE",
+      "source_column": "OBA_LCY",
+      "target": "CASA_ACCT",
+      "target_column": "a_curbal_lcy",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "E_ACCT_BASE",
+      "source_column": "OBA_USD",
+      "target": "CASA_ACCT",
+      "target_column": "a_curbal_usd",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "ACCT_OPEN_DT",
+      "target": "CASA_ACCT",
+      "target_column": "d_acctopn",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "ACCT_CLSE_DT",
+      "target": "CASA_ACCT",
+      "target_column": "d_acctcls",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "SOURCE_COUNTRY_CODE",
+      "target": "CASA_ACCT",
+      "target_column": "c_cntry",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "ACCT_CLSE_RESN_CD",
+      "target": "CASA_ACCT",
+      "target_column": "c_acctclsrsn",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_PRTY",
+      "source_column": "SEGMT_CD",
+      "target": "CASA_ACCT",
+      "target_column": "c_glcusttyp",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_PRTY",
+      "source_column": "PRTY_SEGMT_CLAS",
+      "target": "CASA_ACCT",
+      "target_column": "x_glcusttyp",
+      "transformation": "RBC~CASA_ACCT.X_GLCUSTTYP_01~VN~1",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_PRTY",
+      "source_column": "PRTY_SEGMT_ID",
+      "target": "CASA_ACCT",
+      "target_column": "id_glcusttyp",
+      "transformation": "RBC~CASA_ACCT.ID_GLCUSTTYP_01~VN~1",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "REFL_ID",
+      "target": "CASA_ACCT",
+      "target_column": "id_refl",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "SRCG_ID",
+      "target": "CASA_ACCT",
+      "target_column": "id_srcg",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "CLSG_ID",
+      "target": "CASA_ACCT",
+      "target_column": "id_clsg",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "",
+      "source_column": "",
+      "target": "CASA_ACCT",
+      "target_column": "nm_entry",
+      "transformation": "RBC~CASA_ACCT.NM_CNTRY_01~VN",
+      "join_dependency": "No",
+      "status": "REVIEW"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "SUB_SEGMT_CD",
+      "target": "CASA_ACCT",
+      "target_column": "c_custsubseg",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "SUB_SEGMT_CD_DESC",
+      "target": "CASA_ACCT",
+      "target_column": "x_custsubseg",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "DATA_SRC",
+      "target": "CASA_ACCT",
+      "target_column": "data_src",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "SOURCE_COUNTRY_CODE",
+      "target": "CASA_ACCT",
+      "target_column": "Source_country_code",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "ACCS_CTRY_CD",
+      "target": "CASA_ACCT",
+      "target_column": "accs_ctry_cd",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "ACCS_SEGMT_CD",
+      "target": "CASA_ACCT",
+      "target_column": "accs_segmt_cd",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "",
+      "source_column": "",
+      "target": "CASA_ACCT",
+      "target_column": "process_id",
+      "transformation": "RBC~CASA_ACCT.PROCESS_ID_01~VN",
+      "join_dependency": "No",
+      "status": "REVIEW"
+    }
+  ],
+  "source_object_analysis": [
+    {
+      "object": "c_acct",
+      "alias": "c_acct",
+      "required_columns": [],
+      "select": "Yes",
+      "join": "No",
+      "where": "Yes",
+      "transformation": "No",
+      "filter_conditions": "Detected in SQL",
+      "join_participation": "Base source",
+      "column_pruning": "See pruning actions"
+    },
+    {
+      "object": "C_PRTY_ID",
+      "alias": "C_PRTY_ID",
+      "required_columns": [],
+      "select": "Yes",
+      "join": "No",
+      "where": "Yes",
+      "transformation": "No",
+      "filter_conditions": "Detected in SQL",
+      "join_participation": "Joined",
+      "column_pruning": "See pruning actions"
+    },
+    {
+      "object": "c_prty",
+      "alias": "c_prty",
+      "required_columns": [],
+      "select": "Yes",
+      "join": "No",
+      "where": "Yes",
+      "transformation": "No",
+      "filter_conditions": "Detected in SQL",
+      "join_participation": "Base source",
+      "column_pruning": "See pruning actions"
+    },
+    {
+      "object": "C_ACCT_BAL_MTRC",
+      "alias": "C_ACCT_BAL_MTRC",
+      "required_columns": [],
+      "select": "Yes",
+      "join": "No",
+      "where": "Yes",
+      "transformation": "No",
+      "filter_conditions": "Detected in SQL",
+      "join_participation": "Joined",
+      "column_pruning": "See pruning actions"
+    },
+    {
+      "object": "C_PRTY_ACCT_RLTD",
+      "alias": "C_PRTY_ACCT_RLTD",
+      "required_columns": [],
+      "select": "Yes",
+      "join": "No",
+      "where": "Yes",
+      "transformation": "No",
+      "filter_conditions": "Detected in SQL",
+      "join_participation": "Base source",
+      "column_pruning": "See pruning actions"
+    },
+    {
+      "object": "E_ACCT_BASE",
+      "alias": "E_ACCT_BASE",
+      "required_columns": [],
+      "select": "Yes",
+      "join": "No",
+      "where": "Yes",
+      "transformation": "No",
+      "filter_conditions": "Detected in SQL",
+      "join_participation": "Joined",
+      "column_pruning": "See pruning actions"
+    },
+    {
+      "object": "C_PROD",
+      "alias": "C_PROD",
+      "required_columns": [],
+      "select": "Yes",
+      "join": "No",
+      "where": "Yes",
+      "transformation": "No",
+      "filter_conditions": "Detected in SQL",
+      "join_participation": "Base source",
+      "column_pruning": "See pruning actions"
+    }
+  ],
+  "generated_sql": "SELECT\n'Vietnam' AS nm_entry,\n'RBC~VN~C_ACCT~CASA_ACCT~1' AS process_id,\ncacct.ACCT_SROGT_ID AS s_acct,\ncacct.DOM_ACCT_REF AS n_acct,\ncacct.DOM_MAST_REF AS n_mast,\ncacct.PRTY_SROGT_ID AS s_prty,\ncacct.DOM_PRTY_REF AS n_dom_cust,\ncore_PID.ID_REF AS n_cust,\nptyltd.PRIM_PRTY_IND AS f_prim_prty,\ncore_prty.ENTRP_PRTY_SROGT_ID AS s_entrp_prty,\ncore_prty.ENTRP_PRTY_REF AS n_entrp_prty,\ncore_prty.ENTRP_PARNT_PRIM_PRTY_IND AS s_entrp_pent_prty,\ncore_prty.ENTRP_PARNT_PRTY_HOST_NUM AS n_entrp_pmnt_prty,\ncacct.PROD_SROGT_ID AS s_prd,\ncacct.DOM_PROD_CD AS c_dom_prd,\ncprod.DOM_PROD_DESC AS x_prd,\ncacct.ACCT_TP_CD AS c_dmcle_brnch,\ncprod.PROD_CAT_DESC AS x_prdcat,\ncacct.ACCT_BRNCH_SROGT_ID AS s_brnch,\ncacct.ACCT_BRNCH_CD AS c_dmcle_brnch,\ncacct.ACCT_STS_TP_CD AS c_acctsts,\ncacct.ACCT_STS_TP_DESC AS x_acctsts,\ncacct.ACCT_CURY_CD AS c_acctccy,\ncabal.OS_BAL_AMT AS a_curbal_acctccy,\neacct.OBA_LCY AS a_curbal_lcy,\neacct.OBA_USD AS a_curbal_usd,\ncacct.ACCT_OPEN_DT AS d_acctopn,\ncacct.ACCT_CLSE_DT AS d_acctcls,\ncacct.SOURCE_COUNTRY_CODE AS c_cntry,\ncacct.ACCT_CLSE_RESN_CD AS c_acctclsrsn,\ncore_prty.SEGMT_CD AS c_glcusttyp,\ncore_prty.PRTY_SEGMT_CLAS AS x_glcusttyp,\ncore_prty.PRTY_SEGMT_ID AS id_glcusttyp,\ncacct.REFL_ID AS id_refl,\ncacct.SRCG_ID AS id_srcg,\ncacct.CLSG_ID AS id_clsg,\ncacct.SUB_SEGMT_CD AS c_custsubseg,\ncacct.SUB_SEGMT_CD_DESC AS x_custsubseg,\ncacct.DATA_SRC AS data_src,\ncacct.SOURCE_COUNTRY_CODE AS Source_country_code,\ncacct.ACCS_CTRY_CD AS accs_ctry_cd,\ncacct.ACCS_SEGMT_CD AS accs_segmt_cd\nFROM (SELECT ACCS_CTRY_CD, ACCS_SEGMT_CD, ACCT_BRNCH_CD, ACCT_BRNCH_SROGT_ID, ACCT_CLSE_DT, ACCT_CLSE_RESN_CD, ACCT_CURY_CD, ACCT_OPEN_DT, ACCT_SROGT_ID, ACCT_STS_TP_CD, ACCT_STS_TP_DESC, ACCT_TP_CD, CLSG_ID, DATA_SRC, DOM_ACCT_REF, DOM_MAST_REF, DOM_PROD_CD, DOM_PRTY_REF, PROD_SROGT_ID, PRTY_SROGT_ID, REFL_ID, SOURCE_COUNTRY_CODE, SRCG_ID, SUB_SEGMT_CD, SUB_SEGMT_CD_DESC, acct_srogt_id, prod_srogt_id, prty_srogt_id FROM c_acct\n    WHERE DATA_SRC = 'EBB'\n   AND SOURCE_COUNTRY_CODE = 'VN'\n   AND process_id = 'EBB~VN~EBBS_VN_ACCOUNT~C_ACCT~1'\n) cacct\n\nLEFT JOIN (SELECT ID_REF, PRTY_SROGT_ID, prty_srogt_id FROM C_PRTY_ID\n    WHERE DATA_SRC = 'EBB'\n   AND SOURCE_COUNTRY_CODE = 'VN'\n   AND ID_TP_CD = 'N01'\n) core_PID\n    ON trim(cacct.prty_srogt_id) = trim(core_PID.PRTY_SROGT_ID)\n   AND core_PID.prty_srogt_id <> ''\nLEFT JOIN (\n    SELECT prty_srogt_id, SEGMT_CD,PRTY_SEGMT_ID,PRTY_SEGMT_CLAS, ENTRP_PRTY_SROGT_ID,ENTRP_PRTY_REF\n    FROM c_prty\n    WHERE DATA_SRC = 'EBB'\n   AND SOURCE_COUNTRY_CODE = 'VN'\n) core_prty\n    ON trim(cacct.prty_srogt_id) = trim(core_prty.prty_srogt_id)\n   AND core_prty.prty_srogt_id <> ''\nLEFT JOIN (SELECT OS_BAL_AMT, acct_srogt_id FROM C_ACCT_BAL_MTRC\n    WHERE data_src = 'EBB'\n   AND source_country_code = 'VN'\n) cabal\n    ON cabal.acct_srogt_id = cacct.acct_srogt_id\n   AND cabal.acct_srogt_id <> ''\nLEFT JOIN (\n    SELECT acct_srogt_id,prty_srogt_id,PRIM_PRTY_IND\n    FROM C_PRTY_ACCT_RLTD\n    WHERE data_src = 'EBB'\n   AND source_country_code = 'VN'\n   AND process_id = 'EBB~VN~EBBS_VN_ACCOUNT~C_PRTY_ACCT_RLTD~1'\n) ptyltd\n    ON ptyltd.acct_srogt_id = cacct.acct_srogt_id\n   AND trim(ptyltd.prty_srogt_id) = trim(cacct.prty_srogt_id)\n\nLEFT JOIN (SELECT OBA_LCY, OBA_USD, acct_srogt_id FROM E_ACCT_BASE\n    WHERE data_src = 'EBB'\n   AND source_country_code = 'VN'\n   AND process_id = 'EBB~VN~EBBS_VN_ACCOUNT~E_ACCT_BASE~1'\n) eacct\n    ON eacct.acct_srogt_id = cacct.acct_srogt_id\n   AND eacct.acct_srogt_id <> ''\nLEFT JOIN (\n    SELECT prod_srogt_id, PROD_CAT_DESC, DOM_PROD_DESC, OD_IND\n    FROM C_PROD\n    WHERE data_src = 'EBB'\n   AND source_country_code = 'VN'\n) cprod\n    ON cprod.prod_srogt_id = cacct.prod_srogt_id\n   AND cprod.prod_srogt_id <> '';",
+  "sql_metadata": {
+    "sql_type": "SELECT",
+    "target_object": "CASA_ACCT",
+    "select_columns": 42,
+    "source_tables": 7,
+    "joins": 6,
+    "where_filters": 24,
+    "transformations": 0,
+    "validation": "PASSED"
+  },
+  "sql_analysis": {
+    "select_columns": 42,
+    "direct_mappings": 40,
+    "derived_columns": 2,
+    "expressions": [
+      "'Vietnam' AS nm_entry",
+      "'RBC~VN~C_ACCT~CASA_ACCT~1' AS process_id",
+      "cacct.ACCT_SROGT_ID AS s_acct",
+      "cacct.DOM_ACCT_REF AS n_acct",
+      "cacct.DOM_MAST_REF AS n_mast",
+      "cacct.PRTY_SROGT_ID AS s_prty",
+      "cacct.DOM_PRTY_REF AS n_dom_cust",
+      "core_PID.ID_REF AS n_cust",
+      "ptyltd.PRIM_PRTY_IND AS f_prim_prty",
+      "core_prty.ENTRP_PRTY_SROGT_ID AS s_entrp_prty",
+      "core_prty.ENTRP_PRTY_REF AS n_entrp_prty",
+      "core_prty.ENTRP_PARNT_PRIM_PRTY_IND AS s_entrp_pent_prty",
+      "core_prty.ENTRP_PARNT_PRTY_HOST_NUM AS n_entrp_pmnt_prty",
+      "cacct.PROD_SROGT_ID AS s_prd",
+      "cacct.DOM_PROD_CD AS c_dom_prd",
+      "cprod.DOM_PROD_DESC AS x_prd",
+      "cacct.ACCT_TP_CD AS c_dmcle_brnch",
+      "cprod.PROD_CAT_DESC AS x_prdcat",
+      "cacct.ACCT_BRNCH_SROGT_ID AS s_brnch",
+      "cacct.ACCT_BRNCH_CD AS c_dmcle_brnch",
+      "cacct.ACCT_STS_TP_CD AS c_acctsts",
+      "cacct.ACCT_STS_TP_DESC AS x_acctsts",
+      "cacct.ACCT_CURY_CD AS c_acctccy",
+      "cabal.OS_BAL_AMT AS a_curbal_acctccy",
+      "eacct.OBA_LCY AS a_curbal_lcy",
+      "eacct.OBA_USD AS a_curbal_usd",
+      "cacct.ACCT_OPEN_DT AS d_acctopn",
+      "cacct.ACCT_CLSE_DT AS d_acctcls",
+      "cacct.SOURCE_COUNTRY_CODE AS c_cntry",
+      "cacct.ACCT_CLSE_RESN_CD AS c_acctclsrsn",
+      "core_prty.SEGMT_CD AS c_glcusttyp",
+      "core_prty.PRTY_SEGMT_CLAS AS x_glcusttyp",
+      "core_prty.PRTY_SEGMT_ID AS id_glcusttyp",
+      "cacct.REFL_ID AS id_refl",
+      "cacct.SRCG_ID AS id_srcg",
+      "cacct.CLSG_ID AS id_clsg",
+      "cacct.SUB_SEGMT_CD AS c_custsubseg",
+      "cacct.SUB_SEGMT_CD_DESC AS x_custsubseg",
+      "cacct.DATA_SRC AS data_src",
+      "cacct.SOURCE_COUNTRY_CODE AS Source_country_code",
+      "cacct.ACCS_CTRY_CD AS accs_ctry_cd",
+      "cacct.ACCS_SEGMT_CD AS accs_segmt_cd"
+    ],
+    "functions": [
+      "FROM",
+      "JOIN",
+      "TRIM"
+    ],
+    "duplicate_expressions": [],
+    "duplicate_aliases": [
+      "C_DMCLE_BRNCH"
+    ],
+    "source_tables": 7,
+    "subqueries": 7,
+    "aliases": [
+      "c_acct",
+      "C_PRTY_ID",
+      "c_prty",
+      "C_ACCT_BAL_MTRC",
+      "C_PRTY_ACCT_RLTD",
+      "E_ACCT_BASE",
+      "C_PROD"
+    ],
+    "joins": [
+      {
+        "left_table": "",
+        "left_column": "",
+        "join_type": "LEFT JOIN",
+        "right_table": "C_PRTY_ID",
+        "right_column": "",
+        "condition": "trim(cacct.prty_srogt_id) = trim(core_PID.PRTY_SROGT_ID) AND core_PID.prty_srogt_id <> ''",
+        "functions": [
+          "TRIM"
+        ],
+        "status": "PASS"
+      },
+      {
+        "left_table": "",
+        "left_column": "",
+        "join_type": "LEFT JOIN",
+        "right_table": "c_prty",
+        "right_column": "",
+        "condition": "trim(cacct.prty_srogt_id) = trim(core_prty.prty_srogt_id) AND core_prty.prty_srogt_id <> ''",
+        "functions": [
+          "TRIM"
+        ],
+        "status": "PASS"
+      },
+      {
+        "left_table": "cabal",
+        "left_column": "acct_srogt_id",
+        "join_type": "LEFT JOIN",
+        "right_table": "cacct",
+        "right_column": "acct_srogt_id",
+        "condition": "cabal.acct_srogt_id = cacct.acct_srogt_id AND cabal.acct_srogt_id <> ''",
+        "functions": [],
+        "status": "PASS"
+      },
+      {
+        "left_table": "ptyltd",
+        "left_column": "acct_srogt_id",
+        "join_type": "LEFT JOIN",
+        "right_table": "cacct",
+        "right_column": "acct_srogt_id",
+        "condition": "ptyltd.acct_srogt_id = cacct.acct_srogt_id AND trim(ptyltd.prty_srogt_id) = trim(cacct.prty_srogt_id)",
+        "functions": [
+          "TRIM"
+        ],
+        "status": "PASS"
+      },
+      {
+        "left_table": "eacct",
+        "left_column": "acct_srogt_id",
+        "join_type": "LEFT JOIN",
+        "right_table": "cacct",
+        "right_column": "acct_srogt_id",
+        "condition": "eacct.acct_srogt_id = cacct.acct_srogt_id AND eacct.acct_srogt_id <> ''",
+        "functions": [],
+        "status": "PASS"
+      },
+      {
+        "left_table": "cprod",
+        "left_column": "prod_srogt_id",
+        "join_type": "LEFT JOIN",
+        "right_table": "cacct",
+        "right_column": "prod_srogt_id",
+        "condition": "cprod.prod_srogt_id = cacct.prod_srogt_id AND cprod.prod_srogt_id <> ''",
+        "functions": [],
+        "status": "PASS"
+      }
+    ],
+    "filters": 24
+  },
+  "filters": [
+    {
+      "table": "",
+      "column": "",
+      "operator": "",
+      "value": "core_PID.prty_srogt_id <> ''",
+      "purpose": "SQL filter",
+      "status": "PASS"
+    },
+    {
+      "table": "",
+      "column": "",
+      "operator": "",
+      "value": "core_prty.prty_srogt_id <> ''",
+      "purpose": "SQL filter",
+      "status": "PASS"
+    },
+    {
+      "table": "",
+      "column": "",
+      "operator": "",
+      "value": "cabal.acct_srogt_id = cacct",
+      "purpose": "SQL filter",
+      "status": "PASS"
+    },
+    {
+      "table": "",
+      "column": "",
+      "operator": "",
+      "value": "cabal.acct_srogt_id <> ''",
+      "purpose": "SQL filter",
+      "status": "PASS"
+    },
+    {
+      "table": "",
+      "column": "",
+      "operator": "",
+      "value": "ptyltd.acct_srogt_id = cacct",
+      "purpose": "SQL filter",
+      "status": "PASS"
+    },
+    {
+      "table": "",
+      "column": "",
+      "operator": "",
+      "value": "eacct.acct_srogt_id = cacct",
+      "purpose": "SQL filter",
+      "status": "PASS"
+    },
+    {
+      "table": "",
+      "column": "",
+      "operator": "",
+      "value": "eacct.acct_srogt_id <> ''",
+      "purpose": "SQL filter",
+      "status": "PASS"
+    },
+    {
+      "table": "",
+      "column": "",
+      "operator": "",
+      "value": "cprod.prod_srogt_id = cacct",
+      "purpose": "SQL filter",
+      "status": "PASS"
+    },
+    {
+      "table": "",
+      "column": "",
+      "operator": "",
+      "value": "cprod.prod_srogt_id <> ''",
+      "purpose": "SQL filter",
+      "status": "PASS"
+    }
+  ],
+  "transformations": [
+    {
+      "target_column": "nm_entry",
+      "source_column": "",
+      "transformation": "DEFAULT",
+      "generated_expression": "",
+      "status": "PASS"
+    },
+    {
+      "target_column": "process_id",
+      "source_column": "",
+      "transformation": "DEFAULT",
+      "generated_expression": "",
+      "status": "PASS"
+    }
+  ],
+  "deterministic_fixes": [
+    {
+      "id": 1,
+      "issue": "normalized SELECT/FROM spacing",
+      "action": "normalized SELECT/FROM spacing",
+      "location": "Generated SQL",
+      "impact": "Deterministic SQL correction",
+      "status": "FIXED",
+      "rule": "SQL syntax fixer"
+    },
+    {
+      "id": 2,
+      "issue": "normalized empty-string comparisons",
+      "action": "normalized empty-string comparisons",
+      "location": "Generated SQL",
+      "impact": "Deterministic SQL correction",
+      "status": "FIXED",
+      "rule": "SQL syntax fixer"
+    },
+    {
+      "id": 3,
+      "issue": "standardized JOIN formatting",
+      "action": "standardized JOIN formatting",
+      "location": "Generated SQL",
+      "impact": "Deterministic SQL correction",
+      "status": "FIXED",
+      "rule": "SQL syntax fixer"
+    },
+    {
+      "id": 4,
+      "issue": "added missing statement terminator",
+      "action": "added missing statement terminator",
+      "location": "Generated SQL",
+      "impact": "Deterministic SQL correction",
+      "status": "FIXED",
+      "rule": "SQL syntax fixer"
+    }
+  ],
+  "deterministic_findings": [
+    {
+      "severity": "INFO",
+      "category": "SQL syntax",
+      "finding": "normalized SELECT/FROM spacing",
+      "evidence": "Generated SQL contained a deterministic formatting defect: normalized SELECT/FROM spacing",
+      "recommendation": "Applied normalized select/from spacing to the deterministic SQL output"
+    },
+    {
+      "severity": "INFO",
+      "category": "SQL syntax",
+      "finding": "normalized empty-string comparisons",
+      "evidence": "Generated SQL contained a deterministic formatting defect: normalized empty-string comparisons",
+      "recommendation": "Applied normalized empty-string comparisons to the deterministic SQL output"
+    },
+    {
+      "severity": "INFO",
+      "category": "SQL syntax",
+      "finding": "standardized JOIN formatting",
+      "evidence": "Generated SQL contained a deterministic formatting defect: standardized JOIN formatting",
+      "recommendation": "Applied standardized join formatting to the deterministic SQL output"
+    },
+    {
+      "severity": "INFO",
+      "category": "SQL syntax",
+      "finding": "Missing statement terminator",
+      "evidence": "Original SQL did not end with a statement terminator",
+      "recommendation": "Added the statement terminator to the deterministic SQL output"
+    }
+  ],
+  "todos": [],
+  "validation": [
+    {
+      "rule": "SQL syntax structure",
+      "result": "PASSED",
+      "details": "Valid deterministic SQL structure"
+    },
+    {
+      "rule": "Unresolved TODOs",
+      "result": "PASS",
+      "details": "None"
+    }
+  ],
+  "rag_advisory": {
+    "rules": [
+      {
+        "name": "Deterministic output"
+      },
+      {
+        "name": "Missing join reference"
+      },
+      {
+        "name": "Multiple source tables"
+      },
+      {
+        "name": "Missing DPR rule"
+      },
+      {
+        "name": "Unknown DPR rule"
+      },
+      {
+        "name": "Narrative transformation note"
+      },
+      {
+        "name": "TODO review boundary"
+      },
+      {
+        "name": "Advisory boundary"
+      }
+    ]
+  },
+  "llm_diagnostic": {
+    "model": "qwen2.5-coder:7b",
+    "status": "COMPLETED",
+    "prompt_purpose": "Explain deterministic findings and recommend corrective action",
+    "issues_explained": [],
+    "explanation": "Proceed to the testing phase by generating sample synthetic data using the Test Data Forge.",
+    "recommendations": "Proceed to the testing phase by generating sample synthetic data using the Test Data Forge.",
+    "authority": "NONE"
+  },
+  "traceability": [
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "ACCT_SROGT_ID",
+      "target": "CASA_ACCT",
+      "target_column": "s_acct",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "cacct.ACCT_SROGT_ID AS s_acct",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "DOM_ACCT_REF",
+      "target": "CASA_ACCT",
+      "target_column": "n_acct",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "cacct.DOM_ACCT_REF AS n_acct",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "DOM_MAST_REF",
+      "target": "CASA_ACCT",
+      "target_column": "n_mast",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "cacct.DOM_MAST_REF AS n_mast",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "PRTY_SROGT_ID",
+      "target": "CASA_ACCT",
+      "target_column": "s_prty",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "cacct.PRTY_SROGT_ID AS s_prty",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "DOM_PRTY_REF",
+      "target": "CASA_ACCT",
+      "target_column": "n_dom_cust",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "cacct.DOM_PRTY_REF AS n_dom_cust",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_PRTY_ID",
+      "source_column": "ID_REF",
+      "target": "CASA_ACCT",
+      "target_column": "n_cust",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "core_PID.ID_REF AS n_cust",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_PRTY_ACCT_RLTD",
+      "source_column": "PRIM_PRTY_IND",
+      "target": "CASA_ACCT",
+      "target_column": "f_prim_prty",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "ptyltd.PRIM_PRTY_IND AS f_prim_prty",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_PRTY",
+      "source_column": "ENTRP_PRTY_SROGT_ID",
+      "target": "CASA_ACCT",
+      "target_column": "s_entrp_prty",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "core_prty.ENTRP_PRTY_SROGT_ID AS s_entrp_prty",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_PRTY",
+      "source_column": "ENTRP_PRTY_REF",
+      "target": "CASA_ACCT",
+      "target_column": "n_entrp_prty",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "core_prty.ENTRP_PRTY_REF AS n_entrp_prty",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_PRTY",
+      "source_column": "ENTRP_PARNT_PRIM_PRTY_IND",
+      "target": "CASA_ACCT",
+      "target_column": "s_entrp_pent_prty",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "core_prty.ENTRP_PARNT_PRIM_PRTY_IND AS s_entrp_pent_prty",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_PRTY",
+      "source_column": "ENTRP_PARNT_PRTY_HOST_NUM",
+      "target": "CASA_ACCT",
+      "target_column": "n_entrp_pmnt_prty",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "core_prty.ENTRP_PARNT_PRTY_HOST_NUM AS n_entrp_pmnt_prty",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "PROD_SROGT_ID",
+      "target": "CASA_ACCT",
+      "target_column": "s_prd",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "cacct.PROD_SROGT_ID AS s_prd",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "DOM_PROD_CD",
+      "target": "CASA_ACCT",
+      "target_column": "c_dom_prd",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "cacct.DOM_PROD_CD AS c_dom_prd",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_PROD",
+      "source_column": "DOM_PROD_DESC",
+      "target": "CASA_ACCT",
+      "target_column": "x_prd",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "cprod.DOM_PROD_DESC AS x_prd",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "ACCT_TP_CD",
+      "target": "CASA_ACCT",
+      "target_column": "c_dmcle_brnch",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "cacct.ACCT_TP_CD AS c_dmcle_brnch",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_PROD",
+      "source_column": "PROD_CAT_DESC",
+      "target": "CASA_ACCT",
+      "target_column": "x_prdcat",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "cprod.PROD_CAT_DESC AS x_prdcat",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "ACCT_BRNCH_SROGT_ID",
+      "target": "CASA_ACCT",
+      "target_column": "s_brnch",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "cacct.ACCT_BRNCH_SROGT_ID AS s_brnch",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "ACCT_BRNCH_CD",
+      "target": "CASA_ACCT",
+      "target_column": "c_dmcle_brnch",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "cacct.ACCT_TP_CD AS c_dmcle_brnch",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "ACCT_STS_TP_CD",
+      "target": "CASA_ACCT",
+      "target_column": "c_acctsts",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "cacct.ACCT_STS_TP_CD AS c_acctsts",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "ACCT_STS_TP_DESC",
+      "target": "CASA_ACCT",
+      "target_column": "x_acctsts",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "cacct.ACCT_STS_TP_DESC AS x_acctsts",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "ACCT_CURY_CD",
+      "target": "CASA_ACCT",
+      "target_column": "c_acctccy",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "cacct.ACCT_CURY_CD AS c_acctccy",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT_BAL_MTRC",
+      "source_column": "OS_BAL_AMT",
+      "target": "CASA_ACCT",
+      "target_column": "a_curbal_acctccy",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "cabal.OS_BAL_AMT AS a_curbal_acctccy",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "E_ACCT_BASE",
+      "source_column": "OBA_LCY",
+      "target": "CASA_ACCT",
+      "target_column": "a_curbal_lcy",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "eacct.OBA_LCY AS a_curbal_lcy",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "E_ACCT_BASE",
+      "source_column": "OBA_USD",
+      "target": "CASA_ACCT",
+      "target_column": "a_curbal_usd",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "eacct.OBA_USD AS a_curbal_usd",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "ACCT_OPEN_DT",
+      "target": "CASA_ACCT",
+      "target_column": "d_acctopn",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "cacct.ACCT_OPEN_DT AS d_acctopn",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "ACCT_CLSE_DT",
+      "target": "CASA_ACCT",
+      "target_column": "d_acctcls",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "cacct.ACCT_CLSE_DT AS d_acctcls",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "SOURCE_COUNTRY_CODE",
+      "target": "CASA_ACCT",
+      "target_column": "c_cntry",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "cacct.SOURCE_COUNTRY_CODE AS c_cntry",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "ACCT_CLSE_RESN_CD",
+      "target": "CASA_ACCT",
+      "target_column": "c_acctclsrsn",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "cacct.ACCT_CLSE_RESN_CD AS c_acctclsrsn",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_PRTY",
+      "source_column": "SEGMT_CD",
+      "target": "CASA_ACCT",
+      "target_column": "c_glcusttyp",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "core_prty.SEGMT_CD AS c_glcusttyp",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_PRTY",
+      "source_column": "PRTY_SEGMT_CLAS",
+      "target": "CASA_ACCT",
+      "target_column": "x_glcusttyp",
+      "transformation": "RBC~CASA_ACCT.X_GLCUSTTYP_01~VN~1",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "core_prty.PRTY_SEGMT_CLAS AS x_glcusttyp",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_PRTY",
+      "source_column": "PRTY_SEGMT_ID",
+      "target": "CASA_ACCT",
+      "target_column": "id_glcusttyp",
+      "transformation": "RBC~CASA_ACCT.ID_GLCUSTTYP_01~VN~1",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "core_prty.PRTY_SEGMT_ID AS id_glcusttyp",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "REFL_ID",
+      "target": "CASA_ACCT",
+      "target_column": "id_refl",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "cacct.REFL_ID AS id_refl",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "SRCG_ID",
+      "target": "CASA_ACCT",
+      "target_column": "id_srcg",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "cacct.SRCG_ID AS id_srcg",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "CLSG_ID",
+      "target": "CASA_ACCT",
+      "target_column": "id_clsg",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "cacct.CLSG_ID AS id_clsg",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "",
+      "source_column": "",
+      "target": "CASA_ACCT",
+      "target_column": "nm_entry",
+      "transformation": "RBC~CASA_ACCT.NM_CNTRY_01~VN",
+      "join_dependency": "No",
+      "status": "REVIEW",
+      "sql_expression": "'Vietnam' AS nm_entry",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "SUB_SEGMT_CD",
+      "target": "CASA_ACCT",
+      "target_column": "c_custsubseg",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "cacct.SUB_SEGMT_CD AS c_custsubseg",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "SUB_SEGMT_CD_DESC",
+      "target": "CASA_ACCT",
+      "target_column": "x_custsubseg",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "cacct.SUB_SEGMT_CD_DESC AS x_custsubseg",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "DATA_SRC",
+      "target": "CASA_ACCT",
+      "target_column": "data_src",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "cacct.DATA_SRC AS data_src",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "SOURCE_COUNTRY_CODE",
+      "target": "CASA_ACCT",
+      "target_column": "Source_country_code",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "cacct.SOURCE_COUNTRY_CODE AS Source_country_code",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "ACCS_CTRY_CD",
+      "target": "CASA_ACCT",
+      "target_column": "accs_ctry_cd",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "cacct.ACCS_CTRY_CD AS accs_ctry_cd",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "C_ACCT",
+      "source_column": "ACCS_SEGMT_CD",
+      "target": "CASA_ACCT",
+      "target_column": "accs_segmt_cd",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "cacct.ACCS_SEGMT_CD AS accs_segmt_cd",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_ACCT~CASA_ACCT~1",
+      "source": "",
+      "source_column": "",
+      "target": "CASA_ACCT",
+      "target_column": "process_id",
+      "transformation": "RBC~CASA_ACCT.PROCESS_ID_01~VN",
+      "join_dependency": "No",
+      "status": "REVIEW",
+      "sql_expression": "'RBC~VN~C_ACCT~CASA_ACCT~1' AS process_id",
+      "sql_location": "SELECT"
+    }
+  ],
+  "source_sql_changes": [],
+  "final_status": {
+    "sql_generation": "SUCCESS",
+    "deterministic_validation": "PASSED",
+    "ba_review_required": false,
+    "reason": "No unresolved deterministic issues."
+  },
+  "prune_actions": [
+    "Action(alias='cacct', table='c_acct', kind='table-projection', detail='Projected only qualified columns used by the query', columns=['ACCS_CTRY_CD', 'ACCS_SEGMT_CD', 'ACCT_BRNCH_CD', 'ACCT_BRNCH_SROGT_ID', 'ACCT_CLSE_DT', 'ACCT_CLSE_RESN_CD', 'ACCT_CURY_CD', 'ACCT_OPEN_DT', 'ACCT_SROGT_ID', 'ACCT_STS_TP_CD', 'ACCT_STS_TP_DESC', 'ACCT_TP_CD', 'CLSG_ID', 'DATA_SRC', 'DOM_ACCT_REF', 'DOM_MAST_REF', 'DOM_PROD_CD', 'DOM_PRTY_REF', 'PROD_SROGT_ID', 'PRTY_SROGT_ID', 'REFL_ID', 'SOURCE_COUNTRY_CODE', 'SRCG_ID', 'SUB_SEGMT_CD', 'SUB_SEGMT_CD_DESC', 'acct_srogt_id', 'prod_srogt_id', 'prty_srogt_id'], changed=True)",
+    "Action(alias='core_PID', table='C_PRTY_ID', kind='table-projection', detail='Projected only qualified columns used by the query', columns=['ID_REF', 'PRTY_SROGT_ID', 'prty_srogt_id'], changed=True)",
+    "Action(alias='cabal', table='C_ACCT_BAL_MTRC', kind='table-projection', detail='Projected only qualified columns used by the query', columns=['OS_BAL_AMT', 'acct_srogt_id'], changed=True)",
+    "Action(alias='eacct', table='E_ACCT_BASE', kind='table-projection', detail='Projected only qualified columns used by the query', columns=['OBA_LCY', 'OBA_USD', 'acct_srogt_id'], changed=True)"
+  ],
+  "errors": []
+}

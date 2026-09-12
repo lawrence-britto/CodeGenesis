@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>AccelerateX | Dashboard</title>
+	<link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+	<link rel="stylesheet" href="/static/css/app.css">
+	<link rel="stylesheet" href="/static/css/transition.css">
+	<link rel="stylesheet" href="/static/css/dashboard.css">
+	<style>.password-field{position:relative}.password-field input{padding-right:74px}.password-toggle{position:absolute;right:8px;bottom:8px;padding:6px 8px;border:0;background:transparent;color:var(--muted);font:inherit;font-size:.75rem;cursor:pointer}.password-toggle:hover,.password-toggle:focus-visible{color:var(--cyan)}.flow-modal{width:min(560px,100%);min-height:420px;max-height:calc(100vh - 40px);overflow:auto}.flow-description{margin:0 0 22px;color:var(--muted);font-size:.85rem;line-height:1.5}.flow-steps{display:grid;gap:10px;margin:0;padding:0;list-style:none;counter-reset:flow-step}.flow-steps li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;align-items:start;color:var(--ink);font-size:.86rem;line-height:1.4}.flow-steps li:before{counter-increment:flow-step;content:counter(flow-step);display:grid;place-items:center;width:24px;height:24px;border:1px solid var(--cyan);border-radius:50%;color:var(--cyan);font-size:.72rem;font-weight:700}</style>
+</head>
+<body class="app-loading">
+	<div id="pageTransition" class="page-transition visible" role="status" aria-live="polite">
+		<div class="page-transition-card">
+			<span class="loading-spinner" aria-hidden="true"></span>
+			<strong id="pageTransitionTitle">Loading dashboard</strong>
+			<span id="pageTransitionMessage" class="page-transition-message">Preparing your workspace...</span>
+		</div>
+	</div>
+	<div class="dashboard">
+		<aside class="side-rail">
+			<div class="side-logo"><b>AX</b><span>AccelerateX</span></div>
+			<div class="side-label">OPERATIONS</div>
+			<a class="side-link active" href="/static/dashboard.html">▦ <span>Workspace overview</span></a>
+			<div class="side-label">WORKBENCHES</div>
+			<a class="side-link" href="/static/validator.html">✓ <span>Mapping Validator</span></a>
+			<a class="side-link" href="/static/sqlgen.html">⌁ <span>SQL Generator</span></a>
+			<a class="side-link" href="/static/dataforge.html">◇ <span>Test Data Forge</span></a>
+			<a class="side-link" href="/static/parity.html">≋ <span>Prod Parity</span></a>
+			<div class="system-status" aria-labelledby="systemStatusTitle">
+				<div class="system-status-heading"><span id="systemStatusTitle" class="side-label">SYSTEM</span><button id="systemStatusRefresh" class="status-refresh" type="button" aria-label="Refresh system status" title="Refresh system status">↻</button></div>
+				<div id="systemStatusRows" class="system-status-rows" aria-live="polite"></div>
+				<div id="systemStatusChecked" class="system-status-checked">Last checked: --</div>
+			</div>
+		</aside>
+		<section class="dashboard-main">
+			<div class="topbar"><div>Workspace / <strong>Overview</strong></div><div class="top-actions"><span id="accountName" class="account-name"></span><span class="status-dot" aria-label="Signed in"></span><div class="profile-menu"><button id="avatar" class="avatar" type="button" aria-label="Open profile menu" aria-haspopup="menu" aria-expanded="false"></button><div id="profileDropdown" class="profile-dropdown" role="menu" aria-labelledby="avatar" hidden><div class="profile-heading"><strong id="profileName"></strong><span>Signed in</span></div><div class="profile-divider"></div><button id="manageAccount" type="button" role="menuitem">⚙ <span>Manage account</span></button><button id="signOut" type="button" role="menuitem">↪ <span>Sign out</span></button></div></div></div></div>
+			<main class="dash-content">
+				<div class="dash-heading"><div><p class="eyebrow">OPERATIONS / OVERVIEW</p><h1 id="greeting">Your workspace</h1><p class="muted">Your SQL engineering workspace at a glance.</p></div><select id="dateRange" class="date-field"><option value="current">Current day</option><option value="5" selected>Last 5 days</option><option value="10">Last 10 days</option></select></div>
+				<div id="dashboardStatus" class="dashboard-status" hidden></div>
+				<section class="kpi-grid"><article class="panel kpi"><div class="kpi-label">Validated mappings</div><div class="kpi-value">0</div></article><article class="panel kpi"><div class="kpi-label">SQL artifacts generated</div><div class="kpi-value">0</div></article><article class="panel kpi"><div class="kpi-label">Synthetic data generated</div><div class="kpi-value">0</div></article><article class="panel kpi"><div class="kpi-label">Parity checks passed</div><div class="kpi-value">0</div></article></section>
+				<section class="dash-grid"><article class="panel chart-panel"><div class="panel-title"><strong>Engineering throughput</strong></div><div class="fake-chart"><svg viewBox="0 0 800 210" preserveAspectRatio="none"><polyline points="0,195 800,195" fill="none" stroke="#58d2dc" stroke-width="3"/></svg></div></article><article class="panel"><div class="panel-title"><strong>Recent activity</strong></div><div id="activityList" class="empty-state">No recent activities</div></article></section>
+				<section class="workbench-grid" aria-label="Engineering workbenches"><article class="panel workbench" tabindex="0" role="button" data-flow="validator"><div class="icon">✓</div><strong>Mapping Validator →</strong><p>Check structure before generation.</p></article><article class="panel workbench" tabindex="0" role="button" data-flow="sqlgen"><div class="icon">⌁</div><strong>SQL Generator →</strong><p>Build deterministic target SQL.</p></article><article class="panel workbench" tabindex="0" role="button" data-flow="dataforge"><div class="icon">◇</div><strong>Test Data Forge →</strong><p>Create synthetic fixtures.</p></article><article class="panel workbench" tabindex="0" role="button" data-flow="parity"><div class="icon">≋</div><strong>Prod Parity →</strong><p>Compare release SQL.</p></article></section>
+			</main>
+		</section>
+	</div>
+	<div id="flowModal" class="account-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="flowModalTitle" hidden><section class="account-modal flow-modal"><button id="flowModalClose" class="modal-close" type="button" aria-label="Close workbench flow">×</button><div id="flowModalMark" class="notice-mark">✓</div><h2 id="flowModalTitle"></h2><p id="flowModalDescription" class="flow-description"></p><ol id="flowModalSteps" class="flow-steps"></ol></section></div>
+	<div id="accountModal" class="account-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="accountModalTitle" hidden><section class="account-modal"><button id="accountModalClose" class="modal-close" type="button" aria-label="Close account management">×</button><div class="notice-mark">⚙</div><h2 id="accountModalTitle">Account Management</h2><p id="accountUsername" class="account-username"></p><form id="passwordForm"><h3>Change Password</h3><label class="password-field">Current Password<input id="currentPassword" type="password" autocomplete="current-password" required><button type="button" class="password-toggle" data-password-toggle="currentPassword" aria-label="Show current password">Show</button></label><label class="password-field">New Password<input id="newPassword" type="password" autocomplete="new-password" minlength="8" required><button type="button" class="password-toggle" data-password-toggle="newPassword" aria-label="Show new password">Show</button></label><label class="password-field">Confirm New Password<input id="confirmPassword" type="password" autocomplete="new-password" minlength="8" required><button type="button" class="password-toggle" data-password-toggle="confirmPassword" aria-label="Show password confirmation">Show</button></label><p id="passwordError" class="error" role="alert"></p><div class="modal-actions"><button id="accountCancel" class="secondary-action" type="button">Cancel</button><button id="changePassword" type="submit">Change Password</button></div></form></section></div>
+	<script src="/static/js/common.js"></script>
+</body>
+</html>

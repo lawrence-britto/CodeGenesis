@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>SQL Generator | AccelerateX</title>
+	<link rel="stylesheet" href="/static/css/app.css">
+	<style>
+		.sqlgen-head { padding:34px 0 12px; }
+		.sqlgen-head h1 { max-width:900px; font-size:2.2rem; margin:8px 0 0; }
+		.sqlgen-head p:last-child { margin:16px 0; font-size:1rem; }
+		.sqlgen-intake { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:22px; }
+		.sqlgen-panel { min-height:300px; }
+		.sqlgen-panel h2 { margin-bottom:10px; }
+		.dropzone { min-height:210px; border:1px dashed #4a8996; border-radius:8px; display:grid; place-items:center; text-align:center; padding:28px; background:rgba(6,19,29,.5); transition:.2s; cursor:pointer; }
+		.dropzone:hover, .dropzone.dragging { border-color:var(--cyan); background:rgba(88,210,220,.08); }
+		.dropzone input { position:absolute; opacity:0; width:1px; height:1px; }
+		.drop-content { display:grid; gap:12px; justify-items:center; }
+		.drop-icon { width:54px; height:54px; border:1px solid var(--cyan); border-radius:50%; display:grid; place-items:center; color:var(--cyan); font-size:1.5rem; }
+		.file-name { color:var(--ink); font-weight:650; }
+		.action-row { display:flex; align-items:center; gap:12px; margin-top:18px; }
+		.button { border:0; border-radius:6px; background:var(--cyan); color:#07151e; padding:12px 24px; font:inherit; font-weight:750; cursor:pointer; }
+		.button:disabled { opacity:.5; cursor:wait; }
+		.button.secondary { background:transparent; color:var(--ink); border:1px solid var(--line); }
+		.knowledge-header { display:flex; justify-content:space-between; gap:10px; align-items:start; }
+		.knowledge-list { display:grid; gap:10px; margin-top:18px; max-height:430px; overflow:auto; }
+		.rule { border:1px solid var(--line); padding:14px; border-radius:6px; background:rgba(5,14,23,.34); }
+		.rule h3 { font-size:.92rem; margin:0 0 7px; color:var(--ink); }
+		.rule p { font-size:.82rem; color:var(--muted); line-height:1.5; margin:0; }
+		.rule-actions, .form-actions { display:flex; gap:8px; margin-top:12px; }
+		.icon-button { border:1px solid var(--line); background:transparent; color:var(--muted); border-radius:4px; padding:6px 9px; cursor:pointer; }
+		.icon-button:hover { color:var(--ink); border-color:var(--cyan); }
+		.knowledge-form { display:grid; gap:10px; margin-top:16px; }
+		.knowledge-form input, .knowledge-form textarea { width:100%; border:1px solid var(--line); border-radius:5px; background:#091722; color:var(--ink); padding:10px; font:inherit; }
+		.knowledge-form textarea { min-height:110px; resize:vertical; }
+		.hidden { display:none; }
+		.sqlgen-step { margin-top:22px; }
+		.sqlgen-step > .panel { margin-top:18px; }
+		.selection-meta { display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap; }
+		.selection-meta strong { font-size:1.05rem; }
+		.selection-tools { display:grid; grid-template-columns:minmax(220px,1fr) auto; gap:12px; align-items:center; margin:22px 0 14px; }
+		.selection-filter { width:100%; border:1px solid var(--line); border-radius:6px; background:#091722; color:var(--ink); padding:12px 14px; font:inherit; }
+		.filter-options { display:flex; gap:14px; flex-wrap:wrap; color:var(--muted); font-size:.86rem; }
+		.filter-options label { display:inline-flex; align-items:center; gap:6px; cursor:pointer; }
+		.group-table-wrap { overflow-x:auto; border:1px solid var(--line); border-radius:8px; }
+		.group-table { width:100%; border-collapse:collapse; min-width:620px; }
+		.group-table th, .group-table td { padding:14px 16px; border-bottom:1px solid rgba(123,163,183,.16); text-align:left; }
+		.group-table th { color:var(--cyan); font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; font-weight:700; background:rgba(5,14,23,.48); }
+		.group-table tbody tr { cursor:pointer; transition:background .16s ease; }
+		.group-table tbody tr:hover, .group-table tbody tr.selected { background:rgba(88,210,220,.09); }
+		.group-table tbody tr:last-child td { border-bottom:0; }
+		.group-table td:first-child { width:52px; text-align:center; }
+		.group-table input[type="radio"] { accent-color:var(--cyan); width:17px; height:17px; }
+		.selection-actions { display:flex; justify-content:flex-end; gap:12px; margin-top:18px; }
+		.selection-actions .button { min-width:112px; }
+		.selection-empty { padding:24px; color:var(--muted); text-align:center; }
+		.result-heading { display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+		.result-heading .button { padding:9px 14px; }
+		@media (max-width:800px) { .sqlgen-intake { display:block; } .sqlgen-panel + .sqlgen-panel { margin-top:16px; } }
+		@media (max-width:680px) { .selection-tools { grid-template-columns:1fr; } .selection-actions { justify-content:stretch; } .selection-actions .button { flex:1; } }
+	</style>
+</head>
+<body>
+	<main class="shell">
+		<header class="sqlgen-head">
+			<p class="eyebrow">OPERATIONS / SQL GENERATOR</p>
+			<h1>From validated mappings to ready-to-use SQL.</h1>
+			<p>Generate reviewable SQL from a uploaded source to target mapping sheet.</p>
+		</header>
+		<div id="sqlgenIntake" class="sqlgen-intake">
+			<section class="panel sqlgen-panel" id="sqlgenUploadStep">
+				<p class="eyebrow">01 / WORKBOOK</p>
+				<h2>Drop a mapping sheet</h2>
+				<p class="muted">Use an .xlsx workbook with a Source to Target sheet.</p>
+				<label class="dropzone" id="sqlgenDropzone" for="sqlgenExcel"><input id="sqlgenExcel" type="file" accept=".xlsx"><span class="drop-content"><span class="drop-icon">↓</span><span id="sqlgenExcelName">Drop workbook here or browse</span></span></label>
+				<div id="sqlgenProceedRow" class="action-row hidden"><button class="button" id="sqlgenProceedBtn" type="button">Proceed</button><span id="sqlgenProgress" class="muted"></span></div>
+			</section>
+			<section class="panel sqlgen-panel" id="sqlgenSourceStep">
+				<p class="eyebrow">02 / OPTIONAL EXISTING SQL</p>
+				<h2>Drop an existing source SQL</h2>
+				<p class="muted">Supply legacy SQL when joins or source expressions need review.</p>
+				<label class="dropzone" id="sqlgenSourceDropzone" for="sqlgenSourceSql"><input id="sqlgenSourceSql" type="file" accept=".sql"><span class="drop-content"><span class="drop-icon">↓</span><span id="sqlgenSourceSqlName">Drop SQL here or browse</span></span></label>
+			</section>
+		</div>
+		<!--
+		<section id="sqlgenRulebook" class="panel sqlgen-panel" style="margin-top:18px">
+			<div class="knowledge-header"><div><p class="eyebrow">03 / RULEBOOK</p><h2>Knowledge</h2><p class="muted">Preview, edit, or extend the rules used for advisory explanations.</p></div></div>
+			<div id="knowledgeList" class="knowledge-list"><p class="muted">Loading approved rules...</p></div>
+			<div class="action-row"><button id="addRule" class="button secondary" type="button">+ Add rule</button></div>
+			<form id="knowledgeForm" class="knowledge-form hidden"><input id="ruleTitle" placeholder="Rule title" required><textarea id="ruleText" placeholder="Rule guidance" required></textarea><div class="form-actions"><button class="button" type="submit">Save rule</button><button id="cancelRule" class="button secondary" type="button">Cancel</button></div></form>
+		</section>
+		-->
+		<section class="panel hidden sqlgen-step" id="sqlgenSelectStep">
+			<div class="selection-meta"><div><p class="eyebrow">SELECT MAPPING GROUP</p><strong id="mgFileName"></strong></div><span id="mgCount" class="muted"></span></div>
+			<div class="selection-tools"><input id="mgSearch" class="selection-filter" placeholder="Search mappings"><div class="filter-options" role="group" aria-label="Search field"><label><input type="radio" name="mgFilter" value="target_object_name" checked> Target Object Name</label><label><input type="radio" name="mgFilter" value="map_group_id"> Map Group ID</label></div></div>
+			<div id="mgTable" class="group-table-wrap"></div>
+			<div class="selection-actions"><button class="button secondary" id="sqlgenBackBtn" type="button">Back</button><button class="button" id="sqlgenGenerateBtn" type="button">Generate SQL</button></div>
+		</section>
+		<section class="panel hidden sqlgen-step" id="sqlgenResult"><div class="stats"><div class="stat"><b id="gColumns">0</b>Select Columns</div><div class="stat"><b id="gFixes">0</b>Auto Fixes</div><div class="stat"><b id="gWarnings">0</b>Warnings</div></div><div class="result-heading"><strong>Generated SQL</strong><div class="row"><button class="button" id="sqlgenCopyBtn" type="button">Copy</button><button class="button hidden" id="sqlgenReportBtn" type="button">View Report</button><button class="button hidden" id="sqlgenDownloadBtn" type="button">Download Report</button><button class="button secondary" id="sqlgenNewBtn" type="button">New</button></div></div><pre id="sqlgenOutput"></pre><div id="sqlgenAdvisory" class="hidden"><h3>Next action</h3><pre id="sqlgenTodos"></pre><p id="sqlgenAdvisoryText"></p></div></section>
+	</main>
+	<script src="/static/js/common.js"></script><script src="/static/js/sqlgen.js"></script>
+</body>
+</html>

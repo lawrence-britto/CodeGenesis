@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AccelerateX | Secure workspace</title>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/css/app.css">
+  <link rel="stylesheet" href="/static/css/transition.css">
+  <style>
+    .auth-tabs { display:flex; gap:12px; margin:26px 0 30px; }
+    .auth-tab { background:transparent; color:var(--muted); border:1px solid var(--line); padding:10px 14px; }
+    .auth-tab.active { background:rgba(88,210,220,.12); border-color:var(--cyan); color:var(--ink); }
+    .notice-backdrop { position:fixed; inset:0; display:grid; place-items:center; padding:20px; background:rgba(2,8,14,.72); backdrop-filter:blur(8px); z-index:10; }
+    .notice { width:min(390px,100%); padding:28px; border:1px solid rgba(88,210,220,.45); border-radius:12px; background:linear-gradient(135deg,rgba(26,49,63,.94),rgba(8,19,29,.96)); box-shadow:0 24px 80px #0009; text-align:center; }
+    .notice-mark { display:grid; place-items:center; width:42px; height:42px; margin:0 auto 16px; border:1px solid var(--cyan); border-radius:50%; color:var(--cyan); font-size:1.3rem; }
+    .notice h3 { margin:0 0 8px; color:var(--ink); }
+    .notice p { margin:0 0 22px; color:var(--muted); font-size:.86rem; line-height:1.5; }
+    .notice button { min-width:110px; }
+    .hidden { display:none!important; }
+    .primary-action.is-loading { justify-content:center; gap:10px; }
+    .primary-action.is-loading::before { content:""; width:14px; height:14px; border:2px solid rgba(7,18,25,.3); border-top-color:#071219; border-radius:50%; animation:ax-spin .7s linear infinite; }
+    .password-field { position:relative; }
+    .password-field[hidden] { display:none; }
+    .password-field input { padding-right:74px; }
+    .password-toggle { position:absolute; right:8px; bottom:8px; padding:6px 8px; border:0; background:transparent; color:var(--muted); font:inherit; font-size:.75rem; cursor:pointer; }
+    .password-toggle:hover,.password-toggle:focus-visible { color:var(--cyan); }
+  </style>
+</head>
+<body class="auth-page">
+  <div id="pageTransition" class="page-transition" role="status" aria-live="polite"><div class="page-transition-card"><span class="loading-spinner" aria-hidden="true"></span><strong id="pageTransitionTitle">Loading dashboard</strong><span id="pageTransitionMessage" class="page-transition-message">Preparing your workspace...</span></div></div>
+  <main class="auth-layout">
+    <section class="product-intro"><div class="brand-mark">AX</div><p class="eyebrow">ACCELERATEX / SECURE WORKSPACE</p><h1>SQL delivery,<br><em>under control.</em></h1><p class="lead">A governed command center for mapping validation, deterministic SQL generation, synthetic test data, and production parity.</p><div class="signal-row"><span><b>04</b> engineering workbenches</span></div></section>
+    <section class="login-panel"><div class="panel-kicker"><span class="status-dot"></span> Private workspace</div><div class="auth-tabs"><button type="button" class="auth-tab active" data-mode="login">Sign in</button><button type="button" class="auth-tab" data-mode="signup">Create account</button></div><h2 id="authTitle">Welcome back</h2><p class="muted" id="authSubtitle">Sign in to open your engineering dashboard.</p><form id="authForm"><label>Email<input id="email" type="email" autocomplete="username" required placeholder="you@company.com"></label><label class="password-field">Password<input id="password" type="password" autocomplete="current-password" minlength="8" required placeholder="Enter password"><button type="button" class="password-toggle" data-password-toggle="password" aria-label="Show password">Show</button></label><label id="confirmPasswordField" class="password-field" hidden>Confirm Password<input id="confirmPassword" type="password" autocomplete="new-password" minlength="8" placeholder="Confirm password"><button type="button" class="password-toggle" data-password-toggle="confirmPassword" aria-label="Show confirmation password">Show</button></label><button type="submit" class="primary-action" id="authButton">Sign in <span>-></span></button><p id="authError" class="error" role="alert"></p></form></section>
+  </main>
+  <div id="successModal" class="notice-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="successTitle"><section class="notice"><div class="notice-mark">✓</div><h3 id="successTitle">Account created</h3><p>Your new user has been created successfully. Sign in to continue.</p><button id="successButton">Continue</button></section></div>
+  <script src="/static/js/common.js"></script>
+  <script>
+    const form = document.querySelector('#authForm');
+    const error = document.querySelector('#authError');
+    const title = document.querySelector('#authTitle');
+    const subtitle = document.querySelector('#authSubtitle');
+    const button = document.querySelector('#authButton');
+    const tabs = [...document.querySelectorAll('.auth-tab')];
+    const modal = document.querySelector('#successModal');
+    let mode = 'login';
+    let submitting = false;
+    function setMode(next) { mode = next; tabs.forEach(tab => tab.classList.toggle('active', tab.dataset.mode === mode)); title.textContent = mode === 'login' ? 'Welcome back' : 'Create your account'; subtitle.textContent = mode === 'login' ? 'Sign in to open your engineering dashboard.' : 'Set up your private engineering workspace.'; button.innerHTML = mode === 'login' ? 'Sign in <span>-></span>' : 'Create account <span>-></span>'; document.querySelector('#confirmPasswordField').hidden = mode !== 'signup'; document.querySelector('#confirmPassword').required = mode === 'signup'; error.textContent = ''; }
+    tabs.forEach(tab => tab.addEventListener('click', () => { if (!submitting) setMode(tab.dataset.mode); }));
+    document.querySelectorAll('[data-password-toggle]').forEach(toggle => toggle.addEventListener('click', () => { const input = document.querySelector(`#${toggle.dataset.passwordToggle}`); const visible = input.type === 'text'; input.type = visible ? 'password' : 'text'; toggle.textContent = visible ? 'Show' : 'Hide'; toggle.setAttribute('aria-label', `${visible ? 'Show' : 'Hide'} ${input.id === 'password' ? 'password' : 'confirmation password'}`); }));
+    document.querySelector('#successButton').addEventListener('click', () => { modal.classList.add('hidden'); form.reset(); submitting = false; button.disabled = false; button.classList.remove('is-loading'); setMode('login'); document.querySelector('#email').focus(); });
+    form.addEventListener('submit', async event => {
+      event.preventDefault();
+      if (submitting) return;
+      submitting = true;
+      error.textContent = '';
+      button.disabled = true;
+      button.classList.add('is-loading');
+      button.textContent = mode === 'login' ? 'Logging in...' : 'Creating account...';
+      const data = { email: document.querySelector('#email').value.trim(), password: document.querySelector('#password').value };
+      if (mode === 'signup' && data.password !== document.querySelector('#confirmPassword').value) { submitting = false; button.disabled = false; button.classList.remove('is-loading'); error.textContent = 'Passwords do not match'; return; }
+      try {
+        const response = await fetch(mode === 'login' ? '/api/auth/login' : '/api/auth/signup', { method:'POST', headers:{'Content-Type':'application/json'}, credentials:'include', body:JSON.stringify(data) });
+        if (!response.ok) { const detail = await response.json(); throw Error(detail.detail || 'Request failed'); }
+        if (mode === 'signup') { modal.classList.remove('hidden'); return; }
+        button.textContent = 'Login successful';
+        window.AXPageTransition?.setPageLoading('Loading dashboard', 'Loading dashboard...');
+        window.location.replace('/static/dashboard.html');
+      } catch (exception) {
+        submitting = false;
+        button.disabled = false;
+        button.classList.remove('is-loading');
+        error.textContent = exception.message;
+        setMode(mode);
+      }
+    });
+  </script>
+</body>
+</html>

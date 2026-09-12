@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mapping Validator | AccelerateX</title>
+  <link rel="stylesheet" href="/static/css/app.css">
+  <style>
+    .validator-head { display:flex; justify-content:space-between; gap:24px; align-items:end; padding:34px 0 12px; }
+    .validator-head .eyebrow { margin:11.2px 0; }
+    .validator-head h1 { font-size:2.2rem; margin:8px 0 0; }
+    .validator-head p:last-child { margin:16px 0; font-size:1rem; }
+    .validator-grid { display:grid; gap:18px; margin-top:22px; }
+    .validator-panel { min-height:300px; }
+    .dropzone { min-height:220px; border:1px dashed #4a8996; border-radius:8px; display:grid; place-items:center; text-align:center; padding:28px; background:rgba(6,19,29,.5); transition:.2s; cursor:pointer; }
+    .dropzone:hover, .dropzone.dragging { border-color:var(--cyan); background:rgba(88,210,220,.08); }
+    .dropzone input { position:absolute; opacity:0; width:1px; height:1px; }
+    .drop-content { display:grid; gap:12px; justify-items:center; }
+    .drop-icon { width:54px; height:54px; border:1px solid var(--cyan); border-radius:50%; display:grid; place-items:center; color:var(--cyan); font-size:1.5rem; }
+    .file-name { color:var(--ink); font-weight:650; }
+    .action-row { display:flex; align-items:center; gap:12px; margin-top:18px; }
+    .button { border:0; border-radius:6px; background:var(--cyan); color:#07151e; padding:12px 24px; font:inherit; font-weight:750; cursor:pointer; }
+    .button:disabled { opacity:.5; cursor:wait; }
+    .button.loading::before { content:""; width:14px; height:14px; margin-right:9px; border:2px solid rgba(7,21,30,.35); border-top-color:#07151e; border-radius:50%; animation:validator-spin .7s linear infinite; }
+    @keyframes validator-spin { to { transform:rotate(360deg); } }
+    .button.secondary { background:transparent; color:var(--ink); border:1px solid var(--line); }
+    .knowledge-header { display:flex; justify-content:space-between; gap:10px; align-items:start; }
+    .knowledge-list { display:grid; gap:10px; margin-top:18px; max-height:430px; overflow:auto; }
+    .rule { border:1px solid var(--line); padding:14px; border-radius:6px; background:rgba(5,14,23,.34); }
+    .rule h3 { font-size:.92rem; margin:0 0 7px; color:var(--ink); }
+    .rule p { font-size:.82rem; color:var(--muted); line-height:1.5; margin:0; }
+    .rule-actions { display:flex; gap:8px; margin-top:12px; }
+    .icon-button { border:1px solid var(--line); background:transparent; color:var(--muted); border-radius:4px; padding:6px 9px; cursor:pointer; }
+    .icon-button:hover { color:var(--ink); border-color:var(--cyan); }
+    .result-card { margin-top:18px; }
+    .result-card h2 { font-size:1.35rem; }
+    .result-summary { display:flex; justify-content:space-between; gap:18px; align-items:start; }
+    .result-summary h2, .status strong { text-align:center; }
+    .result-actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
+    .result-actions .button { text-decoration:none; display:inline-flex; align-items:center; }
+    .success { color:#7be0b5; }
+    .error { color:#ff8b8b; }
+    .warning { color:#ff8b8b; }
+    .diagnostic { color:var(--muted); }
+    .diagnostic b { color:inherit; }
+    .advisory-panel h3 { font-size:1.35rem; margin:0 0 18px; }
+    .advisory-copy { color:var(--ink); line-height:1.6; }
+    .advisory-copy strong { color:var(--ink); }
+    .advisory-panel h4 { margin:22px 0 8px; color:var(--ink); }
+    .knowledge-rules { margin:0; padding-left:20px; color:var(--muted); line-height:1.55; }
+    .hidden { display:none; }
+    .knowledge-form { display:grid; gap:10px; margin-top:16px; }
+    .knowledge-form input, .knowledge-form textarea { width:100%; border:1px solid var(--line); border-radius:5px; background:#091722; color:var(--ink); padding:10px; font:inherit; }
+    .knowledge-form textarea { min-height:110px; resize:vertical; }
+    .form-actions { display:flex; gap:8px; }
+    .notice-backdrop { position:fixed; inset:0; display:grid; place-items:center; padding:20px; background:rgba(2,8,14,.72); backdrop-filter:blur(8px); z-index:10; }
+    .notice { width:min(390px,100%); padding:28px; border:1px solid rgba(88,210,220,.45); border-radius:12px; background:linear-gradient(135deg,rgba(26,49,63,.94),rgba(8,19,29,.96)); box-shadow:0 24px 80px #0009; text-align:center; }
+    .notice-mark { display:grid; place-items:center; width:42px; height:42px; margin:0 auto 16px; border:1px solid var(--cyan); border-radius:50%; color:var(--cyan); font-size:1.3rem; }
+    .notice h3 { margin:0 0 8px; color:var(--ink); }
+    .notice p { margin:0 0 22px; color:var(--muted); font-size:.86rem; line-height:1.5; }
+    .notice-actions { display:flex; justify-content:center; gap:10px; }
+    @media (max-width:800px) { .validator-head, .validator-grid { display:block; } .validator-panel { margin-top:16px; } .result-summary { display:block; } }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="validator-head">
+      <div>
+        <p class="eyebrow">OPERATIONS / MAPPING VALIDATOR</p>
+        <h1>Let's simplify your mapping validation journey.</h1>
+        <p>Validate workbook structure against the approved mapping rulebook before SQL generation.</p>
+      </div>
+    </header>
+    <div class="validator-grid">
+      <section id="workbookSection" class="panel validator-panel">
+        <p class="eyebrow">01 / WORKBOOK</p>
+        <h2>Drop a mapping sheet</h2>
+        <p class="muted">Use an .xlsx workbook with a Source to Target sheet.</p>
+        <label class="dropzone" id="dropzone" for="file">
+          <input id="file" type="file" accept=".xlsx">
+          <span class="drop-content"><span class="drop-icon">↓</span><span id="label">Drop workbook here or browse</span></span>
+        </label>
+        <div class="action-row"><button id="go" class="button" type="button">Validate workbook</button><span id="progress" class="muted"></span></div>
+      </section>
+      <!--
+      <section id="rulebookSection" class="panel validator-panel">
+        <div class="knowledge-header"><div><p class="eyebrow">02 / RULEBOOK</p><h2>Knowledge</h2><p class="muted">Preview, edit, or extend the rules used for advisory explanations.</p></div></div>
+        <div id="knowledgeList" class="knowledge-list"><p class="muted">Loading approved rules...</p></div>
+        <div class="action-row"><button id="addRule" class="button secondary" type="button">+ Add rule</button></div>
+        <form id="knowledgeForm" class="knowledge-form hidden"><input id="ruleTitle" placeholder="Rule title" required><textarea id="ruleText" placeholder="Rule guidance" required></textarea><div class="form-actions"><button class="button" type="submit">Save rule</button><button id="cancelRule" class="button secondary" type="button">Cancel</button></div></form>
+      </section>
+      -->
+    </div>
+    <section id="result" class="panel result-card hidden"></section>
+  </main>
+  <div id="noticeRoot"></div>
+  <script src="/static/js/common.js"></script>
+  <script src="/static/js/validator.js"></script>
+</body>
+</html>

@@ -1,0 +1,910 @@
+{
+  "summary": {
+    "overall_status": "WARNING",
+    "sql_generation_status": "SUCCESS",
+    "validation_status": "WARNING",
+    "mapping_status": "WARNING",
+    "source_tables": 3,
+    "target_columns": 25,
+    "generated_columns": 25,
+    "joins": 2,
+    "transformations": 3,
+    "deterministic_fixes": 3,
+    "warnings": 2,
+    "todos": 1,
+    "unresolved_issues": 3,
+    "rag_status": "COMPLETED",
+    "llm_diagnostic_status": "COMPLETED"
+  },
+  "inputs": {
+    "mapping_workbook": "sql_mapping_sheet_v3.xlsx",
+    "mapping_sheet": "Source to Target",
+    "source_sql_file": "Not supplied",
+    "mapping_rows": 26,
+    "valid_mapping_rows": 25,
+    "rejected_mapping_rows": 1,
+    "source_objects": [
+      "C_PRTY_ID",
+      "c_card",
+      "c_prty"
+    ],
+    "target_objects": [
+      "CRD"
+    ],
+    "processing_timestamp": "2026-09-12T15:52:50.277761+00:00",
+    "configuration_profile": "default"
+  },
+  "mapping_analysis": [
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "CARD_SROGT_ID",
+      "target": "CRD",
+      "target_column": "s_crd",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "CARD_ACCT_SROGT_ID",
+      "target": "CRD",
+      "target_column": "s_acct",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "PRTY_SROGT_ID",
+      "target": "CRD",
+      "target_column": "s_prty",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "PROD_SROGT_ID",
+      "target": "CRD",
+      "target_column": "s_prd",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "DOM_CARD_REF",
+      "target": "CRD",
+      "target_column": "n_dom_crd",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "DOM_ACCT_REF",
+      "target": "CRD",
+      "target_column": "n_dom_acct",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "DOM_PROD_CD",
+      "target": "CRD",
+      "target_column": "n_dom_prd",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "DOM_PRTY_REF",
+      "target": "CRD",
+      "target_column": "n_dom_cust",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "DEVC_TP_CD",
+      "target": "CRD",
+      "target_column": "c_devctp",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "DEVC_TP_DESC",
+      "target": "CRD",
+      "target_column": "x_devctp",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "DATA_SRC",
+      "target": "CRD",
+      "target_column": "data_src",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "ACCS_CTRY_CD",
+      "target": "CRD",
+      "target_column": "accs_ctry_cd",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "ACCS_SEGMT_CD",
+      "target": "CRD",
+      "target_column": "accs_segmt_cd",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "SOURCE_COUNTRY_CODE",
+      "target": "CRD",
+      "target_column": "c_untry",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "CARD_BLK_CD",
+      "target": "CRD",
+      "target_column": "C_BLK",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "SOURCE_COUNTRY_CODE",
+      "target": "CRD",
+      "target_column": "c_cntry",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "CARD_BLK_CD",
+      "target": "CRD",
+      "target_column": "C_BLK",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "CARD_BLK_CD_DESC",
+      "target": "CRD",
+      "target_column": "X_BLK",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "CARD_SEQ_NUM",
+      "target": "CRD",
+      "target_column": "N_CRD_SEQ",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_PRTY_ID",
+      "source_column": "ID_REF",
+      "target": "CRD",
+      "target_column": "n_cust",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_PRTY",
+      "source_column": "PRTY_SEGMT_CLAS",
+      "target": "CRD",
+      "target_column": "x_glcusttyp",
+      "transformation": "RBC~CRD.X_glcusttyp_01~VN~1",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_PRTY",
+      "source_column": "PRTY_SEGMT_CD",
+      "target": "CRD",
+      "target_column": "id_glcusttyp",
+      "transformation": "RBC~CRD.id_glcusttyp_01~VN~1",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_PRTY",
+      "source_column": "SEGMT_CD",
+      "target": "CRD",
+      "target_column": "c_glcusttyp",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_PRTY",
+      "source_column": "",
+      "target": "CRD",
+      "target_column": "process_id",
+      "transformation": "RBC~CRD.PROCESS_ID_01~VN",
+      "join_dependency": "Yes",
+      "status": "REVIEW"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_PRTY",
+      "source_column": "ENTRP_PRTY_SROGT_ID",
+      "target": "CRD",
+      "target_column": "S_ENTRP_PRTY",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_PRTY",
+      "source_column": "ENTRP_PRTY_REF",
+      "target": "CRD",
+      "target_column": "N_ENTRP_PRTY",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS"
+    }
+  ],
+  "source_object_analysis": [
+    {
+      "object": "c_card",
+      "alias": "ccard",
+      "required_columns": [],
+      "select": "Yes",
+      "join": "Yes",
+      "where": "Yes",
+      "transformation": "Yes",
+      "filter_conditions": "Detected in SQL",
+      "join_participation": "Base source",
+      "column_pruning": "See pruning actions"
+    },
+    {
+      "object": "C_PRTY_ID",
+      "alias": "C_PRTY_ID",
+      "required_columns": [],
+      "select": "Yes",
+      "join": "No",
+      "where": "Yes",
+      "transformation": "No",
+      "filter_conditions": "Detected in SQL",
+      "join_participation": "Base source",
+      "column_pruning": "See pruning actions"
+    },
+    {
+      "object": "c_prty",
+      "alias": "c_prty",
+      "required_columns": [],
+      "select": "Yes",
+      "join": "No",
+      "where": "Yes",
+      "transformation": "No",
+      "filter_conditions": "Detected in SQL",
+      "join_participation": "Base source",
+      "column_pruning": "See pruning actions"
+    }
+  ],
+  "generated_sql": "SELECT\nccard.CARD_SROGT_ID AS s_crd,\nccard.CARD_ACCT_SROGT_ID AS s_acct,\nccard.PRTY_SROGT_ID AS s_prty,\nccard.PROD_SROGT_ID AS s_prd,\nccard.DOM_CARD_REF AS n_dom_crd,\nccard.DOM_ACCT_REF AS n_dom_acct,\nccard.DOM_PROD_CD AS n_dom_prd,\nccard.DOM_PRTY_REF AS n_dom_cust,\nccard.DEVC_TP_CD AS c_devctp,\nccard.DEVC_TP_DESC AS x_devctp,\nccard.DATA_SRC AS data_src,\nccard.ACCS_CTRY_CD AS accs_ctry_cd,\nccard.ACCS_SEGMT_CD AS accs_segmt_cd,\nccard.SOURCE_COUNTRY_CODE AS c_untry,\nccard.CARD_BLK_CD AS C_BLK,\nccard.SOURCE_COUNTRY_CODE AS c_cntry,\nccard.CARD_BLK_CD_DESC AS X_BLK,\nccard.CARD_SEQ_NUM AS N_CRD_SEQ,\ncore_PID.ID_REF AS n_cust,\ncore_prty.SEGMT_CD AS c_glcusttyp,\ncore_prty.ENTRP_PRTY_SROGT_ID AS S_ENTRP_PRTY,\ncore_prty.ENTRP_PRTY_REF AS N_ENTRP_PRTY,\nTRIM(core_prty.PRTY_SEGMT_CLAS) AS x_glcusttyp,\nTRIM(core_prty.PRTY_SEGMT_CD) AS id_glcusttyp,\nNULL /* TODO: confirm approved DPR rule */ AS process_id\nFROM (SELECT ACCS_CTRY_CD, ACCS_SEGMT_CD, CARD_ACCT_SROGT_ID, CARD_BLK_CD, CARD_BLK_CD_DESC, CARD_SEQ_NUM, CARD_SROGT_ID, DATA_SRC, DEVC_TP_CD, DEVC_TP_DESC, DOM_ACCT_REF, DOM_CARD_REF, DOM_PROD_CD, DOM_PRTY_REF, PROD_SROGT_ID, PRTY_SROGT_ID, SOURCE_COUNTRY_CODE, prty_srogt_id FROM c_card) ccard\n\nLEFT JOIN (\n    SELECT PRTY_SROGT_ID, ID_REF\n    FROM C_PRTY_ID\n    WHERE DATA_SRC = 'EBB'\n   AND SOURCE_COUNTRY_CODE = 'VN'\n   AND ID_TP_CD = 'N01'\n) core_PID\n    ON trim(ccard.prty_srogt_id) = trim(core_PID.PRTY_SROGT_ID)\n   AND core_PID.prty_srogt_id <> ''\nLEFT JOIN (\n    SELECT prty_srogt_id, SEGMT_CD,PRTY_SEGMT_ID,PRTY_SEGMT_CLAS, ENTRP_PRTY_SROGT_ID,ENTRP_PRTY_REF\n    FROM c_prty\n    WHERE data_src = 'EBB'\n   AND SOURCE_COUNTRY_CODE = 'VN'\n) core_prty\n    ON trim(ccard.prty_srogt_id) = trim(core_prty.prty_srogt_id)\n   AND core_prty.prty_srogt_id <> '';",
+  "sql_metadata": {
+    "sql_type": "SELECT",
+    "target_object": "CRD",
+    "select_columns": 25,
+    "source_tables": 3,
+    "joins": 2,
+    "where_filters": 7,
+    "transformations": 3,
+    "validation": "WARNING"
+  },
+  "sql_analysis": {
+    "select_columns": 25,
+    "direct_mappings": 23,
+    "derived_columns": 3,
+    "expressions": [
+      "ccard.CARD_SROGT_ID AS s_crd",
+      "ccard.CARD_ACCT_SROGT_ID AS s_acct",
+      "ccard.PRTY_SROGT_ID AS s_prty",
+      "ccard.PROD_SROGT_ID AS s_prd",
+      "ccard.DOM_CARD_REF AS n_dom_crd",
+      "ccard.DOM_ACCT_REF AS n_dom_acct",
+      "ccard.DOM_PROD_CD AS n_dom_prd",
+      "ccard.DOM_PRTY_REF AS n_dom_cust",
+      "ccard.DEVC_TP_CD AS c_devctp",
+      "ccard.DEVC_TP_DESC AS x_devctp",
+      "ccard.DATA_SRC AS data_src",
+      "ccard.ACCS_CTRY_CD AS accs_ctry_cd",
+      "ccard.ACCS_SEGMT_CD AS accs_segmt_cd",
+      "ccard.SOURCE_COUNTRY_CODE AS c_untry",
+      "ccard.CARD_BLK_CD AS C_BLK",
+      "ccard.SOURCE_COUNTRY_CODE AS c_cntry",
+      "ccard.CARD_BLK_CD_DESC AS X_BLK",
+      "ccard.CARD_SEQ_NUM AS N_CRD_SEQ",
+      "core_PID.ID_REF AS n_cust",
+      "core_prty.SEGMT_CD AS c_glcusttyp",
+      "core_prty.ENTRP_PRTY_SROGT_ID AS S_ENTRP_PRTY",
+      "core_prty.ENTRP_PRTY_REF AS N_ENTRP_PRTY",
+      "TRIM(core_prty.PRTY_SEGMT_CLAS) AS x_glcusttyp",
+      "TRIM(core_prty.PRTY_SEGMT_CD) AS id_glcusttyp",
+      "NULL /* TODO: confirm approved DPR rule */ AS process_id"
+    ],
+    "functions": [
+      "FROM",
+      "JOIN",
+      "TRIM"
+    ],
+    "duplicate_expressions": [],
+    "duplicate_aliases": [],
+    "source_tables": 3,
+    "subqueries": 3,
+    "aliases": [
+      "ccard",
+      "C_PRTY_ID",
+      "c_prty"
+    ],
+    "joins": [
+      {
+        "left_table": "",
+        "left_column": "",
+        "join_type": "LEFT JOIN",
+        "right_table": "C_PRTY_ID",
+        "right_column": "",
+        "condition": "trim(ccard.prty_srogt_id) = trim(core_PID.PRTY_SROGT_ID) AND core_PID.prty_srogt_id <> ''",
+        "functions": [
+          "TRIM"
+        ],
+        "status": "PASS"
+      },
+      {
+        "left_table": "",
+        "left_column": "",
+        "join_type": "LEFT JOIN",
+        "right_table": "c_prty",
+        "right_column": "",
+        "condition": "trim(ccard.prty_srogt_id) = trim(core_prty.prty_srogt_id) AND core_prty.prty_srogt_id <> ''",
+        "functions": [
+          "TRIM"
+        ],
+        "status": "PASS"
+      }
+    ],
+    "filters": 7
+  },
+  "filters": [
+    {
+      "table": "",
+      "column": "",
+      "operator": "",
+      "value": "core_PID.prty_srogt_id <> ''",
+      "purpose": "SQL filter",
+      "status": "PASS"
+    },
+    {
+      "table": "",
+      "column": "",
+      "operator": "",
+      "value": "core_prty.prty_srogt_id <> ''",
+      "purpose": "SQL filter",
+      "status": "PASS"
+    }
+  ],
+  "transformations": [
+    {
+      "target_column": "x_glcusttyp",
+      "source_column": "",
+      "transformation": "TRANSFORM",
+      "generated_expression": "TRIM(core_prty.PRTY_SEGMT_CLAS) AS x_glcusttyp",
+      "status": "PASS"
+    },
+    {
+      "target_column": "id_glcusttyp",
+      "source_column": "",
+      "transformation": "TRANSFORM",
+      "generated_expression": "TRIM(core_prty.PRTY_SEGMT_CD) AS id_glcusttyp",
+      "status": "PASS"
+    }
+  ],
+  "deterministic_fixes": [
+    {
+      "id": 1,
+      "issue": "normalized empty-string comparisons",
+      "action": "normalized empty-string comparisons",
+      "location": "Generated SQL",
+      "impact": "Deterministic SQL correction",
+      "status": "FIXED",
+      "rule": "SQL syntax fixer"
+    },
+    {
+      "id": 2,
+      "issue": "standardized JOIN formatting",
+      "action": "standardized JOIN formatting",
+      "location": "Generated SQL",
+      "impact": "Deterministic SQL correction",
+      "status": "FIXED",
+      "rule": "SQL syntax fixer"
+    },
+    {
+      "id": 3,
+      "issue": "added missing statement terminator",
+      "action": "added missing statement terminator",
+      "location": "Generated SQL",
+      "impact": "Deterministic SQL correction",
+      "status": "FIXED",
+      "rule": "SQL syntax fixer"
+    }
+  ],
+  "deterministic_findings": [
+    {
+      "severity": "WARNING",
+      "category": "SQL validation",
+      "finding": "DPR rule 'RBC~CRD.PROCESS_ID_01~VN' not found for target 'process_id'",
+      "evidence": "DPR rule 'RBC~CRD.PROCESS_ID_01~VN' not found for target 'process_id'",
+      "recommendation": "Resolve before release"
+    },
+    {
+      "severity": "WARNING",
+      "category": "SQL validation",
+      "finding": "TODO/FIXME requires BA review",
+      "evidence": "TODO/FIXME requires BA review",
+      "recommendation": "Resolve before release"
+    },
+    {
+      "severity": "INFO",
+      "category": "SQL syntax",
+      "finding": "normalized empty-string comparisons",
+      "evidence": "Generated SQL contained a deterministic formatting defect: normalized empty-string comparisons",
+      "recommendation": "Applied normalized empty-string comparisons to the deterministic SQL output"
+    },
+    {
+      "severity": "INFO",
+      "category": "SQL syntax",
+      "finding": "standardized JOIN formatting",
+      "evidence": "Generated SQL contained a deterministic formatting defect: standardized JOIN formatting",
+      "recommendation": "Applied standardized join formatting to the deterministic SQL output"
+    },
+    {
+      "severity": "INFO",
+      "category": "SQL syntax",
+      "finding": "Missing statement terminator",
+      "evidence": "Original SQL did not end with a statement terminator",
+      "recommendation": "Added the statement terminator to the deterministic SQL output"
+    }
+  ],
+  "todos": [
+    {
+      "id": "TODO-001",
+      "category": "BA review",
+      "description": "NULL /* TODO: confirm approved DPR rule */ AS process_id",
+      "source": "Generated SQL",
+      "impact": "Requires deterministic clarification",
+      "required_action": "Confirm with BA or developer",
+      "owner": "BA"
+    }
+  ],
+  "validation": [
+    {
+      "rule": "SQL syntax structure",
+      "result": "WARNING",
+      "details": "DPR rule 'RBC~CRD.PROCESS_ID_01~VN' not found for target 'process_id'; TODO/FIXME requires BA review"
+    },
+    {
+      "rule": "Unresolved TODOs",
+      "result": "FAIL",
+      "details": "1 TODO(s)"
+    }
+  ],
+  "rag_advisory": {
+    "rules": [
+      {
+        "name": "Unknown DPR rule"
+      },
+      {
+        "name": "Missing DPR rule"
+      },
+      {
+        "name": "Missing join reference"
+      },
+      {
+        "name": "Multiple source tables"
+      },
+      {
+        "name": "Narrative transformation note"
+      },
+      {
+        "name": "TODO review boundary"
+      },
+      {
+        "name": "Deterministic output"
+      },
+      {
+        "name": "Advisory boundary"
+      }
+    ]
+  },
+  "llm_diagnostic": {
+    "model": "qwen2.5-coder:7b",
+    "status": "COMPLETED",
+    "prompt_purpose": "Explain deterministic findings and recommend corrective action",
+    "issues_explained": [
+      "DPR rule 'RBC~CRD.PROCESS_ID_01~VN' not found for target 'process_id'",
+      "TODO/FIXME requires BA review",
+      "NULL /* TODO: confirm approved DPR rule */ AS process_id"
+    ],
+    "explanation": "This SQL is under review.\nPlease review the deterministic findings before proceeding to testing.",
+    "recommendations": "This SQL is under review.\nPlease review the deterministic findings before proceeding to testing.",
+    "authority": "NONE"
+  },
+  "traceability": [
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "CARD_SROGT_ID",
+      "target": "CRD",
+      "target_column": "s_crd",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS",
+      "sql_expression": "ccard.CARD_SROGT_ID AS s_crd",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "CARD_ACCT_SROGT_ID",
+      "target": "CRD",
+      "target_column": "s_acct",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS",
+      "sql_expression": "ccard.CARD_ACCT_SROGT_ID AS s_acct",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "PRTY_SROGT_ID",
+      "target": "CRD",
+      "target_column": "s_prty",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS",
+      "sql_expression": "ccard.PRTY_SROGT_ID AS s_prty",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "PROD_SROGT_ID",
+      "target": "CRD",
+      "target_column": "s_prd",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS",
+      "sql_expression": "ccard.PROD_SROGT_ID AS s_prd",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "DOM_CARD_REF",
+      "target": "CRD",
+      "target_column": "n_dom_crd",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS",
+      "sql_expression": "ccard.DOM_CARD_REF AS n_dom_crd",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "DOM_ACCT_REF",
+      "target": "CRD",
+      "target_column": "n_dom_acct",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS",
+      "sql_expression": "ccard.DOM_ACCT_REF AS n_dom_acct",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "DOM_PROD_CD",
+      "target": "CRD",
+      "target_column": "n_dom_prd",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS",
+      "sql_expression": "ccard.DOM_PROD_CD AS n_dom_prd",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "DOM_PRTY_REF",
+      "target": "CRD",
+      "target_column": "n_dom_cust",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS",
+      "sql_expression": "ccard.DOM_PRTY_REF AS n_dom_cust",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "DEVC_TP_CD",
+      "target": "CRD",
+      "target_column": "c_devctp",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS",
+      "sql_expression": "ccard.DEVC_TP_CD AS c_devctp",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "DEVC_TP_DESC",
+      "target": "CRD",
+      "target_column": "x_devctp",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS",
+      "sql_expression": "ccard.DEVC_TP_DESC AS x_devctp",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "DATA_SRC",
+      "target": "CRD",
+      "target_column": "data_src",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS",
+      "sql_expression": "ccard.DATA_SRC AS data_src",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "ACCS_CTRY_CD",
+      "target": "CRD",
+      "target_column": "accs_ctry_cd",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS",
+      "sql_expression": "ccard.ACCS_CTRY_CD AS accs_ctry_cd",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "ACCS_SEGMT_CD",
+      "target": "CRD",
+      "target_column": "accs_segmt_cd",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS",
+      "sql_expression": "ccard.ACCS_SEGMT_CD AS accs_segmt_cd",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "SOURCE_COUNTRY_CODE",
+      "target": "CRD",
+      "target_column": "c_untry",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS",
+      "sql_expression": "ccard.SOURCE_COUNTRY_CODE AS c_untry",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "CARD_BLK_CD",
+      "target": "CRD",
+      "target_column": "C_BLK",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS",
+      "sql_expression": "ccard.CARD_BLK_CD AS C_BLK",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "SOURCE_COUNTRY_CODE",
+      "target": "CRD",
+      "target_column": "c_cntry",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS",
+      "sql_expression": "ccard.SOURCE_COUNTRY_CODE AS c_cntry",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "CARD_BLK_CD",
+      "target": "CRD",
+      "target_column": "C_BLK",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS",
+      "sql_expression": "ccard.CARD_BLK_CD AS C_BLK",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "CARD_BLK_CD_DESC",
+      "target": "CRD",
+      "target_column": "X_BLK",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS",
+      "sql_expression": "ccard.CARD_BLK_CD_DESC AS X_BLK",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_CARD",
+      "source_column": "CARD_SEQ_NUM",
+      "target": "CRD",
+      "target_column": "N_CRD_SEQ",
+      "transformation": "Direct",
+      "join_dependency": "No",
+      "status": "PASS",
+      "sql_expression": "ccard.CARD_SEQ_NUM AS N_CRD_SEQ",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_PRTY_ID",
+      "source_column": "ID_REF",
+      "target": "CRD",
+      "target_column": "n_cust",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "core_PID.ID_REF AS n_cust",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_PRTY",
+      "source_column": "PRTY_SEGMT_CLAS",
+      "target": "CRD",
+      "target_column": "x_glcusttyp",
+      "transformation": "RBC~CRD.X_glcusttyp_01~VN~1",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "TRIM(core_prty.PRTY_SEGMT_CLAS) AS x_glcusttyp",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_PRTY",
+      "source_column": "PRTY_SEGMT_CD",
+      "target": "CRD",
+      "target_column": "id_glcusttyp",
+      "transformation": "RBC~CRD.id_glcusttyp_01~VN~1",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "TRIM(core_prty.PRTY_SEGMT_CD) AS id_glcusttyp",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_PRTY",
+      "source_column": "SEGMT_CD",
+      "target": "CRD",
+      "target_column": "c_glcusttyp",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "core_prty.SEGMT_CD AS c_glcusttyp",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_PRTY",
+      "source_column": "",
+      "target": "CRD",
+      "target_column": "process_id",
+      "transformation": "RBC~CRD.PROCESS_ID_01~VN",
+      "join_dependency": "Yes",
+      "status": "REVIEW",
+      "sql_expression": "NULL /* TODO: confirm approved DPR rule */ AS process_id",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_PRTY",
+      "source_column": "ENTRP_PRTY_SROGT_ID",
+      "target": "CRD",
+      "target_column": "S_ENTRP_PRTY",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "core_prty.ENTRP_PRTY_SROGT_ID AS S_ENTRP_PRTY",
+      "sql_location": "SELECT"
+    },
+    {
+      "map_group": "RBC~VN~C_CARD~CRD~1",
+      "source": "C_PRTY",
+      "source_column": "ENTRP_PRTY_REF",
+      "target": "CRD",
+      "target_column": "N_ENTRP_PRTY",
+      "transformation": "Direct",
+      "join_dependency": "Yes",
+      "status": "PASS",
+      "sql_expression": "core_prty.ENTRP_PRTY_REF AS N_ENTRP_PRTY",
+      "sql_location": "SELECT"
+    }
+  ],
+  "source_sql_changes": [],
+  "final_status": {
+    "sql_generation": "SUCCESS WITH WARNINGS",
+    "deterministic_validation": "WARNING",
+    "ba_review_required": true,
+    "reason": "1 unresolved TODO(s); 2 warning(s)"
+  },
+  "prune_actions": [
+    "Action(alias='ccard', table='c_card', kind='table-projection', detail='Projected only qualified columns used by the query', columns=['ACCS_CTRY_CD', 'ACCS_SEGMT_CD', 'CARD_ACCT_SROGT_ID', 'CARD_BLK_CD', 'CARD_BLK_CD_DESC', 'CARD_SEQ_NUM', 'CARD_SROGT_ID', 'DATA_SRC', 'DEVC_TP_CD', 'DEVC_TP_DESC', 'DOM_ACCT_REF', 'DOM_CARD_REF', 'DOM_PROD_CD', 'DOM_PRTY_REF', 'PROD_SROGT_ID', 'PRTY_SROGT_ID', 'SOURCE_COUNTRY_CODE', 'prty_srogt_id'], changed=True)"
+  ],
+  "errors": []
+}

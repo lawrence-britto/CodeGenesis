@@ -1,0 +1,75 @@
+{
+  "plan_id": "plan-cdb06d8974e7",
+  "profile_id": "profile-de180c3bdfcc",
+  "profile_hash": "f82757c02b4d817bfbe8a4435fd2337dc0d5a433464e4a40c32f0e8f17dd23f1",
+  "rows": 1000,
+  "seed": 172902824,
+  "chunk_size": 1000,
+  "primary_keys": [
+    "ref_number"
+  ],
+  "columns": {
+    "record_status": {
+      "name": "record_status",
+      "strategy": "constant",
+      "reason": "Selected from deterministic profile type 'constant'.",
+      "rule_ids": []
+    },
+    "branch_code": {
+      "name": "branch_code",
+      "strategy": "phone",
+      "reason": "Selected from deterministic profile type 'phone'.",
+      "rule_ids": []
+    },
+    "ref_number": {
+      "name": "ref_number",
+      "strategy": "masked_string",
+      "reason": "Selected from deterministic profile type 'masked'.",
+      "rule_ids": []
+    },
+    "balance_amt": {
+      "name": "balance_amt",
+      "strategy": "bounded_decimal",
+      "reason": "Selected from deterministic profile type 'currency_amount'.",
+      "rule_ids": []
+    },
+    "age": {
+      "name": "age",
+      "strategy": "bounded_numeric",
+      "reason": "Selected from deterministic profile type 'numeric'.",
+      "rule_ids": []
+    },
+    "account_open_date": {
+      "name": "account_open_date",
+      "strategy": "date_range",
+      "reason": "Selected from deterministic profile type 'date'.",
+      "rule_ids": []
+    },
+    "contact_email": {
+      "name": "contact_email",
+      "strategy": "email",
+      "reason": "Selected from deterministic profile type 'email'.",
+      "rule_ids": []
+    },
+    "contact_phone": {
+      "name": "contact_phone",
+      "strategy": "phone",
+      "reason": "Selected from deterministic profile type 'phone'.",
+      "rule_ids": []
+    },
+    "first_name": {
+      "name": "first_name",
+      "strategy": "weighted_category",
+      "reason": "Selected from deterministic profile type 'first_name'.",
+      "rule_ids": []
+    },
+    "seq_no": {
+      "name": "seq_no",
+      "strategy": "bounded_numeric",
+      "reason": "Selected from deterministic profile type 'numeric'.",
+      "rule_ids": []
+    }
+  },
+  "created_at": "2026-09-12T15:55:07.960777+00:00",
+  "plan_version": "1.0"
+}
