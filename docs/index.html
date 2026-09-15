@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CodeGenius — Engineering Workbench</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0e16;
+    --bg-hero-glow: radial-gradient(60% 55% at 18% 20%, rgba(63,215,227,0.14), transparent 60%),
+                    radial-gradient(45% 45% at 90% 10%, rgba(63,215,227,0.08), transparent 60%);
+    --panel:#111926;
+    --panel-2:#0d1420;
+    --border: rgba(255,255,255,0.09);
+    --border-strong: rgba(255,255,255,0.18);
+    --text:#f0f4f8;
+    --text-soft:#9aa6b5;
+    --text-dim:#6c7686;
+    --cyan:#3fd7e3;
+    --cyan-dim: rgba(63,215,227,0.14);
+    --cyan-ink:#05171b;
+    --green:#34d399;
+    --amber:#e9b857;
+    --red:#e2574c;
+    --diff-add-bg: rgba(52,211,153,0.10);
+    --diff-rem-bg: rgba(226,87,76,0.12);
+    --sans:"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --mono: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  :focus-visible{outline:2px solid var(--cyan); outline-offset:3px;}
+  ::selection{ background:var(--cyan); color:var(--cyan-ink); }
+
+  .wrap{max-width:1140px; margin:0 auto; padding:0 28px;}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(10,14,22,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{
+    max-width:1140px; margin:0 auto; padding:16px 28px;
+    display:flex; align-items:center; justify-content:space-between; gap:20px;
+  }
+  .brand{display:flex; align-items:center; gap:10px;}
+  .brand-mark{
+    width:34px; height:34px; border:1.5px solid var(--cyan); border-radius:8px;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--cyan); font-weight:800; font-size:0.85rem; letter-spacing:0.02em;
+  }
+  .brand-name{font-weight:700; font-size:1.02rem;}
+  nav.links{display:flex; gap:28px; font-size:0.9rem;}
+  nav.links a{text-decoration:none; color:var(--text-soft); border-bottom:1px solid transparent; padding-bottom:3px; transition:color .15s, border-color .15s;}
+  nav.links a:hover, nav.links a.active{color:var(--text); border-color:var(--cyan);}
+  .status-pill{
+    display:flex; align-items:center; gap:8px; font-size:0.82rem; color:var(--text-soft);
+    border:1px solid var(--border); border-radius:100px; padding:6px 14px;
+  }
+  .dot{width:7px; height:7px; border-radius:50%; background:var(--green); box-shadow:0 0 6px rgba(52,211,153,0.7);}
+  @media (max-width:860px){ nav.links{display:none;} }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:90px 0 76px;
+    background-image:var(--bg-hero-glow);
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.25fr 0.95fr; gap:52px; align-items:start;
+  }
+  @media (max-width:900px){ .hero-grid{grid-template-columns:1fr; gap:40px;} }
+
+  .kicker{
+    font-size:0.78rem; letter-spacing:0.08em; color:var(--cyan); font-weight:600; margin:0 0 18px;
+    text-transform:uppercase;
+  }
+  .hero h1{
+    font-weight:800; font-size:clamp(2.3rem, 4.4vw, 3.5rem); line-height:1.08;
+    margin:0 0 22px; letter-spacing:-0.015em;
+  }
+  .hero h1 span{color:var(--cyan);}
+  .hero p.lede{
+    font-size:1.08rem; color:var(--text-soft); max-width:50ch; margin:0 0 34px;
+  }
+  .hero-cta{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:52px;}
+  .btn{
+    font-family:var(--sans); font-weight:700; font-size:0.92rem; border-radius:8px;
+    padding:12px 22px; border:1px solid transparent; cursor:pointer; text-decoration:none; display:inline-block;
+  }
+  .btn-primary{background:var(--cyan); color:var(--cyan-ink);}
+  .btn-ghost{background:transparent; border-color:var(--border-strong); color:var(--text);}
+
+  .hero-count{display:flex; align-items:baseline; gap:14px;}
+  .hero-count .num{font-weight:800; font-size:2.6rem; color:var(--text);}
+  .hero-count .lbl{color:var(--text-soft); font-size:0.95rem;}
+
+  /* Right panel: workbench + system status card, styled after the app sidebar */
+  .side-card{
+    background:var(--panel-2); border:1px solid var(--border); border-radius:14px; padding:22px;
+  }
+  .side-card h3{
+    font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-dim);
+    margin:0 0 14px; font-weight:700;
+  }
+  .wb-list{list-style:none; margin:0 0 20px; padding:0; display:flex; flex-direction:column; gap:2px;}
+  .wb-list li{
+    display:flex; align-items:center; gap:12px; padding:10px 12px; border-radius:8px; font-size:0.94rem; font-weight:600;
+  }
+  .wb-list li:first-child{background:var(--cyan-dim); color:var(--cyan);}
+  .wb-list li:not(:first-child){color:var(--text-soft);}
+  .wb-icon{width:16px; text-align:center; font-size:0.9rem;}
+  .side-rule{border:none; border-top:1px solid var(--border); margin:16px 0;}
+  .sys-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+  .sys-list li{display:flex; justify-content:space-between; align-items:center; font-size:0.88rem; color:var(--text-soft);}
+  .sys-list .ok{color:var(--green); font-weight:600; display:flex; align-items:center; gap:6px;}
+
+  /* ---------- PROBLEM ---------- */
+  .problem-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:8px;
+  }
+  @media (max-width:860px){ .problem-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:520px){ .problem-grid{grid-template-columns:1fr;} }
+  .problem-cell{
+    background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:22px 20px;
+  }
+  .problem-cell h3{font-size:1rem; font-weight:700; margin:0 0 10px; color:var(--cyan);}
+  .problem-cell p{color:var(--text-soft); font-size:0.92rem; margin:0;}
+
+  /* ---------- SECTION SCAFFOLDING ---------- */
+  section{padding:66px 0;}
+  .rule{border:none; border-top:1px solid var(--border); margin:0;}
+  .section-head{max-width:62ch; margin-bottom:36px;}
+  h2{font-weight:800; font-size:clamp(1.6rem, 2.8vw, 2.15rem); margin:0 0 12px; letter-spacing:-0.01em;}
+  .section-head p{color:var(--text-soft); font-size:1rem; margin:0;}
+
+  /* ---------- METRICS / OVERVIEW ---------- */
+  .stat-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:14px;}
+  @media (max-width:860px){ .stat-grid{grid-template-columns:repeat(2,1fr);} }
+  .stat-card{
+    background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:20px 20px 18px;
+  }
+  .stat-card .stat-label{color:var(--text-soft); font-size:0.85rem; margin-bottom:10px;}
+  .stat-card .stat-num{font-weight:800; font-size:2rem; color:var(--text);}
+
+  .metrics-lower{display:grid; grid-template-columns:1.4fr 1fr; gap:14px;}
+  @media (max-width:860px){ .metrics-lower{grid-template-columns:1fr;} }
+  .chart-card, .activity-card{
+    background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:22px;
+  }
+  .chart-card h4, .activity-card h4{margin:0 0 18px; font-size:0.98rem; font-weight:700;}
+  .bars{display:flex; align-items:flex-end; gap:14px; height:140px; padding:0 4px;}
+  .bar{flex:1; background:linear-gradient(180deg, rgba(63,215,227,0.85), rgba(63,215,227,0.25)); border-radius:4px 4px 0 0;}
+  .bar-labels{display:flex; gap:14px; margin-top:10px; padding:0 4px;}
+  .bar-labels span{flex:1; text-align:center; font-size:0.72rem; color:var(--text-dim);}
+
+  .activity-item{display:flex; gap:10px; padding:9px 0; border-bottom:1px solid var(--border);}
+  .activity-item:last-child{border-bottom:none;}
+  .adot{width:7px; height:7px; border-radius:50%; background:var(--green); margin-top:6px; flex:0 0 auto;}
+  .activity-item strong{display:block; font-size:0.9rem; font-weight:600;}
+  .activity-item span{display:block; font-size:0.78rem; color:var(--text-dim); margin-top:2px;}
+
+  /* ---------- WORKBENCH PANELS ---------- */
+  .wb-panels{display:flex; flex-direction:column; gap:16px;}
+  .wb-panel{
+    background:var(--panel); border:1px solid var(--border); border-radius:14px; overflow:hidden;
+  }
+  .wb-panel-head{
+    width:100%; text-align:left; background:none; border:none; cursor:pointer; color:var(--text);
+    padding:22px 24px; display:flex; align-items:center; gap:18px; font-family:var(--sans);
+  }
+  .wb-num{
+    width:38px; height:38px; flex:0 0 auto; border-radius:9px; border:1px solid var(--border-strong);
+    display:flex; align-items:center; justify-content:center; font-weight:700; color:var(--cyan); font-size:0.95rem;
+  }
+  .wb-head-text{flex:1;}
+  .wb-head-text .tag{font-size:0.72rem; text-transform:uppercase; letter-spacing:0.07em; color:var(--text-dim); font-weight:700; margin-bottom:4px;}
+  .wb-head-text strong{display:block; font-size:1.12rem; font-weight:700;}
+  .wb-head-text span.sub{display:block; font-size:0.9rem; color:var(--text-soft); margin-top:4px;}
+  .chev{width:20px; height:20px; position:relative; flex:0 0 auto;}
+  .chev::before,.chev::after{content:""; position:absolute; background:var(--text-soft); border-radius:1px;}
+  .chev::before{width:12px; height:2px; top:9px; left:4px;}
+  .chev::after{width:2px; height:12px; top:4px; left:9px; transition:transform .2s ease;}
+  .wb-panel.open .chev::after{transform:rotate(90deg);}
+
+  .wb-body{max-height:0; overflow:hidden; transition:max-height .35s ease;}
+  .wb-panel.open .wb-body{max-height:900px;}
+  .wb-body-inner{
+    padding:4px 24px 28px 80px; display:grid; grid-template-columns:1fr 1fr; gap:28px;
+  }
+  @media (max-width:760px){ .wb-body-inner{grid-template-columns:1fr; padding-left:24px;} }
+  .wb-body-inner ul{margin:0; padding-left:18px; color:var(--text-soft); font-size:0.93rem;}
+  .wb-body-inner li{margin-bottom:8px;}
+
+  /* mock UI fragments */
+  .mock{background:var(--panel-2); border:1px solid var(--border); border-radius:10px; padding:16px;}
+  .mock-drop{
+    border:1.5px dashed var(--border-strong); border-radius:8px; padding:26px 14px;
+    text-align:center; color:var(--text-soft); font-size:0.85rem;
+  }
+  .mock-drop .arrow{
+    width:32px; height:32px; border:1.5px solid var(--cyan); border-radius:50%; color:var(--cyan);
+    display:flex; align-items:center; justify-content:center; margin:0 auto 10px; font-size:0.9rem;
+  }
+  .mock-badges{display:flex; gap:8px; margin-top:14px; flex-wrap:wrap;}
+  .badge{font-weight:700; font-size:0.76rem; padding:4px 9px; border-radius:5px; border:1px solid currentColor;}
+  .badge.pass{color:var(--green);}
+  .badge.review{color:var(--amber);}
+  .badge.fail{color:var(--red);}
+
+  .status-strip{
+    border-left:3px solid var(--green); background:var(--panel); padding:14px 16px; border-radius:0 8px 8px 0;
+  }
+  .status-strip .st-title{color:var(--cyan); font-weight:700; font-size:0.88rem; letter-spacing:0.02em;}
+  .status-strip .st-sub{color:var(--text-soft); font-size:0.85rem; margin-top:6px;}
+
+  .chip-row{display:flex; gap:10px; margin-bottom:14px;}
+  .chip{background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:10px 14px; flex:1;}
+  .chip .chip-lbl{font-size:0.74rem; color:var(--text-dim); margin-bottom:4px;}
+  .chip .chip-val{font-weight:700; font-size:1.15rem;}
+
+  .risk-banner{
+    border-left:3px solid var(--red); background:rgba(226,87,76,0.08); padding:12px 14px; border-radius:0 8px 8px 0;
+    margin-bottom:14px;
+  }
+  .risk-banner .rb-title{color:var(--red); font-weight:700; font-size:0.82rem;}
+  .risk-banner .rb-sub{color:var(--text-soft); font-size:0.78rem; margin-top:4px;}
+
+  .diff{font-family:var(--mono); font-size:0.78rem; border-radius:8px; overflow:hidden; border:1px solid var(--border);}
+  .diff-line{padding:5px 12px; white-space:pre; color:var(--text-soft);}
+  .diff-line.add{background:var(--diff-add-bg); color:var(--green);}
+  .diff-line.rem{background:var(--diff-rem-bg); color:var(--red);}
+
+  /* ---------- FLOW DIAGRAM ---------- */
+  .flow-controls{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:26px;}
+  .flow-step-btn{
+    width:36px; height:36px; border-radius:50%; border:1px solid var(--border-strong);
+    background:var(--panel); color:var(--text-soft); font-weight:700; font-size:0.85rem; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; font-family:var(--sans); transition:all .15s ease;
+  }
+  .flow-step-btn:hover{border-color:var(--cyan); color:var(--text);}
+  .flow-step-btn.active{background:var(--cyan); color:var(--cyan-ink); border-color:var(--cyan);}
+
+  .flow-lanes{
+    background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:22px 24px 10px;
+  }
+  .lane-row{display:grid; grid-template-columns:150px 1fr; align-items:center; gap:14px; padding:12px 0;}
+  .lane-row + .lane-row{border-top:1px solid var(--border);}
+  .lane-label{font-size:0.84rem; font-weight:700; color:var(--text-soft);}
+  .lane-track{position:relative; display:flex; justify-content:space-between; align-items:center; height:18px;}
+  .lane-track::before{content:""; position:absolute; left:2px; right:2px; top:50%; height:1px; background:var(--border);}
+  .lane-dot{
+    position:relative; width:9px; height:9px; border-radius:50%; background:var(--border-strong);
+    transition:all .18s ease; flex:0 0 auto;
+  }
+  .lane-dot.active{width:13px; height:13px; box-shadow:0 0 0 5px var(--cyan-dim);}
+
+  .flow-detail{
+    margin-top:22px; padding:18px 20px; background:var(--panel-2); border:1px solid var(--border);
+    border-radius:10px;
+  }
+  .flow-detail .fd-actors{color:var(--cyan); font-weight:700; font-size:0.78rem; letter-spacing:0.04em; text-transform:uppercase; margin-bottom:8px;}
+  .flow-detail .fd-text{font-size:1rem; color:var(--text);}
+
+  /* ---------- ARCHITECTURE DIAGRAM ---------- */
+  .arch-diagram{
+    background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:22px 18px;
+  }
+  .arch-diagram svg{width:100%; height:auto; display:block;}
+  .arch-box-fill{fill:var(--panel-2);}
+  .arch-box-stroke{stroke:var(--border-strong);}
+  .arch-box-fill-accent{fill:rgba(63,215,227,0.08);}
+  .arch-box-stroke-accent{stroke:var(--cyan);}
+  .arch-box-fill-human{fill:rgba(52,211,153,0.08);}
+  .arch-box-stroke-human{stroke:var(--green);}
+  .arch-title{fill:var(--text); font-family:var(--sans); font-weight:700; font-size:13px;}
+  .arch-title-accent{fill:var(--cyan);}
+  .arch-title-human{fill:var(--green);}
+  .arch-sub{fill:var(--text-soft); font-family:var(--sans); font-size:10.5px;}
+  .arch-kicker{fill:var(--cyan); font-family:var(--sans); font-weight:700; font-size:11px; letter-spacing:0.06em;}
+  .arch-line{stroke:var(--border-strong); stroke-width:1.5; fill:none;}
+
+  /* ---------- TRUST TABLE ---------- */
+  .ai-highlight{
+    background:linear-gradient(160deg, rgba(63,215,227,0.10), rgba(63,215,227,0.02));
+    border:1px solid rgba(63,215,227,0.35); border-radius:14px; padding:24px 26px; margin-bottom:26px;
+  }
+  .ai-highlight-head{display:flex; align-items:center; gap:12px; margin-bottom:16px;}
+  .ai-highlight-icon{
+    width:32px; height:32px; border-radius:50%; border:1.5px solid var(--cyan); color:var(--cyan);
+    display:flex; align-items:center; justify-content:center; font-size:1rem; flex:0 0 auto;
+  }
+  .ai-highlight-head h3{margin:0; font-size:1.05rem; font-weight:700; color:var(--text);}
+  .ai-highlight-grid{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:14px 24px;
+  }
+  @media (max-width:700px){ .ai-highlight-grid{grid-template-columns:1fr;} }
+  .ai-highlight-grid div{color:var(--text-soft); font-size:0.92rem; display:flex; gap:10px; align-items:baseline;}
+  .ah-num{color:var(--cyan); font-weight:800; font-size:0.8rem; flex:0 0 auto;}
+
+  .trust-table{}
+  .trow{border-bottom:1px solid var(--border);}
+  .trow summary{
+    list-style:none; cursor:pointer; padding:18px 4px;
+    display:grid; grid-template-columns:1.1fr 1.1fr 0.9fr 20px; gap:16px; align-items:center;
+  }
+  .trow summary::-webkit-details-marker{display:none;}
+  @media (max-width:760px){ .trow summary{grid-template-columns:1fr; gap:4px;} }
+  .t-topic{font-weight:600;}
+  .t-owner, .t-ai{color:var(--text-soft); font-size:0.93rem;}
+  .t-plus{font-size:1.25rem; color:var(--cyan); text-align:right;}
+  .t-plus::after{content:"+";}
+  .trow[open] .t-plus::after{content:"–";}
+  .trow-detail{padding:0 4px 20px; color:var(--text-soft); font-size:0.92rem; max-width:64ch;}
+  .head-row{
+    display:grid; grid-template-columns:1.1fr 1.1fr 0.9fr 20px; gap:16px;
+    padding:0 4px 12px; font-size:0.74rem; color:var(--text-dim); font-weight:700; text-transform:uppercase; letter-spacing:0.05em;
+    border-bottom:1px solid var(--border);
+  }
+  @media (max-width:760px){ .head-row{display:none;} }
+
+  /* ---------- GUARDRAILS ---------- */
+  .guard-list{border-top:1px solid var(--border-strong);}
+  .guard-item{display:flex; gap:16px; padding:18px 4px; border-bottom:1px solid var(--border);}
+  .guard-mark{
+    flex:0 0 auto; width:24px; height:24px; border:1.5px solid var(--cyan); color:var(--cyan);
+    border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700;
+  }
+  .guard-item p{margin:0; color:var(--text-soft); font-size:0.95rem;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--panel-2); border-top:1px solid var(--border); padding:44px 0 30px;}
+  footer .wrap{display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap;}
+  footer .foot-brand{display:flex; align-items:center; gap:10px; font-weight:700; font-size:1.02rem;}
+  footer p{color:var(--text-dim); font-size:0.86rem; max-width:44ch; margin:10px 0 0;}
+  footer .foot-note{font-size:0.8rem; color:var(--text-dim); text-align:right;}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="brand-mark">CG</div>
+      <div class="brand-name">CodeGenius</div>
+    </div>
+    <nav class="links">
+      <a href="#problem">The problem</a>
+      <a href="#workbenches">Workbenches</a>
+      <a href="#flow">How it flows</a>
+      <a href="#trust">Who decides</a>
+      <a href="#guardrails">Guardrails</a>
+    </nav>
+    <div class="status-pill"><span class="dot"></span> Engineering Acceleration</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="kicker">CodeGenius / Engineering Workbench</p>
+    <h1>From mapping sheet<br>to <span>reviewed SQL.</span></h1>
+    <p class="lede">A workbench for data engineers. It validates the mapping, drafts the SQL, forges safe test data, and checks the result against production — so people review evidence instead of retyping it.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#workbenches">See how it works</a>
+      <a class="btn btn-ghost" href="#trust">Who decides what</a>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section id="problem">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">Why this exists</p>
+      <h2>Turning a mapping workbook into SQL is slow, and small mistakes travel far</h2>
+      <p>Engineers spend real hours re-reading the same workbook tabs, joins, and rule sheets by hand. CodeGenius doesn't remove that work — it removes the repetitive parts of it.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-cell">
+        <h3>Time</h3>
+        <p>The same workbook tabs, source SQL, joins, and rule references get inspected over and over for every new map group.</p>
+      </div>
+      <div class="problem-cell">
+        <h3>Manual error</h3>
+        <p>Blank identifiers, inconsistent names, wrong joins, and unresolved rules can quietly survive into generated SQL.</p>
+      </div>
+      <div class="problem-cell">
+        <h3>Review effort</h3>
+        <p>Analysts and developers have to reconstruct why an expression or join was written the way it was.</p>
+      </div>
+      <div class="problem-cell">
+        <h3>Test-data friction</h3>
+        <p>Realistic test data is hard to create without either copying sensitive rows or losing the shape of real data.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section id="workbenches">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">How it works</p>
+      <h2>Four workbenches. Each ends in a deterministic result, with an advisory LLM ready to explain it.</h2>
+      <p>Select a workbench to see what it checks and what it hands back — before anything moves to the next stage.</p>
+    </div>
+
+    <div class="wb-panels" id="panels">
+
+      <div class="wb-panel open" data-i="1">
+        <button class="wb-panel-head" aria-expanded="true">
+          <span class="wb-num">1</span>
+          <span class="wb-head-text">
+            <span class="tag">Mapping Validator</span>
+            <strong>Let's simplify your mapping validation journey.</strong>
+            <span class="sub">Validates workbook structure against the approved mapping rulebook before any SQL is written.</span>
+          </span>
+          <span class="chev"></span>
+        </button>
+        <div class="wb-body">
+          <div class="wb-body-inner">
+            <ul>
+              <li>Checks that required fields exist: map group, source object and attribute, target object and attribute.</li>
+              <li>Blank required values are reported as errors, with the exact row number.</li>
+              <li>Stray whitespace, a map group pointing to two targets, or an unrecognized rule reference are flagged for review, not blocked outright.</li>
+            </ul>
+            <div class="mock">
+              <div class="mock-drop">
+                <div class="arrow">↓</div>
+                Drop workbook here or browse<br><span style="opacity:.7">.xlsx · Source to Target sheet</span>
+              </div>
+              <div class="mock-badges">
+                <span class="badge pass">PASS</span>
+                <span class="badge review">REVIEW</span>
+                <span class="badge fail">FAIL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="wb-panel" data-i="2">
+        <button class="wb-panel-head" aria-expanded="false">
+          <span class="wb-num">2</span>
+          <span class="wb-head-text">
+            <span class="tag">SQL Generator</span>
+            <strong>From validated mappings to ready-to-use SQL.</strong>
+            <span class="sub">Generates reviewable SQL from an uploaded source-to-target mapping sheet.</span>
+          </span>
+          <span class="chev"></span>
+        </button>
+        <div class="wb-body">
+          <div class="wb-body-inner">
+            <ul>
+              <li>Turns each mapped column into a proper SELECT expression, applying the workbook's data-processing rules where one is defined.</li>
+              <li>Where the workbook doesn't say enough — a missing join, an unknown rule — it writes a visible <strong>TODO</strong> rather than guessing.</li>
+              <li>An automatic cleanup pass follows: fixes mechanical defects, resolves parameters, checks every join, prunes unused columns, and audits the final file.</li>
+            </ul>
+            <div class="mock">
+              <div class="status-strip">
+                <div class="st-title">SQL GENERATION STATUS — SUCCESS</div>
+                <div class="st-sub">PASSED deterministic validation</div>
+              </div>
+              <div class="mock-badges">
+                <span class="badge pass">PASSED</span>
+                <span class="badge review">READY FOR REVIEW</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="wb-panel" data-i="3">
+        <button class="wb-panel-head" aria-expanded="false">
+          <span class="wb-num">3</span>
+          <span class="wb-head-text">
+            <span class="tag">Test Data Forge</span>
+            <strong>Transform your sample into structured synthetic CSV data.</strong>
+            <span class="sub">Provide a representative sample and generate scalable test data, without exposing production rows.</span>
+          </span>
+          <span class="chev"></span>
+        </button>
+        <div class="wb-body">
+          <div class="wb-body-inner">
+            <ul>
+              <li>Studies one small, already-approved sample CSV: types, ranges, categories, null rates, and how unique each ID column is.</li>
+              <li>Generates new synthetic rows with the same shape — not copies of the sample.</li>
+              <li>Checks that chosen ID columns can stay unique at the requested scale before generating anything. Rule-based throughout — no model decides a value.</li>
+            </ul>
+            <div class="mock">
+              <div class="chip-row">
+                <div class="chip"><div class="chip-lbl">Sample rows</div><div class="chip-val">30</div></div>
+                <div class="chip"><div class="chip-lbl">Columns profiled</div><div class="chip-val">10</div></div>
+              </div>
+              <div class="mock-drop" style="padding:14px; text-align:left;">
+                <span style="opacity:.85">Primary keys: 3 selected · Records: 1,000 · Chunk: 100,000 rows</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="wb-panel" data-i="4">
+        <button class="wb-panel-head" aria-expanded="false">
+          <span class="wb-num">4</span>
+          <span class="wb-head-text">
+            <span class="tag">Prod Parity</span>
+            <strong>The one-stop comparison engine.</strong>
+            <span class="sub">Compares, validates, and explains code or configuration changes before release.</span>
+          </span>
+          <span class="chev"></span>
+        </button>
+        <div class="wb-body">
+          <div class="wb-body-inner">
+            <ul>
+              <li>Shows exactly which tables, columns, and joins were added, removed, or changed between the two versions.</li>
+              <li>Separately confirms both files are syntactically valid before treating any difference as meaningful.</li>
+              <li>A companion checker, Universal Comparison, applies the same idea to Python, shell, and YAML changes. It never deploys anything — it produces evidence for the reviewer.</li>
+            </ul>
+            <div class="mock">
+              <div class="risk-banner">
+                <div class="rb-title">HIGH RISK — REVIEW CHANGES</div>
+                <div class="rb-sub">Filtering, JOIN behavior, or source tables changed. Manual review recommended.</div>
+              </div>
+              <div class="diff">
+                <div class="diff-line">  SELECT</div>
+                <div class="diff-line rem">-  CPI.PRTY_SROGT_ID AS s_prty,</div>
+                <div class="diff-line add">+  PRTY.PRTY_SROGT_ID AS s_prty,</div>
+                <div class="diff-line rem">-  CPI.PRTY_CD AS id_type,</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section id="architecture">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">Architecture</p>
+      <h2>How the pieces fit together</h2>
+      <p>One request, one deterministic path. The AI layer sits off to the side — consulted for advice, never in the critical path of a decision.</p>
+    </div>
+    <div class="arch-diagram">
+      <svg viewBox="0 0 820 1100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Architecture diagram: Browser UI calls the FastAPI application layer, which fans out to the Mapping Validator, SQL Generator, and Test Data Forge. These feed the Deterministic Engine, which produces Prod Parity and Outputs. Both feed the Grounded AI Layer, which fans out to Approved Knowledge, ChromaDB with BGE-M3, and Ollama running Qwen. Only Ollama/Qwen feeds the AI Explanation step, which feeds Human Review.">
+        <defs>
+          <marker id="archArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="var(--border-strong)"></path>
+          </marker>
+        </defs>
+
+        <text x="410" y="20" text-anchor="middle" class="arch-kicker">ACCELERATEX — ENGINEERING PRODUCTIVITY PLATFORM</text>
+
+        <!-- connectors -->
+        <line class="arch-line" x1="410" y1="96"  x2="410" y2="138" marker-end="url(#archArrow)"></line>
+        <line class="arch-line" x1="410" y1="196" x2="150" y2="238" marker-end="url(#archArrow)"></line>
+        <line class="arch-line" x1="410" y1="196" x2="410" y2="238" marker-end="url(#archArrow)"></line>
+        <line class="arch-line" x1="410" y1="196" x2="670" y2="238" marker-end="url(#archArrow)"></line>
+        <line class="arch-line" x1="150" y1="310" x2="410" y2="348" marker-end="url(#archArrow)"></line>
+        <line class="arch-line" x1="410" y1="310" x2="410" y2="348" marker-end="url(#archArrow)"></line>
+        <line class="arch-line" x1="670" y1="310" x2="410" y2="348" marker-end="url(#archArrow)"></line>
+        <line class="arch-line" x1="410" y1="470" x2="410" y2="518" marker-end="url(#archArrow)"></line>
+        <line class="arch-line" x1="410" y1="598" x2="410" y2="658" marker-end="url(#archArrow)"></line>
+        <line class="arch-line" x1="410" y1="738" x2="150" y2="788" marker-end="url(#archArrow)"></line>
+        <line class="arch-line" x1="410" y1="738" x2="410" y2="788" marker-end="url(#archArrow)"></line>
+        <line class="arch-line" x1="410" y1="738" x2="670" y2="788" marker-end="url(#archArrow)"></line>
+        <line class="arch-line" x1="670" y1="858" x2="670" y2="898" marker-end="url(#archArrow)"></line>
+        <line class="arch-line" x1="670" y1="968" x2="670" y2="998" marker-end="url(#archArrow)"></line>
+
+        <!-- Browser / UI -->
+        <rect x="290" y="40" width="240" height="56" rx="10" class="arch-box-fill arch-box-stroke"></rect>
+        <text x="410" y="63" text-anchor="middle" class="arch-title">Browser / UI</text>
+        <text x="410" y="79" text-anchor="middle" class="arch-sub">Engineering Workbench</text>
+
+        <!-- FastAPI / API -->
+        <rect x="290" y="140" width="240" height="56" rx="10" class="arch-box-fill arch-box-stroke"></rect>
+        <text x="410" y="163" text-anchor="middle" class="arch-title">FastAPI / API</text>
+        <text x="410" y="179" text-anchor="middle" class="arch-sub">Application Layer</text>
+
+        <!-- Mapping Validator / SQL Generator / Test Data Forge -->
+        <rect x="40" y="238" width="220" height="70" rx="10" class="arch-box-fill arch-box-stroke"></rect>
+        <text x="150" y="278" text-anchor="middle" class="arch-title">Mapping Validator</text>
+
+        <rect x="300" y="238" width="220" height="70" rx="10" class="arch-box-fill arch-box-stroke"></rect>
+        <text x="410" y="278" text-anchor="middle" class="arch-title">SQL Generator</text>
+
+        <rect x="560" y="238" width="220" height="70" rx="10" class="arch-box-fill arch-box-stroke"></rect>
+        <text x="670" y="278" text-anchor="middle" class="arch-title">Test Data Forge</text>
+
+        <!-- Deterministic Engine -->
+        <rect x="130" y="348" width="560" height="122" rx="12" class="arch-box-fill-accent arch-box-stroke-accent"></rect>
+        <text x="410" y="378" text-anchor="middle" class="arch-title arch-title-accent">DETERMINISTIC ENGINE</text>
+        <text x="410" y="400" text-anchor="middle" class="arch-sub">Validation · SQL Fixes · Join Checks</text>
+        <text x="410" y="416" text-anchor="middle" class="arch-sub">Rule Processing · Audit &amp; Reporting</text>
+
+        <!-- Prod Parity -->
+        <rect x="270" y="518" width="280" height="80" rx="12" class="arch-box-fill arch-box-stroke"></rect>
+        <text x="410" y="552" text-anchor="middle" class="arch-title">Prod Parity</text>
+        <text x="410" y="570" text-anchor="middle" class="arch-sub">Dev vs Prod code</text>
+
+        <!-- Grounded AI Layer -->
+        <rect x="270" y="658" width="280" height="80" rx="12" class="arch-box-fill-accent arch-box-stroke-accent"></rect>
+        <text x="410" y="692" text-anchor="middle" class="arch-title arch-title-accent">GROUNDED AI LAYER</text>
+        <text x="410" y="710" text-anchor="middle" class="arch-sub">RAG Advisory</text>
+
+        <!-- Approved Knowledge / ChromaDB / Ollama-Qwen -->
+        <rect x="50" y="788" width="200" height="70" rx="10" class="arch-box-fill-accent arch-box-stroke-accent"></rect>
+        <text x="150" y="828" text-anchor="middle" class="arch-title arch-title-accent">Approved Knowledge</text>
+
+        <rect x="310" y="788" width="200" height="70" rx="10" class="arch-box-fill-accent arch-box-stroke-accent"></rect>
+        <text x="410" y="822" text-anchor="middle" class="arch-title arch-title-accent">ChromaDB</text>
+        <text x="410" y="838" text-anchor="middle" class="arch-sub">+ BGE-M3</text>
+
+        <rect x="570" y="788" width="200" height="70" rx="10" class="arch-box-fill-accent arch-box-stroke-accent"></rect>
+        <text x="670" y="822" text-anchor="middle" class="arch-title arch-title-accent">Ollama</text>
+        <text x="670" y="838" text-anchor="middle" class="arch-sub">Qwen</text>
+
+        <!-- AI Explanation -->
+        <rect x="540" y="898" width="260" height="70" rx="10" class="arch-box-fill-accent arch-box-stroke-accent"></rect>
+        <text x="670" y="928" text-anchor="middle" class="arch-title arch-title-accent">AI Explanation</text>
+        <text x="670" y="944" text-anchor="middle" class="arch-sub">Context &amp; Guidance</text>
+
+        <!-- Human Review -->
+        <rect x="540" y="998" width="260" height="80" rx="10" class="arch-box-fill-human arch-box-stroke-human"></rect>
+        <text x="670" y="1032" text-anchor="middle" class="arch-title arch-title-human">Human Review</text>
+        <text x="670" y="1048" text-anchor="middle" class="arch-sub">BA / Developer / Release Process</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section id="flow">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">End to end</p>
+      <h2>How this plays out on a real change</h2>
+      <p>Four roles, one trail. Select a step to see who acts and what moves to whom.</p>
+    </div>
+
+    <div class="flow-controls" id="flowControls"></div>
+
+    <div class="flow-lanes" id="flowLanes"></div>
+
+    <div class="flow-detail" id="flowDetail"></div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section id="trust">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">Who decides what</p>
+      <h2>The checks are deterministic and AI advises based on the rules.</h2>
+      <p>Every pass, fail, and review status is calculated by ordinary code before a model ever sees it. When a check fails, a local model (Qwen, via Ollama) is consulted for advice — it suggests likely causes and next steps based on the deterministic finding and the bank's approved rulebook, and never rewrites the report. Select a row for detail.</p>
+    </div>
+
+    <div class="ai-highlight">
+      <div class="ai-highlight-head">
+        <span class="ai-highlight-icon">◈</span>
+        <h3>Where Qwen actually adds value</h3>
+      </div>
+      <div class="ai-highlight-grid">
+        <div><span class="ah-num">01</span>Consulted on failure — not on every check, only when something needs explaining.</div>
+        <div><span class="ah-num">02</span>Grounded in the bank's approved rulebook, not general knowledge.</div>
+        <div><span class="ah-num">03</span>Suggests. Never decides — it cannot alter a status or a report.</div>
+      </div>
+    </div>
+
+    <div class="trust-table">
+      <div class="head-row">
+        <span>What's being decided</span><span>Who decides it</span><span>What the AI does</span><span></span>
+      </div>
+
+      <details class="trow" open>
+        <summary><span class="t-topic">Is the workbook usable</span><span class="t-owner">Mapping Validator</span><span class="t-ai">Advises on failure only</span><span class="t-plus"></span></summary>
+        <div class="trow-detail">Required-field checks, blank-value detection, and duplicate-target checks are plain code. Qwen is consulted only when validation fails — it suggests a likely fix based on the deterministic finding, and never changes the PASS/FAIL result.</div>
+      </details>
+      <details class="trow">
+        <summary><span class="t-topic">What the SQL contains</span><span class="t-owner">SQL Generator &amp; fixers</span><span class="t-ai">Advises on failure only</span><span class="t-plus"></span></summary>
+        <div class="trow-detail">Expressions, joins, and TODOs come from the workbook and configuration. Qwen is consulted only when something fails — it suggests context for a warning or TODO, but cannot write, edit, or approve SQL.</div>
+      </details>
+      <details class="trow">
+        <summary><span class="t-topic">Shape of test data</span><span class="t-owner">Sample profiler</span><span class="t-ai">Advises on failure only</span><span class="t-plus"></span></summary>
+        <div class="trow-detail">Types, ranges, and category weights come from statistical analysis of the sample file. Qwen is consulted only if the quality check fails — it suggests what to inspect, without touching the generated data.</div>
+      </details>
+      <details class="trow">
+        <summary><span class="t-topic">Whether two files differ</span><span class="t-owner">Diff &amp; structural comparator</span><span class="t-ai">Advises on failure only</span><span class="t-plus"></span></summary>
+        <div class="trow-detail">A text diff and a parsed structural comparison produce the same result for the same two files, every time. Qwen is consulted only for high-risk findings — it suggests what to review, and never edits the diff.</div>
+      </details>
+      <details class="trow">
+        <summary><span class="t-topic">Explaining a finding</span><span class="t-owner">Approved rulebook</span><span class="t-ai">Suggests, based on the rule</span><span class="t-plus"></span></summary>
+        <div class="trow-detail">When a check fails, Qwen receives only the deterministic finding and matching approved rule text — never raw production data — and returns a short, reviewable suggestion. It cannot rewrite the report or change the status.</div>
+      </details>
+      <details class="trow">
+        <summary><span class="t-topic">Whether to deploy</span><span class="t-owner">BA, developer, release owner</span><span class="t-ai">Never</span><span class="t-plus"></span></summary>
+        <div class="trow-detail">No status produced by CodeGenius is a release approval. That decision stays with the bank's existing process.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section id="guardrails">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">Guardrails</p>
+      <h2>What keeps this trustworthyt</h2>
+    </div>
+    <div class="guard-list">
+      <div class="guard-item"><span class="guard-mark">✓</span><p>An AI explanation is never treated as proof that SQL is correct — the deterministic checks are the evidence.</p></div>
+      <div class="guard-item"><span class="guard-mark">✓</span><p>Production data stays out of AI prompts; only findings and metadata are sent for explanation.</p></div>
+      <div class="guard-item"><span class="guard-mark">✓</span><p>Generated SQL, TODOs, warnings, and join changes are reviewed by a person before release, every time.</p></div>
+      <div class="guard-item"><span class="guard-mark">✓</span><p>The approved-knowledge index is rebuilt whenever the bank's rulebooks change, so explanations stay current.</p></div>
+      <div class="guard-item"><span class="guard-mark">✓</span><p>Uploads, generated output, and logs are treated as local, environment-specific data, not shared defaults.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="foot-brand"><div class="brand-mark" style="width:28px;height:28px;font-size:0.7rem;">AX</div>CodeGenius</div>
+      <p>An engineering workbench for bank data engineers — built to speed up the mechanical parts of mapping-to-SQL work, not to own the release decision.</p>
+    </div>
+    <div class="foot-note">Deterministic checks. Advisory explanations. Human approval.</div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.wb-panel-head').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const panel = btn.closest('.wb-panel');
+      const isOpen = panel.classList.contains('open');
+      document.querySelectorAll('.wb-panel').forEach(p => {
+        p.classList.remove('open');
+        p.querySelector('.wb-panel-head').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen){
+        panel.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  const trows = document.querySelectorAll('.trow');
+  trows.forEach(row => {
+    row.addEventListener('toggle', () => {
+      if (row.open){ trows.forEach(o => { if (o !== row) o.open = false; }); }
+    });
+  });
+
+  const sections = ['problem','workbenches','flow','trust','guardrails'].map(id => document.getElementById(id));
+  const navLinks = document.querySelectorAll('nav.links a');
+  const setActive = () => {
+    let current = sections[0];
+    sections.forEach(sec => { if (sec && window.scrollY >= sec.offsetTop - 120) current = sec; });
+    navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current.id));
+  };
+  document.addEventListener('scroll', setActive, { passive:true });
+  setActive();
+
+  // ---------- Bank-usage flow diagram ----------
+  const LANES = [
+    { id:'engineer', label:'Data Engineer', color:'#3fd7e3' },
+    { id:'accelx',   label:'CodeGenius',   color:'#f0f4f8' },
+    { id:'reviewer', label:'BA / Reviewer', color:'#e9b857' },
+    { id:'prod',     label:'Production controls', color:'#34d399' }
+  ];
+  const FLOW_STEPS = [
+    { n:1,  from:'engineer', to:'accelx',  text:'Upload the mapping workbook for the target you\u2019re building.' },
+    { n:2,  from:'accelx',   to:'accelx',  text:'CodeGenius runs deterministic mapping validation \u2014 pass, review, or fail.' },
+    { n:3,  from:'reviewer', to:'accelx',  text:'If a warning needs judgement, the reviewer confirms the finding.' },
+    { n:4,  from:'engineer', to:'accelx',  text:'Engineer selects the map group and requests SQL generation.' },
+    { n:5,  from:'accelx',   to:'accelx',  text:'Fix, resolve, validate, prune, and audit \u2014 the deterministic pipeline runs end to end.' },
+    { n:6,  from:'accelx',   to:'engineer',text:'Engineer gets back SQL, TODOs, a report, and full traceability.' },
+    { n:7,  from:'engineer', to:'accelx',  text:'Engineer generates synthetic test data from an approved sample.' },
+    { n:8,  from:'engineer', to:'accelx',  text:'Engineer compares the generated SQL against what\u2019s live in production.' },
+    { n:9,  from:'accelx',   to:'reviewer',text:'CodeGenius explains findings in plain language, using approved rules only.' },
+    { n:10, from:'reviewer', to:'prod',    text:'Reviewer approves through the bank\u2019s existing release process.' }
+  ];
+  const laneById = Object.fromEntries(LANES.map(l => [l.id, l]));
+
+  const controlsEl = document.getElementById('flowControls');
+  const lanesEl = document.getElementById('flowLanes');
+  const detailEl = document.getElementById('flowDetail');
+
+  if (controlsEl && lanesEl && detailEl){
+    controlsEl.innerHTML = FLOW_STEPS.map(s =>
+      `<button class="flow-step-btn" data-n="${s.n}" aria-label="Step ${s.n}">${s.n}</button>`
+    ).join('');
+
+    lanesEl.innerHTML = LANES.map(lane => `
+      <div class="lane-row" data-lane="${lane.id}">
+        <span class="lane-label">${lane.label}</span>
+        <div class="lane-track">
+          ${FLOW_STEPS.map(s => `<span class="lane-dot" data-lane="${lane.id}" data-n="${s.n}"></span>`).join('')}
+        </div>
+      </div>`).join('');
+
+    const renderStep = (n) => {
+      const step = FLOW_STEPS.find(s => s.n === n);
+      controlsEl.querySelectorAll('.flow-step-btn').forEach(b =>
+        b.classList.toggle('active', Number(b.dataset.n) === n));
+
+      lanesEl.querySelectorAll('.lane-dot').forEach(dot => {
+        const dotN = Number(dot.dataset.n);
+        const dotLane = dot.dataset.lane;
+        const isOn = dotN === n && (dotLane === step.from || dotLane === step.to);
+        dot.classList.toggle('active', isOn);
+        dot.style.background = isOn ? laneById[dotLane].color : '';
+      });
+
+      const fromLabel = laneById[step.from].label;
+      const toLabel = laneById[step.to].label;
+      detailEl.innerHTML = `
+        <div class="fd-actors">Step ${step.n} of ${FLOW_STEPS.length} \u2014 ${fromLabel}${step.from !== step.to ? ' \u2192 ' + toLabel : ' (internal)'}</div>
+        <div class="fd-text">${step.text}</div>`;
+    };
+
+    controlsEl.addEventListener('click', (e) => {
+      const btn = e.target.closest('.flow-step-btn');
+      if (btn) renderStep(Number(btn.dataset.n));
+    });
+
+    renderStep(1);
+  }
+</script>
+
+</body>
+</html>
