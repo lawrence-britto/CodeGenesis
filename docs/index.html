@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CodeGenius — Engineering Workbench</title>
+<title>CodeGenesis — Engineering Workbench</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -363,7 +363,7 @@
   <div class="nav-inner">
     <div class="brand">
       <div class="brand-mark">CG</div>
-      <div class="brand-name">CodeGenius</div>
+      <div class="brand-name">CodeGenesis</div>
     </div>
     <nav class="links">
       <a href="#problem">The problem</a>
@@ -378,7 +378,7 @@
 
 <section class="hero">
   <div class="wrap">
-    <p class="kicker">CodeGenius / Engineering Workbench</p>
+    <p class="kicker">CodeGenesis / Engineering Workbench</p>
     <h1>From mapping sheet<br>to <span>reviewed SQL.</span></h1>
     <p class="lede">More than an AI wrapper, it is a structured engineering platform that combines deterministic automation, controlled validation, domain knowledge, and grounded AI assistance to fit practical enterprise workflows — helping engineers move from manual effort to evidence-driven engineering.</p>
     <div class="hero-cta">
@@ -395,7 +395,7 @@
     <div class="section-head">
       <p class="kicker">Why this exists</p>
       <h2>Turning a mapping workbook into SQL is slow, and small mistakes travel far</h2>
-      <p>Engineers spend real hours re-reading the same workbook tabs, joins, and rule sheets by hand. CodeGenius doesn't remove that work — it removes the repetitive parts of it.</p>
+      <p>Engineers spend real hours re-reading the same workbook tabs, joins, and rule sheets by hand. CodeGenesis doesn't remove that work — it removes the repetitive parts of it.</p>
     </div>
     <div class="problem-grid">
       <div class="problem-cell">
@@ -724,7 +724,7 @@
       </details>
       <details class="trow">
         <summary><span class="t-topic">Whether to deploy</span><span class="t-owner">BA, developer, release owner</span><span class="t-ai">Never</span><span class="t-plus"></span></summary>
-        <div class="trow-detail">No status produced by CodeGenius is a release approval. That decision stays with the bank's existing process.</div>
+        <div class="trow-detail">No status produced by CodeGenesis is a release approval. That decision stays with the bank's existing process.</div>
       </details>
     </div>
   </div>
@@ -751,7 +751,7 @@
 <footer>
   <div class="wrap">
     <div>
-      <div class="foot-brand"><div class="brand-mark" style="width:28px;height:28px;font-size:0.7rem;">CG</div>CodeGenius</div>
+      <div class="foot-brand"><div class="brand-mark" style="width:28px;height:28px;font-size:0.7rem;">CG</div>CodeGenesis</div>
       <p>An engineering workbench for bank data engineers — built to speed up the mechanical parts of mapping-to-SQL work, not to own the release decision.</p>
     </div>
     <div class="foot-note">Deterministic checks. Advisory explanations. Human approval.</div>
@@ -794,20 +794,20 @@
   // ---------- Bank-usage flow diagram ----------
   const LANES = [
     { id:'engineer', label:'Data Engineer', color:'#3fd7e3' },
-    { id:'accelx',   label:'CodeGenius',   color:'#f0f4f8' },
+    { id:'accelx',   label:'CodeGenesis',   color:'#f0f4f8' },
     { id:'reviewer', label:'BA / Reviewer', color:'#e9b857' },
     { id:'prod',     label:'Production controls', color:'#34d399' }
   ];
   const FLOW_STEPS = [
     { n:1,  from:'engineer', to:'accelx',  text:'Upload the mapping workbook for the target you\u2019re building.' },
-    { n:2,  from:'accelx',   to:'accelx',  text:'CodeGenius runs deterministic mapping validation \u2014 pass, review, or fail.' },
+    { n:2,  from:'accelx',   to:'accelx',  text:'CodeGenesis runs deterministic mapping validation \u2014 pass, review, or fail.' },
     { n:3,  from:'reviewer', to:'accelx',  text:'If a warning needs judgement, the reviewer confirms the finding.' },
     { n:4,  from:'engineer', to:'accelx',  text:'Engineer selects the map group and requests SQL generation.' },
     { n:5,  from:'accelx',   to:'accelx',  text:'Fix, resolve, validate, prune, and audit \u2014 the deterministic pipeline runs end to end.' },
     { n:6,  from:'accelx',   to:'engineer',text:'Engineer gets back SQL, TODOs, a report, and full traceability.' },
     { n:7,  from:'engineer', to:'accelx',  text:'Engineer generates synthetic test data from an approved sample.' },
     { n:8,  from:'engineer', to:'accelx',  text:'Engineer compares the generated SQL against what\u2019s live in production.' },
-    { n:9,  from:'accelx',   to:'reviewer',text:'CodeGenius explains findings in plain language, using approved rules only.' },
+    { n:9,  from:'accelx',   to:'reviewer',text:'CodeGenesis explains findings in plain language, using approved rules only.' },
     { n:10, from:'reviewer', to:'prod',    text:'Reviewer approves through the bank\u2019s existing release process.' }
   ];
   const laneById = Object.fromEntries(LANES.map(l => [l.id, l]));
